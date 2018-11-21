@@ -1,0 +1,28 @@
+ 
+INTEGRASI UNITKERJA ESELON 2
+
+INSERT INTO SAKIP_MST_UNITKERJA (ID_SATKER, NAMA_SATKER, RKPDID, PK,DATECREATED)
+SELECT kode_satker, nama_satker , id_satker, '',GETDATE()
+FROM master_satker
+
+
+INSERT INTO SAKIP_MST_SASARAN (ID_SASARAN, KODE_SASARAN, TAHUN_SASARAN, NAMA_SASARAN, DATECREATED
+RKPDID)
+SELECT id_sasaran, kode_sasaran, tahun, nama_sasaran,GETDATE(),id_sasaran
+FROM master_sasaran
+
+
+
+
+
+Progress Sebelumnya
+	- Desain Tabel 
+	- Review Code
+	- Insert Unit Kerja di RKPD ke SAKIP
+	- Insert Sasaaran dr RKPD ke SAKIP
+
+Prioritas  Hari ini 
+	- Login
+	- Menampilkan Sasaran Di Eselon 2	 
+	- Menmapilkan indikator sasaran
+

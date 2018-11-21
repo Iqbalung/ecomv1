@@ -1,0 +1,200 @@
+/* Menu Utama */
+.keluar{
+    background-image:url(../images/icon/menu/24/keluar.png) !important;
+}
+
+.ganti_password {
+    background-image:url(../images/icon/menu/24/ganti_password.png) !important;
+}
+
+/* Icon Main Menu */
+
+.setuju_1 {
+	background: no-repeat url(../images/main-icon/icon/03a.png) center 58% !important
+}
+
+.master_w{
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/master_pusat_b.png) !important;
+}
+
+.master_b {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/master_pusat_w.png) !important;
+}
+
+.header_x .x-btn-button{
+	height: 70px;
+	padding-top : 12px;
+	padding-left : 18px;
+}
+
+.usulan_w{
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/usulan_pusat_b.png) !important; 
+}
+
+.usulan_b {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/usulan_pusat_w.png) !important;
+}
+
+.laporan_w{
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/laporan_pusat_b.png) !important; 
+}
+
+.laporan_b {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/laporan_pusat_w.png) !important;
+}
+
+.pengendalian_w {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/pengendalian_pusat_b.png) !important; 
+}
+
+.pengendalian_b {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/pengendalian_pusat_w.png) !important;
+}
+
+
+.bell_w {
+	height			 : 60px !important;
+	width			 : 30px !important;
+	background 		 : url(../images/icon/bell_pusat_b.png) 50% 50% ; 
+}
+
+.bell_b {
+	background 		 : url(../images/icon/bell_pusat_w.png) 50% 50% !important;
+}
+
+.graphics_w {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/graphics_pusat_b.png) !important; 
+}
+
+.graphics_b {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/graphics_pusat_w.png) !important;
+}
+
+.penetapan_w {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/penetapan_pusat_b.png) !important; 
+}
+
+.penetapan_b {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/penetapan_pusat_w.png) !important;
+}
+
+.verifikasi_w{
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/usulan_pusat_b.png) !important; 
+}
+
+.verifikasi_b {
+	height			 : 60px !important;
+	width			 : 60px !important;
+	background-image : url(../images/icon/usulan_pusat_w.png) !important;
+}
+
+/* Icon Toolbar */
+
+.cetak {
+	background-image: url(../images/icon/toolbar/16/cetak.png) !important;
+}
+.home_renstra {
+	background-image: url(../images/main-icon/32/renstra.png) !important;
+	margin-left: 10px;
+}
+.home_perencanaan {
+	background-image: url(../images/main-icon/32/perencanaan.png) !important;
+	margin-left: 10px;
+}
+.home_pengendalian {
+	background-image: url(../images/main-icon/32/pengendalian.png) !important;
+	margin-left: 10px;
+}
+.home_laporan {
+	background-image: url(../images/main-icon/32/laporan.png) !important;
+	margin-left: 10px;
+}
+.home_master {
+	background-image: url(../images/main-icon/32/datamaster.png) !important;
+	margin-left: 10px;
+}
+.home_user {
+	background-image: url(../images/main-icon/32/muser.png) !important;
+	margin-left: 10px;
+}
+.hapus {
+	background-image: url(../images/icon/toolbar/16/hapus.png) !important;
+}
+.simpan {
+	background-image: url(../images/icon/toolbar/16/simpan.png) !important;
+}
+.batal {
+	background-image: url(../images/icon/toolbar/16/batal.png) !important;
+}
+.clean {
+	background-image: url(../images/icon/toolbar/16/bersihkan.png) !important;
+}
+.tambah {
+	background-image: url(../images/icon/toolbar/16/tambah.png) !important;
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+}
+.ubah {
+	background-image: url(../images/icon/toolbar/16/ubah.png) !important;
+}
+.setuju {
+	background: no-repeat url(../images/main-icon/toolbar/dikirim.png) center 38% !important;
+}
+
+.kotak_orange{
+	background-color:orange;
+}
+
+.kotak_red{
+	background-color:red;
+}
+
+.kotak_yellow{
+	background-color:yellow;
+}
+
+.kotak_green{
+	background-color:green;
+}
+.bg_green {
+	background: transparent url("../images/eselon.png") no-repeat scroll -64px 0 !important;	 
+}
+
+.bg_blue {
+	background: transparent url("../images/eselon.png") no-repeat scroll -96px 0 !important;	 
+}
+.bg_orange {
+	background: transparent url("../images/eselon.png") no-repeat scroll -32px 0 !important;	 
+}
+.bg_yellow {
+	background: transparent url("../images/eselon.png") no-repeat scroll -48px 0 !important;	 
+}
+.bg_red{
+	background: transparent url("../images/eselon.png") no-repeat scroll 0px 0 !important;	 
+}

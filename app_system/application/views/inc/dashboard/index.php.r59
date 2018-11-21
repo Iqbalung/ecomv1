@@ -1,0 +1,353 @@
+
+    <!--c3chart-->
+    <link href="<?php echo config_item('url_prj') ?>assets/vendor/c3chart/c3.min.css" rel="stylesheet">
+
+    <!--custom styles-->
+    <link href="<?php echo config_item('url_prj') ?>assets/css/main.min.css" rel="stylesheet">
+
+
+<!--creative states-->
+        <div class="creative-state-area">
+            <div class="row">
+                <div class="col-lg-4 col-12">
+                    <h4 class="creative-state-title">Dashboard</h4>
+                </div>
+                <div class="col-lg-8  col-12 text-lg-right">
+                    <div class="row short-states mb-lg-0 mb-4">
+          
+            
+            
+                        <div class="col-5">
+                            
+               <div class="form-group row">
+                                    
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="input-group  dpMonths" data-date-viewmode="months" data-date-format="mm/yyyy" data-date="12-08-2017">
+                                            <input type="text" class="form-control input-date" placeholder="03-07-2018" aria-label="Right Icon" aria-describedby="dp-mdo">
+                                            <div class="input-group-append">
+                                                <button id="dp-mdo" class="btn btn-primary" type="button"><i class="fa fa-calendar f14"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                        </div>
+            
+            <div class="col-5">
+                            
+               <div class="form-group row">
+                                    
+                                    <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="input-group date dpMonths" data-date-viewmode="months" data-date-format="mm/yyyy" data-date="12-08-2017">
+                                            <input type="text" class="form-control" placeholder="03-07-2018" aria-label="Right Icon" aria-describedby="dp-mdo">
+                                            <div class="input-group-append">
+                                                <button id="dp-mdo" class="btn btn-primary" type="button"><i class="fa fa-calendar f14"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                
+                        </div>
+            
+            <div class="col-2">
+                            
+               <button  data-toggle="modal" data-target="#filter"  type="button" class="btn btn-primary">FILTER</button>
+                
+                        </div>
+            
+            
+            
+            
+            <div class="modal fade" id="filter" tabindex="-1" role="dialog" aria-labelledby="filter2" aria-hidden="true">
+                            <div class="modal-dialog modal-sm" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="filter2">Pilih Rentang Waktu</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                    
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">Hari ini</button>
+                  
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">Kemarin</button>
+                  
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">7 Hari Terakhir</button>
+                  
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">30 Hari Terakhir</button>
+                  
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">Minggu ini</button>
+                  
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">Minggu Lalu</button>
+                  
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">Bulan ini</button>
+                  
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">Bulan lalu</button>
+                  
+                  <button style='width:100%;margin-bottom:5px;text-align:left;' type="button" class="btn btn-outline-primary btn-sm">Rentang waktu</button>
+                  </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="button" class="btn btn-primary">Cari</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+            
+                       
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="creative-state-icon bg-danger text-center pull-left">
+                        <i class="vl_clip-board"></i>
+                    </div>
+                    <div class="creative-state-info text-center pull-left" style='text-align:center;' >
+          
+            
+              <div style='margin-left:-40px;padding-top:20px;padding-left:50px;'>
+              
+                <div class="text-danger weight700" style='position:relative;float:left;width:10%;' id='indicator_jml_transaksi' > 
+                  <i style='font-size:30px;' class="fa fa-long-arrow-down"></i> 
+                </div>
+                
+                <div class="text-danger weight700" style='padding-top:4px;position:relative;float:left;width:90%;' > 
+                  <span style='top:-20px;font-size:12px;' id='compare_transaksi' ></span>
+                </div>
+              </div> 
+            
+             <h3 class="mt-4" id='transaksi_diterima' >0</h3>
+                        <p class="mb-0">Transaksi Diterima</p>
+                       
+
+                       <br/>
+                       
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="creative-state-icon bg-warning text-center pull-left">
+                        <i class="vl_cart-full"></i>
+                    </div>
+                    <div class="creative-state-info text-center pull-left">
+            
+            <div style='margin-left:-40px;padding-top:20px;padding-left:50px;'>
+              
+                <div class="text-success weight700" style='position:relative;float:left;width:10%;' id='indicator_uang_masuk' > 
+                  <i style='font-size:30px;' class="fa fa-long-arrow-up" ></i> 
+                </div>
+                
+                <div class="text-success weight700" style='padding-top:4px;position:relative;float:left;width:90%;text-align:center;' > 
+                  <span style='top:-20px;font-size:12px;' id='compare_uang_masuk' ><br/></span>
+                </div>
+              </div> 
+              
+                        <h3 class="mt-4" id='uang_masuk' ></h3>
+                        <p class="mb-0">Total Penjualan</p>
+                       <br/>
+                        
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="creative-state-icon bg-purple text-center pull-left">
+                        <i class="vl_dollar-on-hand"></i>
+                    </div>
+          
+                    <div class="creative-state-info text-center pull-left">
+          
+            <div style='margin-left:-40px;padding-top:20px;padding-left:50px;'>
+              
+                <div class="text-success weight700" style='position:relative;float:left;width:10%;' id='indicator_uang_profit' > 
+                  <i style='font-size:30px;' class="fa fa-long-arrow-up" ></i> 
+                </div>
+                
+                <div class="text-success weight700" style='padding-top:4px;position:relative;float:left;width:90%;text-align:center;' > 
+                  <span style='top:-20px;font-size:12px;'  id='compare_uang_profit' ></span>
+                </div>
+            </div> 
+            
+                        <h3 class="mt-4" id='uang_profit' ></h3>
+                        <p class="mb-0">total profit</p>
+                        <br/>
+                        
+                    </div>
+          
+                </div>
+            </div>
+        </div>
+        <!--/creative states-->
+
+        <div class="container-fluid">
+
+            <!--sales report & active user-->
+            <div class="row">
+                <div class="col-xl-8 col-md-7">
+                    <div class="card card-shadow mb-4">
+                        <div class="card-header border-0">
+                            <div class="custom-title-wrap bar-primary">
+                                <div class="custom-title">GRAFIK PENJUALAN</div>
+                                <div class=" widget-action-link">
+                                    <div class="dropdown">
+                                        <a href="#" class="btn btn-transparent text-secondary dropdown-hover p-0" data-toggle="dropdown">
+                                            <i class=" vl_ellipsis-fill-h"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right vl-dropdown">
+                                            <a class="dropdown-item" href="#"> Edit</a>
+                                            <a class="dropdown-item" href="#"> Delete</a>
+                                            <a class="dropdown-item" href="#"> Settings</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row text-center mb-4">
+                                <div class="col-4">
+                                    <h4 class="mb-0">Rp 16.192.500 <i class="fa fa-long-arrow-up text-success f14"></i></h4>
+                                    <small class="text-muted text-uppercase">Penjualan Hari ini</small>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="mb-0">Rp 56.428.200 <i class="fa fa-long-arrow-down text-danger f14"></i></h4>
+                                    <small class="text-muted text-uppercase">Penjualan Minggu ini</small>
+                                </div>
+                                <div class="col-4">
+                                    <h4 class="mb-0">Rp 216.987.500 <i class="fa fa-long-arrow-up text-success f14"></i></h4>
+                                    <small class="text-muted text-uppercase">Penjualan Bulan ini</small>
+                                </div>
+                            </div>
+                            <div>
+                                <canvas id="grafik-penjualan" height="320"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-5">
+                    <div class="card text-light mb-4 basic-gradient bubble-shadow">
+                        <div class="widget-action-link">
+                            <div class="dropdown">
+                                <a href="#" class="btn btn-transparent text-white dropdown-hover p-0" data-toggle="dropdown">
+                                    <i class=" vl_ellipsis-fill-h"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right vl-dropdown">
+                                    <a class="dropdown-item" href="#"> Detail</a>
+                                    <a class="dropdown-item" href="#"> Cetak</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="widget-active-user">
+                                <h5 class="mt-3 b-b1 mb-4">TRANSAKSI PERHARI</h5>
+                                <h1 class="mb-4" id='transaksi_jumlah' >0</h1>
+                              <br/>
+                                <h5 class="mt-3 b-b1 mb-5">TRANSAKSI HARI INI</h5>
+                                <h5 class="mt-5 mb-0">Transaksi Tertinggi Mediasale</h5>
+                                <ul id='mediasale' class="list-unstyled active-page-link">
+                                  
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--/sales report & active user-->
+
+            <!--member performance & support ticket-->
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card card-shadow mb-4 ">
+                        <div class="card-header border-0">
+                            <div class="custom-title-wrap bar-danger">
+                                <div class="custom-title">
+                                    PENJUALAN PRODUK TERTINGGI
+                                   
+                                   
+
+                                </div>
+                            </div>
+                        </div>
+                        
+            <div class="card-body text-center" style='height:380px;'>
+                            <canvas id="area_chart" height="150"></canvas>
+                        </div>
+            
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="card card-shadow mb-4 ">
+                        <div class="card-header border-0">
+                            <div class="custom-title-wrap bar-warning">
+                                <div class="custom-title">PENJUALAN KATEGORI TERTINGGI</div>
+                                
+                            </div>
+                        </div>
+            
+            <div class="card-body text-center" style='height:380px;'>
+                             <canvas id="area_chart2" height="150"></canvas>
+                        </div>
+            
+          </div>
+                </div>
+            </div>
+            <!--/member performance & support ticket-->
+
+       <!--member performance & support ticket-->
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="card card-shadow mb-4 ">
+                        <div class="card-header border-0">
+                            <div class="custom-title-wrap bar-danger">
+                                <div class="custom-title">
+                                    PENGINGAT STOK
+                                   
+                                   
+
+                                </div>
+                            </div>
+                        </div>
+                        
+            <div class="card-body text-center" style='height:100px;'>
+              TIDAK ADA PRODUK YANG AKAN HABIS
+                        </div>
+            
+                    </div>
+                </div>
+            </div>
+            <!--/member performance & support ticket-->
+
+      
+        </div>
+
+
+  <!--basic scripts-->
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/jquery/jquery.min.js"></script>
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/popper.min.js"></script>
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/jquery-dropdown-master/jquery.dropdown.js"></script>
+
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/m-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!--sparkline-->
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/sparkline/jquery.sparkline.js"></script>
+    <!--sparkline initialization-->
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/js-init/sparkline/init-sparkline.js"></script>
+
+    <!--c3chart-->
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/c3chart/d3.min.js"></script>
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/c3chart/c3.min.js"></script>
+    <!--c3chart initialization-->
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/js-init/c3chart/init-c3chart.js"></script>
+
+    <!--chartjs-->
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <!--chartjs initialization-->
+    <script src="<?php echo config_item('url_app') ?>js/modules/dashboard/init-grafik-tertinggi.js"></script>
+    
+    <script type="text/javascript" src="<?php echo config_item('url_app') ?>js/modules/dashboard/init-grafik-penjualan.js"></script>
+    
+   
+    <!--[if lt IE 9]>
+    <script src="<?php echo config_item('url_prj') ?>assets/vendor/modernizr.js"></script>
+    <![endif]-->
+

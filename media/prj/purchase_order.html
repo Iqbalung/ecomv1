@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from thevectorlab.net/dashlab-v1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Mar 2018 06:09:14 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+
+    <!--favicon icon-->
+    <link rel="icon" type="image/png" href="assets/img/favicon.html">
+
+    <title>Warung Pedia</title>
+
+    <!--web fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <!--bootstrap styles-->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--icon font-->
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/dashlab-icon/dashlab-icon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="assets/vendor/themify-icons/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/vendor/weather-icons/css/weather-icons.min.css" rel="stylesheet">
+
+    <!--custom scrollbar-->
+    <link href="assets/vendor/m-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+    <!--jquery dropdown-->
+    <link href="assets/vendor/jquery-dropdown-master/jquery.dropdown.css" rel="stylesheet">
+
+    <!--jquery ui-->
+    <link href="assets/vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+    <!--iCheck-->
+    <link href="assets/vendor/icheck/skins/all.css" rel="stylesheet">
+
+    <!--vector maps -->
+    <link href="assets/vendor/vector-map/jquery-jvectormap-1.1.1.css" rel="stylesheet" >
+
+    <!--c3chart-->
+    <link href="assets/vendor/c3chart/c3.min.css" rel="stylesheet">
+	
+	<!--date picker-->
+    <link href="assets/vendor/date-picker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+    <!--custom styles-->
+    <link href="assets/css/main.min.css" rel="stylesheet">
+
+    <!--data table-->
+    <link href="assets/vendor/data-tables/dataTables.bootstrap4.min.css" rel="stylesheet">
+     <!--select2-->
+    <link href="assets/vendor/select2/css/select2.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/vendor/html5shiv.js"></script>
+    <script src="assets/vendor/respond.min.js"></script>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115474794-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115474794-1');
+    </script>
+
+</head>
+
+<body class="fixed-nav">
+
+    <!--navigation : sidebar & header-->
+    <div w3-include-html="sidebar-n-header.html"></div>
+    <!--/navigation : sidebar & header-->
+
+    <!--main content wrapper-->
+    <div class="content-wrapper">
+		
+		
+		
+        <div class="container-fluid">
+
+            <!--page title-->
+            <div class="page-title mb-4 d-flex align-items-center">
+                <div class="mr-auto">
+                    <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Purchase Order</h4>
+                    <nav aria-label="breadcrumb" class="d-inline-block ">
+                        <ol class="breadcrumb p-0">
+                            <li class="breadcrumb-item"><a href="#">Inventori</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Purchase Order</li>
+                        </ol>
+                    </nav>
+                </div>
+                    <div class="pull-right">
+    					<button type="button"   data-toggle="modal" data-target="#tambah_stok_masuk" class="btn btn-outline-primary">Tambah Purchase Order</button>
+                    </div>
+					
+					
+					
+					     <div class="modal fade" id="tambah_stok_masuk" tabindex="-1" role="dialog" aria-labelledby="coba" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="coba">Tambah Purchase Order</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+											
+											<div class="form-group row">
+                                                <label class="col-form-label col-lg-3 col-sm-12 ">No. PO </label>
+												
+												<div class="col-lg-6 col-md-9 col-sm-12" >
+													<input class='form-control' name='no_po' placeholder='' />
+												</div>
+												
+                                            </div>
+											
+                                            <div class="form-group row">
+                                                <label class="col-form-label col-lg-3 col-sm-12 ">Gudang <span style='color:red;'>*</span></label>
+												
+												<div class="col-lg-6 col-md-9 col-sm-12">
+													<select placeholder='Pilih Gudang' style="width: 100%;" class="form-control" id="option_s1" name='Gudang' >
+														<option value="">
+															
+														</option>
+
+														<option value="AK">
+															Gudang 1
+														</option>
+														<option value="HI">
+															Gudang 2
+														</option>
+														<option value="CA">
+															Gudang 3
+														</option>
+														<option value="NV">
+															Gudang 4
+														</option>
+													</select>
+												</div>
+												
+                                            </div>
+											
+											<div class="form-group row">
+                                                <label class="col-form-label col-lg-3 col-sm-12 ">Supplier <span style='color:red;'>*</span></label>
+												
+												<div class="col-lg-6 col-md-9 col-sm-12">
+													<select placeholder='Pilih Supplier' style="width: 100%;" class="form-control" id="supplier" name='supplier' >
+														
+														<option value="">
+															
+														</option>
+														
+														<option value="AK">
+															Supplier 1
+														</option>
+														<option value="HI">
+															Supplier 2
+														</option>
+														<option value="CA">
+															Supplier 3
+														</option>
+														<option value="NV">
+															Supplier 4
+														</option>
+													</select>
+												</div>
+												
+                                            </div >
+											
+											<div id='data_supplier' class="row"  style='height:0px;overflow:hidden;' >
+												<div class='col-lg-3' > 
+													
+												</div>
+												<div class='col-lg-9 ' style='font-size:12px;' > 
+													Jl. mentari queen 1<br/>
+													mentari@gmail.com<br/>
+													0827192881<br/>
+												</div>
+											</div>
+							
+											
+                                            
+											<div class="form-group row">
+												<label class="col-form-label col-lg-3 col-sm-12 ">Tanggal <span style='color:red;'>*</span> </label>
+												<div class="col-lg-6 col-md-9 col-sm-12">
+													<div class="input-group date dpYears" data-date-viewmode="years" data-date-format="dd-mm-yyyy" data-date="03-10-2018">
+														<input type="text" class="form-control" placeholder="03-10-2018" aria-label="Right Icon" aria-describedby="dp-ig">
+														<div class="input-group-append">
+															<button id="dp-ig" class="btn btn-outline-secondary" type="button"><i class="fa fa-calendar f14"></i></button>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											 <div class="form-group row">
+                                                <label class="col-form-label col-lg-3 col-sm-12 ">Catatan </label>
+												
+												<div class="col-lg-6 col-md-9 col-sm-12">
+													<textarea class='form-control' style='width:100%;height:80px;' placeholder='Ketik catatan...'>  </textarea>
+												</div>
+												
+                                            </div>
+											
+											<div id='kirim_email_ke_supplier' class="row"  style='margin-top:-10px;margin-bottom:15px;display:none;' >
+												<div class='col-lg-3' >												
+												</div>
+												<div class='col-lg-9 ' style='font-size:12px;' > 
+													 <div>
+														<input style='font-size:12px;' type="checkbox"  class="iCheck-flat-orange">
+														<label style='font-size:12px;color:#999;' class="  control-label">&nbsp;&nbsp;&nbsp;&nbsp;  Kirim notifikasi via email ke supplier dengan format PDF</label>
+													</div>
+													
+												</div>
+											</div>
+											
+											
+											<table id="data_tablex2" class="table table-bordered table-striped" cellspacing="0">
+												<thead>
+													<tr>
+														<th style="width: 90px;">NAMA PRODUK</th>
+														<th>JUMLAH</th>
+														<th>SATUAN</th>
+														<th>HARGA BELI SATUAN</th>
+														<th>HARGA BELI TOTAL</th>
+														<th></th>
+													</tr>
+												</thead>
+												<tbody class="row-biaya">  
+													<tr class='hello' >
+													<td>
+														<select class="form-control js-example-basic-single" name="state" style="width: 350px;">
+														  <option value="AL"></option>
+														  <option value="AL">Lemari</option>
+														  <option value="WY">TV</option>
+														  <option value="WY">Meja</option>
+														</select>
+														
+													</td>
+													<td><input type="text" class="form-control" name='jumlah' value="" ></td>
+													<td>Unit</td>
+													<td><input type="text" class="form-control" name='harga' value="" ></td>
+													<td><input type="text" class="form-control" name='harga_total' value="" ></td>
+													<td></td>
+									
+													
+												</tr>
+												</tbody>
+									</table>
+                                            
+
+                                        <div class="pull-left">
+											<button type="button" onclick='tambah_produk();'  class="btn btn-outline-primary">Tambah Produk</button>
+										</div>  
+
+
+
+                                    
+
+
+
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                        <button type="button" class="btn btn-primary">Simpan</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+						
+            </div>
+            <!--/page title-->
+
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card card-shadow mb-4">
+                        
+                        <div class="card-body- pt-3 pb-4">
+                            <div class="table-responsive">
+                                <table id="data_table" class="table table-bordered table-striped" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>ID PO</th>
+                                        <th>SUPPLIER</th>
+                                        <th>NO. PO</th>
+                                        <th>TANGGAL</th>
+                                        <th>STATUS</th>
+                                        <th width='10'></th>
+                                       
+                                    </tr>
+                                    </thead>
+                                   
+                                    <tbody>
+                                    <tr>
+                                        <td>PO-0000001</td>
+                                        <td>PT. Salah Tiga</td>
+                                        <td>0291100</td>
+                                        <td>03-07-2018</td>
+                                        <td style='color:#689bfb;' > <i style='font-size:15px;' class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp; Dipesan</td>
+                                        <td>
+										
+											<div class="btn-group">
+												
+												<button type="button" class="btn btn-outline-info btn-sm rounded-0 " data-toggle="dropdown">
+													<i style='font-size:17px;' class="fa fa-ellipsis-h"></i> 
+												</button>
+											
+												<div class="dropdown-menu dropdown-menu-right" style='color:#aaa;'>
+													<button class="dropdown-item" type="button" style='color:#aaa;'><i style='font-size:17px;' class="fa fa-trash"></i> &nbsp;&nbsp;&nbsp;  Batalkan</button>
+													<button class="dropdown-item" type="button"  style='color:#aaa;' ><i style='font-size:17px;' class="fa fa-check-square-o"></i>&nbsp;&nbsp;&nbsp;  Penerimaan</button>
+												</div>
+											</div>
+							
+											
+										</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PO-0000002</td>
+                                        <td>PT. Salah Tiga</td>
+                                        <td>0291100</td>
+                                        <td>03-07-2018</td>
+                                        <td style='color:#689bfb;' > <i style='font-size:15px;' class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp; Dipesan</td>
+                                        <td>
+										
+											<div class="btn-group">
+												
+												<button type="button" class="btn btn-outline-info btn-sm rounded-0 " data-toggle="dropdown">
+													<i style='font-size:17px;' class="fa fa-ellipsis-h"></i> 
+												</button>
+											
+												<div class="dropdown-menu dropdown-menu-right" style='color:#aaa;'>
+													<button class="dropdown-item" type="button" style='color:#aaa;'><i style='font-size:17px;' class="fa fa-trash"></i> &nbsp;&nbsp;&nbsp;  Batalkan</button>
+													<button class="dropdown-item" type="button"  style='color:#aaa;' ><i style='font-size:17px;' class="fa fa-check-square-o"></i>&nbsp;&nbsp;&nbsp;  Penerimaan</button>
+												</div>
+											</div>
+							
+											
+										</td>
+										
+                                    </tr>
+                                    <tr>
+                                        <td>PO-0000003</td>
+                                        <td>PT. Salah Tiga</td>
+                                        <td>0291100</td>
+                                        <td>03-07-2018</td>
+                                        <td style='color:#689bfb;' > <i style='font-size:15px;' class="fa fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp; Dipesan</td>
+                                        <td>
+										
+											<div class="btn-group">
+												
+												<button type="button" class="btn btn-outline-info btn-sm rounded-0 " data-toggle="dropdown">
+													<i style='font-size:17px;' class="fa fa-ellipsis-h"></i> 
+												</button>
+											
+												<div class="dropdown-menu dropdown-menu-right" style='color:#aaa;'>
+													<button class="dropdown-item" type="button" style='color:#aaa;'><i style='font-size:17px;' class="fa fa-trash"></i> &nbsp;&nbsp;&nbsp;  Batalkan</button>
+													<button class="dropdown-item" type="button"  style='color:#aaa;' ><i style='font-size:17px;' class="fa fa-check-square-o"></i>&nbsp;&nbsp;&nbsp;  Penerimaan</button>
+												</div>
+											</div>
+							
+											
+										</td>
+                                       
+                                    </tr>
+                                    <tr>
+                                        <td>PO-0000004</td>
+                                        <td>PT. Salah Tiga</td>
+                                        <td>0291100</td>
+                                        <td>03-07-2018</td>
+                                        <td style='color:#90b55d;'> <i style='font-size:15px;' class="fa fa-check-circle"></i>&nbsp;&nbsp;&nbsp; Diterima</td>
+                                        <td> </td>
+										
+                                    </tr>
+									
+									
+
+                                  
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+		
+        <!--footer-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright &copy; VectorLab 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!--/footer-->
+    </div>
+    <!--/main content wrapper-->
+
+    <!--basic scripts-->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/vendor/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="assets/vendor/jquery-dropdown-master/jquery.dropdown.js"></script>
+
+    <script src="assets/vendor/m-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!--sparkline-->
+    <script src="assets/vendor/sparkline/jquery.sparkline.js"></script>
+    <!--sparkline initialization-->
+    <script src="assets/vendor/js-init/sparkline/init-sparkline.js"></script>
+
+    <!--c3chart-->
+    <script src="assets/vendor/c3chart/d3.min.js"></script>
+    <script src="assets/vendor/c3chart/c3.min.js"></script>
+    <!--c3chart initialization-->
+    <script src="assets/vendor/js-init/c3chart/init-c3chart.js"></script>
+
+    <!--chartjs-->
+    <script src="assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <!--chartjs initialization-->
+    <script src="assets/vendor/js-init/chartjs/init-creative-state-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-area-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-line-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-doughnut-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-doughnut-chart2.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-sales-report-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-bubble-chart.js"></script>
+
+    <!--flot chart-->
+    <script src="assets/vendor/flot/jquery.flot.min.js"></script>
+    <script src="assets/vendor/flot/jquery.flot.pie.min.js"></script>
+    <script src="assets/vendor/flot/jquery.flot.tooltip.min.js"></script>
+    <!--flot chart initialization-->
+    <script src="assets/vendor/js-init/flot/init-flot-widget.js"></script>
+
+    <!--vectormap-->
+    <script src="assets/vendor/vector-map/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="assets/vendor/vector-map/jquery-jvectormap-world-mill-en.js"></script>
+    <!--vectormap initialization-->
+    <script src="assets/vendor/js-init/vmap/init-vmap-world.js"></script>
+
+     <!--datatables-->
+    <script src="assets/vendor/data-tables/jquery.dataTables.min.js"></script>
+    <script src="assets/vendor/data-tables/dataTables.bootstrap4.min.js"></script>
+	
+	 <!--date picker-->
+    <script src="assets/vendor/date-picker/js/bootstrap-datepicker.min.js"></script>
+
+     <!--select2-->
+    <script src="assets/vendor/select2/js/select2.min.js"></script>
+	
+	<script src="assets/vendor/icheck/skins/icheck.min.js"></script>
+    <!--init icheck-->
+    <script src="assets/vendor/js-init/init-icheck.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/vendor/modernizr.js"></script>
+    <![endif]-->
+
+    <!--basic scripts initialization-->
+    <script src="assets/js/scripts.min.js"></script>
+    <script type="text/javascript">
+	
+	
+		function tambah_produk() {
+			$('.row-biaya').append(`
+			
+			<tr class='hello' >
+													<td>
+														<select class='form-control js-example-basic-single' name='state' style='width: 350px;'>
+														  <option value='AL'></option>
+														  <option value="AL">Lemari</option>
+														  <option value="WY">TV</option>
+														  <option value="WY">Meja</option>
+														</select>
+														
+													</td>
+													<td><input type="text" class="form-control" name='jumlah' value="" ></td>
+													<td>Unit</td>
+													<td><input type="text" class="form-control" name='harga' value="" ></td>
+													<td><input type="text" class="form-control" name='harga_total' value="" ></td>
+													<td><span onclick='hapus_produk(this);' style='font-size:20px;cursor:pointer;' class='fa fa-trash' ></span></td>
+									
+													
+												</tr>
+			
+			`);
+		}
+		
+		function hapus_produk(me) {
+			$(me).parents('tr.hello').remove();
+		}
+		
+		$('#supplier').change(function(){
+			$('#data_supplier').css('height','80px');
+			$('#kirim_email_ke_supplier').show();
+		});
+
+         $(document).ready(function() {
+            $('#data_table').DataTable();
+            $("#option_s1").select2();
+			
+			
+			
+			
+			$('.date-picker-input').datepicker({
+        format: 'mm-dd-yyyy',
+        autoclose: true,
+        orientation: "bottom",
+        templates: {
+            leftArrow: '<i class="fa fa-angle-left"></i>',
+            rightArrow: '<i class="fa fa-angle-right"></i>'
+        }
+    });
+
+
+
+    $('.dpYears').datepicker({
+        autoclose: true,
+        orientation: "bottom",
+        templates: {
+            leftArrow: '<i class="fa fa-angle-left"></i>',
+            rightArrow: '<i class="fa fa-angle-right"></i>'
+        }
+    });
+
+    // month & date only
+    $('.dpMonths').datepicker({
+        format: 'mm-dd',
+        autoclose: true,
+        orientation: "bottom",
+        templates: {
+            leftArrow: '<i class="fa fa-angle-left"></i>',
+            rightArrow: '<i class="fa fa-angle-right"></i>'
+        }
+    });
+
+
+    var checkin = $('.dpd1').datepicker({
+        onRender: function(date) {
+            return date.valueOf() < now.valueOf() ? 'disabled' : '';
+        }
+    }).on('changeDate', function(ev) {
+        if (ev.date.valueOf() > checkout.date.valueOf()) {
+            var newDate = new Date(ev.date)
+            newDate.setDate(newDate.getDate() + 1);
+            checkout.setValue(newDate);
+        }
+        checkin.hide();
+
+        $('.dpd2')[0].focus();
+    }).data('datepicker');
+    var checkout = $('.dpd2').datepicker({
+        onRender: function(date) {
+            return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+        }
+    }).on('changeDate', function(ev) {
+        checkout.hide();
+    }).data('datepicker');
+
+
+    // inline picker
+    $('#inline-datepicker').datepicker({
+        todayHighlight: true,
+        autoclose: true,
+        orientation: "bottom",
+        templates: {
+            leftArrow: '<i class="fa fa-angle-left"></i>',
+            rightArrow: '<i class="fa fa-angle-right"></i>'
+        }
+    });
+
+
+    // enable clear button
+    $('#helper-datepicker').datepicker({
+        todayBtn: "linked",
+        clearBtn: true,
+        autoclose: true,
+        todayHighlight: true,
+        orientation: "bottom",
+        templates: {
+            leftArrow: '<i class="fa fa-angle-left"></i>',
+            rightArrow: '<i class="fa fa-angle-right"></i>'
+        }
+    });
+	
+	
+        } );
+    </script>
+
+    <script type="text/javascript">
+        function includeHTML() {
+          var z, i, elmnt, file, xhttp;
+          /*loop through a collection of all HTML elements:*/
+          z = document.getElementsByTagName("*");
+          for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+              /*make an HTTP request using the attribute value as the file name:*/
+              xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                  /*remove the attribute, and call this function once more:*/
+                  elmnt.removeAttribute("w3-include-html");
+                  includeHTML();
+                }
+              } 
+              xhttp.open("GET", file, true);
+              xhttp.send();
+              /*exit the function:*/
+              return;
+            }
+          }
+        }
+
+        includeHTML();
+    </script>
+    
+</body>
+
+<!-- Mirrored from thevectorlab.net/dashlab-v1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Mar 2018 06:10:23 GMT -->
+</html>
+

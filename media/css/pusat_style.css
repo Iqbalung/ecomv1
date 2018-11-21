@@ -1,0 +1,579 @@
+body{
+
+}
+#header .x-toolbar-default {
+	background:none !important;
+	background-image:none !important;
+}
+.x-panel-header-default{
+	background-image:none !important;
+}
+
+#publikasi {
+	text-align: center;
+	padding: 10px;
+	font-size: 15px;
+}
+
+
+#publikasi  div {
+	position: relativ;
+	display: inline-block;
+	margin: 15px;
+	padding: 2px;
+}
+
+.box_publikasi {
+	border-radius: 4px;
+	border: 6px solid #157FCC
+}
+
+.user_nama_text{
+	color: #352613;
+	font-weight: bold;
+	font-style: italic;
+	font-size: 14px;
+}
+
+.sibaru_header{
+	color: #352613;
+	font-size: 18px;
+}
+
+.badan_notifikasi {
+	background-color : #352613 !important;
+}
+
+
+.box_publikasi .caption {
+	color: white;
+	background-color: #157FCC;
+	font-family: "Eras Bold ITC";
+	font-size: 15px;
+}
+.box_publikasi .caption td {
+	padding: 3px;
+}
+
+.btn_upload{
+	background:#D1D2D4;
+	color:#fff;
+	height:30px;
+	cursor:pointer;
+	padding:5px 20px 5px 20px;
+	position:relative;
+	float:left;
+}
+.x-form-text{
+	background:#FFFFFF !important;
+}
+
+#tempat_file{
+	width:500px;
+}
+
+.item_file{
+	height:50px;
+}
+
+.text_file{
+	float:left;
+	padding:5px 35px 5px 10px;
+}
+
+.edited {
+	background-color: #F3B200 !important;
+}
+
+.hapus_file{
+	font-size:14px;
+	font-weight:bold;
+	float:left;
+	cursor:pointer;
+	padding:5px;
+	color:red;
+}
+
+.pak_file{
+	width:100%;
+	height:auto;
+	height:30px;
+}
+
+.pak_progress{
+	width:400px;
+	float:left;
+}
+
+.text{
+	
+}
+
+.progress_panel{
+	height:25px;
+	width:300px;
+	float:left;
+	overflow:hidden;
+	border:1px solid #8A8A7B;
+}
+
+.progress_bar{
+	height:25px;
+	width:0px;
+	background-color:#8A8A7B;
+}
+
+.cancel_close{
+	height:25px;
+	padding:5px;
+	width:50px;
+	float:left;
+	cursor:pointer;
+	color:white;
+	background-color:#8A8A7B;
+}
+
+.cancel{
+	
+}
+
+.input_upload{
+	width:200px;
+	border:1px solid #999999;
+	height:30px;
+	padding:5px;
+	position:relative;
+	float:left;
+}
+
+.upload_hilang{
+	display:none;
+}
+
+.center_text{
+	text-align:center;
+}
+
+.chart_alur{
+	background-color:#006633;
+	border-radius:5px;
+	height:45px;
+	vertical-align:middle;
+	width:160px;
+	padding:10px;
+	font-weight:bold;
+	font-size:12px;
+}
+
+.tanda_panah{
+	height:0px;
+	background: no-repeat url(../images/main-icon/toolbar/dikirim.png) center center !important;
+}
+
+.left_text{
+	vertical-align:top;
+	padding-top:0px;
+}
+
+.header_text{
+	color:#fff;
+	background-color:#4C4C4C;
+	height:36px;
+	padding:9px;
+	font-weight:bold;
+}
+
+.kotak_viewer{
+	border:1px solid red;
+	width:100%;
+	height:80%;
+}
+
+.control_viewer{
+	width:380px;
+	margin-top:5px;
+	height:20%;
+}
+
+.control_viewer .btns{
+	position:relative;
+	float:left;
+	width:50px;
+	height:50px;
+	cursor:pointer;
+	margin-left:10px;
+	border:1px solid #AAAAAA;
+}
+
+.fit{
+	height:20px;
+	background: no-repeat url(../images/full_screen.png) center center !important;
+}
+
+.perbesar{
+	height:20px;
+	background: no-repeat url(../images/zoom_in.png) center center !important;
+}
+
+.perkecil{
+	height:20px;
+	background: no-repeat url(../images/zoom_out.png) center center !important;
+}
+
+.previous{
+	height:20px;
+	background: no-repeat url(../images/previous.png) center center !important;
+}
+
+.next{
+	height:20px;
+	background: no-repeat url(../images/next.png) center center !important;
+}
+
+.downloads{
+	height:20px;
+	background: no-repeat url(../images/download.png) center center !important;
+}.fit2{
+	height:20px;
+	background: no-repeat url(../images/full_screen.png) center center !important;
+}
+
+.perbesar2{
+	height:20px;
+	background: no-repeat url(../images/zoom_in.png) center center !important;
+}
+
+.perkecil2{
+	height:20px;
+	background: no-repeat url(../images/zoom_out.png) center center !important;
+}
+
+.previous2{
+	height:20px;
+	background: no-repeat url(../images/previous.png) center center !important;
+}
+
+.next2{
+	height:20px;
+	background: no-repeat url(../images/next.png) center center !important;
+}
+
+.downloads2{
+	height:20px;
+	background: no-repeat url(../images/download.png) center center !important;
+}
+
+.detail {
+	background: url(../images/icon/toolbar/16/detail.png) no-repeat !important;
+	background-size:50%;
+	cursor:pointer;
+	height:20px;
+	width:20px;
+}
+
+.btn_collapse{
+	position:relative;
+	cursor:pointer;
+	color:white;
+	font-size:14px;
+	font-weight:bold;
+	float:right;
+	width:20px;
+	height:16px;
+	background:no-repeat url(../asset/ext_4/images/tools/tool-sprites.png) 0px -176px;
+	opacity:0.5;
+	
+}
+
+.custom_label  input,.custom_label  textarea,.custom_label table.x-form-trigger-wrap{
+
+    -moz-user-select: text;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	font-weight:bold;
+	border:none;
+	border-bottom:1px solid black;
+	
+}
+.custom_detail  input,.custom_detail  textarea,.custom_detail table.x-form-trigger-wrap{
+    -moz-user-select: text;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	font-weight:bold;
+	border:none;
+}
+
+.needWrap .x-grid-cell-inner {
+		white-space: normal;
+}
+
+.x-grid-row{
+    background-color: #FFB0C4 !important;
+}
+
+.x-toolbar-docked-top{
+	background-color:#7A7A7A !important;
+	border:none;
+	color:#fff !important;
+}
+
+.x-toolbar-docked-top  .x-btn-default-toolbar-small{
+	background-image: none !important;
+	background-color: transparent ;
+	color:#fff ;
+	border:none;
+}
+
+.x-toolbar-docked-top  .x-form-item-label,.x-toolbar-docked-top  .x-toolbar-text{
+	color:#fff !important;
+
+}
+
+.x-toolbar-docked-top  .x-btn-inner{
+	color:#fff !important;
+}
+
+.x-toolbar-docked-top  .x-btn-default-toolbar-small:hover{
+	background-image: none !important;
+	background-color: #4C4C4C !important ;
+	color:#fff ;
+	border:none;
+}
+
+.syarat-teknis .x-grid-row .x-grid-cell { 
+    background-color: #fff7d3; 
+    color: #000; 
+	border:none;
+	font-size:12px;
+	height:15px;
+	padding : 6px;
+} 
+ 
+.syarat-teknis .x-grid-row-alt .x-grid-cell { 
+    background-color: #fff7d3; 
+    color: #000; 
+	font-size:12px;
+	height:15px;
+	padding : 6px;
+	border:none;
+}
+
+.syarat-teknis .x-grid-row-selected  .x-grid-cell{
+    background-color: #fff7d3 !important; 
+	color: #000 !important; 
+	border:none !important;
+	height:15px;
+	padding : 6px;
+	margin:0;
+}
+
+.syarat-adm .x-grid-row .x-grid-cell { 
+    background-color: #d4e4f3; 
+    color: #000; 
+	border:none;
+	font-size:12px;
+	height:15px;
+	padding : 6px;
+} 
+ 
+.syarat-adm .x-grid-row-alt .x-grid-cell { 
+    background-color: #d4e4f3; 
+    color: #000; 
+	font-size:12px;
+	height:15px;
+	padding : 6px;
+	border:none;
+}
+
+.syarat-adm .x-grid-row-selected  .x-grid-cell{
+    background-color: #d4e4f3 !important; 
+	color: #000 !important; 
+	border:none !important;
+	height:15px;
+	padding : 6px;
+	margin:0;
+}
+
+
+.extra-alt .x-grid-row .x-grid-cell { 
+    background-color: #FFFFFF; 
+    color: #000; 
+	border:none;
+	font-size:12px;
+	height:15px;
+	padding : 6px;
+} 
+ 
+.extra-alt .x-grid-row-alt .x-grid-cell { 
+    background-color: #f0f4f7; 
+    color: #000; 
+	font-size:12px;
+	height:15px;
+	padding : 6px;
+	border:none;
+}
+
+.extra-alt .x-grid-row-selected  .x-grid-cell{
+    background-color: #e9eff3 !important; 
+	color: #000 !important; 
+	border:none !important;
+	height:15px;
+	padding : 6px;
+	margin:0;
+}
+
+.x-docked-summary {
+	background-color: #A6A6A6 !important; 
+}
+
+.x-splitter{
+	background-color: #352613 !important;
+	border-color:#352613 !important;	
+}
+
+
+.header_x_unit{
+	background: url(../images/icon/header_admin_unit.png) bottom left !important;
+}
+
+.header_x_pengusul{
+	background: url(../images/icon/header_pengusul.png) bottom left  !important;
+	border:none !important;
+}
+
+.header_x_pusat{
+	background: url(../images/icon/header_admin_pusat.png) bottom left !important;
+	border:none !important;
+}
+
+
+
+.btn_pop {
+	background 	: none !important;
+ 	background-color 	: #352613 ; 
+	color 				: #fff ;
+	height 				: 90px; 
+	border 				: none; 
+	border-radius		: 0;
+}
+
+.btn_pop:hover {
+	background-color: #8f6421 !important;
+}
+
+.btn_pop:hover .x-btn-inner{
+	color:#FFF !important;
+}
+
+.btn_pop .x-btn-inner{
+	color:#fff;
+	font-size:14px;
+	font-weight:normal;
+}
+
+.x-column-header-inner{
+	background-color:#A6A6A6 !important;
+	border:none !important;
+	color:#000000 !important;
+	text-shadow:none !important;
+	font-weight:normal;
+	font-size:11px;
+}
+
+
+.x-tree-node-text{
+	font-weight:normal;
+	font-size:12px;
+}
+
+.download_semua{
+	padding:4px;
+	background: #352613;
+	text-decoration:none;
+	color: white;
+}
+
+
+.x-panel-body-default{
+	border-color:#352613;
+	border:none;
+}
+
+.x-column-header-trigger{
+	background-color:#B6B6B6 !important;
+}
+
+.x-field-form-focus,.x-form-trigger-wrap-focus{
+	border-color:#352613 !important;
+}
+.x-field-default-form-focus{
+	border-color:#352613;
+}
+.x-form-trigger-wrap-focus .x-form-trigger-wrap{
+	border-color:#352613 !important;
+}
+
+.active {
+	background-color: #352613 !important;
+	color:#000 !important;
+}
+
+.rs{
+	color:#000 !important;
+}
+
+.x-column-header{
+	background-color: #A6A6A6 !important;
+}
+.x-column-header-text{
+	color:#000 ;
+	font-size:12px;
+	font-weight: bold;
+	text-align:'center';
+}
+
+.text_file {
+	
+	float:left;
+	position:relative;
+	height:30px;
+}
+
+.tombol{
+	color: white;
+	float:left;
+	padding : 5px;
+	position:relative;
+	background-color:#999;
+	width:50px;
+	height:30px;
+}
+
+.x-form-file-input{
+	width:200px;
+}
+
+
+.kuning .x-grid-cell{
+	background-color: #f4ddc8 !important;
+	color: black !important;
+	border:none;
+}
+
+.hijau .x-grid-cell{
+	background-color: #c9e6c7 !important;
+	color: black !important;
+	border:none;
+}
+
+.merah .x-grid-cell{
+	background-color: #f6c8c9 !important;
+	color: black !important;
+	border:none;
+}
+
+
+.input_hasil_survey{
+	cursor : pointer;
+	padding : 10px;
+	background-color: #aed0b6;
+	color : white ;
+}

@@ -1,0 +1,95 @@
+.skin-blue .main-header .logo {
+  position: absolute;
+  background-color: #fff;
+  color: #E9EBEF;
+  margin-left: 5px;
+  margin-right: 15px;
+  width: 90px;
+  height: 130px;
+  border-bottom: 0 solid transparent;
+}
+.skin-blue .main-header .logo img{
+  width: 100%;
+  position: relative;
+  top: 50px;
+}
+.skin-blue .main-header .logo:hover {
+  background-color: #fff;
+}
+.skin-blue.layout-top-nav .main-header > .logo {
+  background-color: #2D3F66;
+  color: #E9EBEF;
+  border-bottom: 0 solid transparent;
+}
+.skin-blue.layout-top-nav .main-header > .logo:hover {
+  background-color: #3b8ab8;
+}.navbar-right.nav-login li:last-child a{
+  background: #CAEBFB;
+  color: #2D3F66 !important;
+  font-weight: bold;
+}
+.skin-blue .main-header .navbar .nav.navbar-right > li:last-child > a:hover{
+  background: #CAEBFB; 
+  color: #2D3F66 !important;
+}
+.skin-blue .main-header .navbar .nav.navbar-right > li:last-child > a:active,
+.skin-blue .main-header .navbar .nav.navbar-right > li:last-child > a:focus{
+  background: #7F96A2;
+  color: #fff !important;
+}
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header{
+  height: 255px;
+  padding: 20px;
+}
+.navbar-nav > .user-menu > .dropdown-menu.notif-menu > li.user-header.notif-body{
+  padding: 10px;
+}
+.skin-blue .main-header li.user-header {
+    background-color: #7F96A2;
+}
+.skin-blue .main-header li.user-header.notif-body{
+  background-color: #2D3F66;
+}
+#login{
+  color: #fff;
+}
+#login .form-group{
+  background: #fff;
+}
+.input-login{
+  display: block;
+  width: 100%;
+  height: 44px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+}
+#register{
+  margin-top: 10px;
+  background: #233A66;
+  color: #fff !important;
+  font-weight: normal;
+  text-align: center;
+  padding: 6px 10px;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.lapor{
+  position: fixed;
+  right: 40px;
+  bottom: 20px;
+  width: 400px;
+  padding: 10px;
+  box-sizing: border-box;
+  background: rgba(255,255,255, 0.5);
+}
+.lapor div:first-child{
+  padding-top: 15px;
+}
+.lapor img{
+  width: 100%;
+}

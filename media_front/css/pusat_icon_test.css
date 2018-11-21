@@ -1,0 +1,44 @@
+.icon_p{
+	width: 50px !important;
+	height: 50px !important;
+	background-size: 100% !important;
+}
+
+.kehadiran_c{
+	background-image : url(../images/icon/kehadiran_c.png) !important; 
+}
+
+
+.izin_c{
+	background-image : url(../images/icon/izin_c.png) !important; 
+}
+
+.pola_kerja_c{
+	background-image : url(../images/icon/pola_kerja_c.png) !important; 
+}
+
+.tunjangan_c{
+	background-image : url(../images/icon/tunjangan_c.png) !important;
+}
+
+.pegawai_c{
+	background-image : url(../images/icon/pegawai_c.png) !important; 
+}
+
+.master_c{
+	background-image : url(../images/icon/master_c.png) !important; 
+}
+
+.integrasi_c{
+	background-image : url(../images/icon/integrasi_c.png) !important; 
+}
+
+.view_c{
+	background-image : url(../images/icon/view_c.png) !important; 
+}
+
+
+.tampil_c{
+	background-image : url(../images/icon/tampil_c.png) !important; 
+	background-size: 100% !important;
+}

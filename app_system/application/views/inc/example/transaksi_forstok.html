@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from thevectorlab.net/dashlab-v1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Mar 2018 06:09:14 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+
+    <!--favicon icon-->
+    <link rel="icon" type="image/png" href="assets/img/favicon.html">
+
+    <title>Warung Pedia</title>
+
+    <!--web fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <!--bootstrap styles-->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--icon font-->
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/dashlab-icon/dashlab-icon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="assets/vendor/themify-icons/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/vendor/weather-icons/css/weather-icons.min.css" rel="stylesheet">
+
+    <!--custom scrollbar-->
+    <link href="assets/vendor/m-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+    <!--jquery dropdown-->
+    <link href="assets/vendor/jquery-dropdown-master/jquery.dropdown.css" rel="stylesheet">
+
+    <!--jquery ui-->
+    <link href="assets/vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+    <!--iCheck-->
+    <link href="assets/vendor/icheck/skins/all.css" rel="stylesheet">
+
+    <!--vector maps -->
+    <link href="assets/vendor/vector-map/jquery-jvectormap-1.1.1.css" rel="stylesheet" >
+
+    <!--c3chart-->
+    <link href="assets/vendor/c3chart/c3.min.css" rel="stylesheet">
+
+    <!--custom styles-->
+    <link href="assets/css/main.min.css" rel="stylesheet">
+
+    <!--data table-->
+    <link href="assets/vendor/data-tables/dataTables.bootstrap4.min.css" rel="stylesheet">
+     <!--select2-->
+    <link href="assets/vendor/select2/css/select2.css" rel="stylesheet">
+
+    <!--date picker-->
+    <link href="assets/vendor/date-picker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/vendor/html5shiv.js"></script>
+    <script src="assets/vendor/respond.min.js"></script>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115474794-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115474794-1');
+    </script>
+
+</head>
+
+<body class="fixed-nav">
+
+    <!--navigation : sidebar & header-->
+    <div w3-include-html="sidebar-n-header.html"></div>
+    <!--/navigation : sidebar & header-->
+
+    <!--main content wrapper-->
+    <div class="content-wrapper">
+        <div class="container-fluid">
+
+            <!--page title-->
+            <div class="page-title mb-4 d-flex align-items-center">
+                <div class="mr-auto">
+                    <h4 class="weight500 d-inline-block pr-3 mr-3 border-right">Transaksi</h4>
+                    <nav aria-label="breadcrumb" class="d-inline-block ">
+                        <ol class="breadcrumb p-0">
+                            <li class="breadcrumb-item"><a href="#">Tambah Transaksi</a></li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card card-shadow mb-4">
+                        <div class="card-body- pt-3 pb-4">
+                            <div class="table-responsive">
+                                <br>
+                                <table id="data_tablex" class="table table-bordered table-striped" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th style="width: 90px;">Merchant</th>
+                                            <th>No Transaksi</th>
+                                            <th>Tanggal</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="row-trx">  
+                                        <tr>
+                                        <td >1</td>
+                                        <td width="400">
+                                            Bukalapk
+                                        </td>
+                                        <td>
+                                            BL-1291818
+                                        </td>
+                                        <td>
+                                            Senin 20/10/2018
+                                        </td>
+                                        <td>
+                                            <a data-toggle="modal" data-target="#workin"  class="btn btn-sm btn-info btn-pill pl-2 pr-2">Work In</a>
+                                            <a href="#" data-toggle="modal" data-target="#workin-close"  class="btn btn-sm btn-danger btn-pill pl-2 pr-2">Close Transaction</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td >2</td>
+                                        <td width="400">
+                                            Bli-bli.com
+                                        </td>
+                                        <td>
+                                            BL-1291818
+                                        </td>
+                                        <td>
+                                            Senin 20/10/2018
+                                        </td>
+                                        <td>
+                                            <a data-toggle="modal" data-target="#workin-oke"  class="btn btn-sm btn-info btn-pill pl-2 pr-2">Work In</a>
+                                            <a href="#" data-toggle="modal" data-target="#workin-close"  class="btn btn-sm btn-danger btn-pill pl-2 pr-2">Close Transaction</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td >3</td>
+                                        <td width="400">
+                                            Tokopedia
+                                        </td>
+                                        <td>
+                                            BL-1291818
+                                        </td>
+                                        <td>
+                                            Senin 20/10/2018
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-sucess btn-pill pl-2 pr-2">Transaksi Berhasil (by Ratri)</a>
+                                        </td>
+                                    </tr>
+                                    </tr>
+                                    <tr>
+                                        <td >4</td>
+                                        <td width="400">
+                                            Lazada
+                                        </td>
+                                        <td>
+                                            LZ-1291818
+                                        </td>
+                                        <td>
+                                            Senin 20/10/2018
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-sm btn-sucess btn-pill pl-2 pr-2">Transaksi Closed (by Vania)</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="modal fade" id="workin" tabindex="-1" role="dialog" aria-labelledby="coba" aria-hidden="true">
+            <div class="modal-dialog modal-lg"  role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="coba">Transaksi</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form><div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Pelanggan</label>
+                                    <br>
+                                    <select readonly class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                      <option value="AL"></option>
+                                      <option selected value="AL">Doni</option>
+                                      <option value="WY">Maman</option>
+                                      <option value="WY">Rahmat</option>
+                                      <option value="WY">Yabes</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Shiping</label>
+                                    <br>
+                                    <select readonly class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                      <option value="AL"></option>
+                                      <option selected value="AL">JNE</option>
+                                      <option value="WY">TIKI</option>
+                                      <option value="WY">Grab</option>
+                                      <option value="WY">wiki</option>
+                                    </select>
+                                    
+                                </div>
+                            </div>
+                             <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Merchant</label>
+                                    <br>
+                                    <select class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                      <option value="AL"></option>
+                                      <option value="AL" selected>Bukalapak</option>
+                                      <option value="WY">Bli-bli</option>
+                                      <option value="WY">Lazada</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label">Catatan</label>
+                            <input type="text" class="form-control" name='harga' >
+                        </div>
+                        </form>
+                        
+                         <table id="data_tablex2" class="table table-bordered table-striped" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th style="width: 90px;">Nama Barang</th>
+                                            <th>Jumlah</th>
+                                            <th>Harga</th>
+                                            <th>Subtotoal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="row-biaya">  
+                                        <tr>
+                                        <td><input type="text" class="form-control" name='harga' value="1" ></td>
+                                        <td>
+                                            <select class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                              <option value="AL"></option>
+                                              <option selected value="AL">Lemari</option>
+                                              <option value="WY">TV Sharp</option>
+                                              <option value="WY">Kulkas</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                             1
+                                        </td>
+                                        <td>
+                                             <input type="text" readonly class="form-control" name='harga' value="500.000" >
+                                            </td>
+                                        <td>
+                                            500.000
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                        </table>
+                        <br>
+                        <div class="pull-right">
+                            <button type="button" data-toggle="modal"  class="btn btn-outline-success add-biaya">+</button>
+                        </div>
+                        <br> 
+                         <table id="data_tablex" class="table table-bordered table-striped" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th style="width: 90px;">Jenis Biaya</th>
+                                            <th>Subtotoal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="row-biaya">  
+                                        <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <select class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                              <option value="AL"></option>
+                                              <option value="AL" selected>Pengiriman</option>
+                                              <option value="WY">Pajak</option>
+                                              <option value="WY">Biaya Merchant</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                             <input type="text" class="form-control" name='harga' >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>
+                                            <select class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                              <option value="AL"></option>
+                                              <option value="AL" selected>Pengiriman</option>
+                                              <option value="WY">Pajak</option>
+                                              <option value="WY" selected>Biaya Merchant</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                             <input type="text" class="form-control" name='harga' >
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>
+                                            <select class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                              <option value="AL"></option>
+                                              <option value="AL" selected>Diskon</option>
+                                              <option value="WY">Pajak</option>
+                                              <option value="WY">Biaya Merchant</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                             <input type="text" class="form-control" name='harga' >
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary">Proses Transaksi</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="workin-oke" tabindex="-1" role="dialog" aria-labelledby="coba" aria-hidden="true">
+            <div class="modal-dialog modal-lg" style="width: 800px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        Transaksi Sudah Di Workin
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="workin-close" tabindex="-1" role="dialog" aria-labelledby="coba" aria-hidden="true">
+            <div class="modal-dialog modal-lg" style="width: 800px;" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                     <div class="form-group">
+                    <label for="comment">Alasan Close</label>
+                      <textarea class="form-control" rows="5" id="comment"></textarea>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        <button type="button" class="btn btn-primary">Proses Close</button>
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <!--footer-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright &copy; Sistem Pos Integrated 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!--/footer-->
+    </div>
+    <!--/main content wrapper-->
+
+    <!--basic scripts-->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/vendor/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="assets/vendor/jquery-dropdown-master/jquery.dropdown.js"></script>
+
+    <script src="assets/vendor/m-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!--sparkline-->
+    <script src="assets/vendor/sparkline/jquery.sparkline.js"></script>
+    <!--sparkline initialization-->
+    <script src="assets/vendor/js-init/sparkline/init-sparkline.js"></script>
+
+    <!--c3chart-->
+    <script src="assets/vendor/c3chart/d3.min.js"></script>
+    <script src="assets/vendor/c3chart/c3.min.js"></script>
+    <!--c3chart initialization-->
+    <script src="assets/vendor/js-init/c3chart/init-c3chart.js"></script>
+
+    <!--chartjs-->
+    <script src="assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <!--chartjs initialization-->
+    <script src="assets/vendor/js-init/chartjs/init-creative-state-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-area-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-line-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-doughnut-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-doughnut-chart2.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-sales-report-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-bubble-chart.js"></script>
+
+    <!--flot chart-->
+    <script src="assets/vendor/flot/jquery.flot.min.js"></script>
+    <script src="assets/vendor/flot/jquery.flot.pie.min.js"></script>
+    <script src="assets/vendor/flot/jquery.flot.tooltip.min.js"></script>
+    <!--flot chart initialization-->
+    <script src="assets/vendor/js-init/flot/init-flot-widget.js"></script>
+
+    <!--vectormap-->
+    <script src="assets/vendor/vector-map/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="assets/vendor/vector-map/jquery-jvectormap-world-mill-en.js"></script>
+    <!--vectormap initialization-->
+    <script src="assets/vendor/js-init/vmap/init-vmap-world.js"></script>
+
+     <!--datatables-->
+    <script src="assets/vendor/data-tables/jquery.dataTables.min.js"></script>
+    <script src="assets/vendor/data-tables/dataTables.bootstrap4.min.js"></script>
+
+    <!--date picker-->
+    <link href="assets/vendor/date-picker/css/bootstrap-datepicker.min.css" rel="stylesheet">
+
+
+     <!--select2-->
+    <script src="assets/vendor/select2/js/select2.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/vendor/modernizr.js"></script>
+    <![endif]-->
+
+    <!--basic scripts initialization-->
+    <script src="assets/js/scripts.min.js"></script>
+    <script type="text/javascript">
+
+         $(document).ready(function() {
+            $('#data_table').DataTable();
+            $("#option_s1").select2();
+        } );
+    </script>
+
+     <script type="text/javascript">
+        function includeHTML() {
+          var z, i, elmnt, file, xhttp;
+          /*loop through a collection of all HTML elements:*/
+          z = document.getElementsByTagName("*");
+          for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+              /*make an HTTP request using the attribute value as the file name:*/
+              xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                  /*remove the attribute, and call this function once more:*/
+                  elmnt.removeAttribute("w3-include-html");
+                  includeHTML();
+                }
+              } 
+              xhttp.open("GET", file, true);
+              xhttp.send();
+              /*exit the function:*/
+              return;
+            }
+          }
+        }
+
+        includeHTML();
+        $( ".add-biaya" ).click(function() {
+
+
+          $('.row-biaya').append(`
+              <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <select class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                              <option value="AL"></option>
+                                              <option value="AL">Pengiriman</option>
+                                              <option value="WY">Pajak</option>
+                                              <option value="WY">Biaya Merchant</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                             <input type="text" class="form-control" name='harga' >
+                                        </td>
+                                    </tr>
+            `);
+        });
+        $( ".add-item" ).click(function() {
+
+
+          $('.row-trx').append(`
+             
+                                        <tr>
+                                        <td>1</td>
+                                        <td>
+                                            <select class="form-control js-example-basic-single" name="state" style="width: 350px;">
+                                              <option value="AL"></option>
+                                              <option value="AL">Meja</option>
+                                                ...
+                                              <option value="WY">Kursi</option>
+                                              <option value="WY">Lemari</option>
+                                              <option value="WY">Lemari</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                             <select class="form-control js-example-basic-single" name="state" style="width: 100%;">
+                                              <option value="AL"></option>
+                                              <option value="AL">PCS</option>
+                                                ...
+                                              <option value="WY">PAX</option>
+                                              <option value="WY">KG</option>
+                                              <option value="WY">UNIT</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="text" class="form-control harga" name="harga"></td>
+                                        <td><input type="text" class="form-control" name="harga"></td>
+                                        <td><input type="text" class="form-control" name="harga"></td>
+                                        <td><input type="text" class="form-control" name="harga"></td>
+                                    </tr>
+            `);
+        });
+         $(document).ready(function() {
+                $('.js-example-basic-single').select2();
+            });
+         $( "select" ).change(function () {
+            $('.harga').val("1000000");
+        });
+
+</script>
+    </script>
+
+    
+</body>
+
+<!-- Mirrored from thevectorlab.net/dashlab-v1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Mar 2018 06:10:23 GMT -->
+</html>
+

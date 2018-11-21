@@ -1,0 +1,436 @@
+	.view_adm {
+		background: url(../images/icon/toolbar/32/a1.png) no-repeat;
+		float : left;
+		position: relative;
+		height: 50px;
+		width:50px;
+	}
+
+	.glyphicon-remove {
+		background: url(../images/icon/toolbar/32/silang2.png) no-repeat;
+	}
+
+	.glyphicon-pencil {
+		background: url(../images/icon/toolbar/16/ubah.png) no-repeat;
+	}
+
+	.glyphicon-download-alt {
+		background: url(../images/icon/toolbar/32/e1.png) no-repeat;
+	}
+
+	.glyphicon-download-alt-belum {
+		background: url(../images/icon/toolbar/32/e2.png) no-repeat;
+	}
+
+	.glyphicon-upload {
+		background: url(../images/icon/toolbar/32/d2.png) no-repeat;
+	}
+
+	.glyphicon-uploaded {
+		background: url(../images/icon/toolbar/32/d1.png) no-repeat;
+	}
+
+	.glyphicon {
+		width :25px;
+		height :25px;
+		margin-left: 5px;
+	}
+
+	.view_teknis {
+		background: url(../images/icon/toolbar/32/a2.png) no-repeat;
+		float : left;
+		position: relative;
+		height: 50px;
+		width:50px;
+	}
+
+	.view_kom{
+		background: url(../images/icon/toolbar/32/a3.png) no-repeat;
+		float : left;
+		position: relative;
+		height: 50px;
+		width:50px;
+	}
+
+	.view_dok{
+		background: url(../images/icon/toolbar/32/a4.png) no-repeat;
+		float : left;
+		position: relative;
+		height: 50px;
+		width:50px;
+	}
+
+	.pesan_hd{
+		font-size: 23px;
+		padding: 10px;
+	}
+
+	.tambah_kanan{
+		float:  right;
+		position: relative;
+		cursor: pointer;
+		margin-top: 20px;
+	}
+
+	.hd2 {
+		width: 100%;
+		height: 80px;
+		position: relative;
+		background-color: #d1ccaf;
+		color:#fff;
+		padding:10px;
+	}
+
+	.hd1 {
+		width: 100%;
+		height: 80px;
+		position: relative;
+		background-color: #adbeca;
+		color:#fff;
+		padding:10px;
+	}
+
+
+	
+	.hd3 {
+		width: 100%;
+		height: 80px;
+		position: relative;
+		background-color: #fbb579;
+		color:#fff;
+		padding:10px;
+	}
+
+	.hd4 {
+		width: 100%;
+		height: 80px;
+		position: relative;
+		background-color: #97c2b0;
+		color:#fff;
+		padding:10px;
+	}
+
+	.pesan_hd {
+	
+		float : left;
+		position: relative;
+		height: 50px;
+	
+	}
+
+	.linear_left_ {
+		position: absolute;
+		width: 40px;
+		height: 50px;
+	}
+
+	.linear_right_ {
+		position: relative;
+		padding-left:10px;
+		left: 50px;
+		min-width: 100%;
+	}
+
+	.linear_right_dok_lain {
+		position: relative;
+		padding-left:10px;
+		left: 50px;
+		width: 540px;
+	}
+
+	textarea {
+		font-family: arial;
+	}
+
+	.linear_right {
+	
+		position: relative;
+		padding-left:10px;
+		left: 70px;
+		min-width: 100%;
+	
+	}
+
+	.centang {
+	
+		width: 30px;
+		height: 23px;
+		position: relative;
+		background: url(../images/icon/toolbar/32/centang.png) no-repeat;
+		cursor: pointer;
+	
+	}
+
+	.centang_abu {
+		width: 30px;
+		height: 23px;
+		position: relative;
+		background: url(../images/icon/toolbar/32/centang_kelabu.png) no-repeat;
+		cursor: pointer;
+	}
+
+	.silang {
+	
+		width: 30px;
+		height: 23px;
+		position: relative;
+		background: url(../images/icon/toolbar/32/silang.png) no-repeat;
+		cursor: pointer;
+	
+	}
+
+	.silang_abu {
+	
+		width: 30px;
+		height: 23px;
+		position: relative;
+		background: url(../images/icon/toolbar/32/silang_kelabu.png) no-repeat;
+		cursor: pointer;
+	
+	}
+
+	.linear_left {
+		position: absolute;
+		left: 30px;
+		width: 40px;
+		height: 50px;
+	
+	}
+
+	.linear_left_check {
+	
+		position: absolute;
+		width: 30px;
+		height: 50px;
+	
+	}
+
+	.pesan {
+	
+		position: relative;
+		left: 0;
+		min-height: 40px;
+		width: 80%;
+	
+	}
+
+	.bobot {
+	
+		position: relative;
+		float: right;
+		text-align: right;
+		width: 70px;
+	
+	}
+	.bobot_komp {
+	
+		position: relative;
+		width: 70px;
+		display: inline;
+		float: right;
+	
+	}
+
+	.doc_item {
+	
+		position: relative;
+		height:25px;
+		float:right;
+	
+	}
+
+	.list_kriteria{
+	
+		margin-bottom:10px;
+		min-height: 60px;
+		overflow: hidden;
+	
+	}
+
+	.wt_list{
+	
+		position: relative;
+		background-color: #fff;
+		width:100%;
+		padding:10px;
+		min-height:69px;
+		padding-bottom: 20px;
+	
+	}
+
+	.wt_list:hover{
+
+		background-color: #ffe;
+	
+	}
+
+	.linear_left_adm{
+		background: url(../images/icon/toolbar/32/b_1.png) no-repeat;
+	}
+
+	.linear_left_teknis{
+		background: url(../images/icon/toolbar/32/b2.png) no-repeat;
+	}
+
+	.linear_left_dok{
+		background: url(../images/icon/toolbar/32/b4.png) no-repeat;
+	}
+
+	.linear_left_kom{
+		background: url(../images/icon/toolbar/32/b3.png) no-repeat;
+	}
+
+	.icon {
+	
+		position: relative;
+		float: right;
+		cursor: pointer;
+		width: 20px;
+		height: 20px;
+	
+	}
+
+	.group {
+		background-color: #fff8d1;
+		width:100%;
+		margin-bottom: 10px;
+		padding:10px;
+	}
+
+	.clicked_group{
+		background-color: #dcff73;
+	}
+
+	.clicked_grp{
+		background-color: #86b300 ;
+		//716a43;
+	}
+
+	.bd_item{
+	
+		padding:20px;
+	
+	}
+
+	.bd_item_lain{
+	
+		padding:20px;
+	
+	}
+
+	.tutup {
+	
+		height: 20px;
+		background-color: #ccc;
+		width: 100%;
+	
+	}
+
+	.jarum {
+	
+		cursor: pointer;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		right: 10px;
+		background-color: #ddd;
+	
+	}
+
+	.tombol{
+	
+		cursor: pointer;
+		background-color: #352613;
+		width:70px;
+		padding: 5px 15px 5px 15px;
+		position: relative;
+		float: right;
+	
+	}
+
+	.keterangan{
+	
+		position:relative;
+		width:100%;
+		background-color:#ddd;
+		min-height: 30px;
+		padding:7px;
+	
+	} 
+
+	.input_ket{
+	
+		width:100%;
+		border:none;
+		background: #fff url(../images/panah_asmara.png) right no-repeat;
+	
+	}
+
+	.label_ket{
+	
+		padding-bottom:6px;
+	
+	}
+
+	.garis_ket {
+
+		width:100%;
+		height:5px;
+		position:relative;
+		background-color:#ccc;
+	
+	}
+
+	.float-kanan{
+
+		position:relative;
+		float:right;
+	}
+
+	.rata-rata {
+
+		font-size:16px;
+	
+	}	
+
+	.input_tambah{
+
+	}
+
+	.tambah_dokumen_lain{
+		width: 640px;
+		height: 85px;
+		background-color: #fff;
+		padding : 15px 10px ;
+		margin-right: 15px;
+		margin-bottom: 15px;
+		float: left;
+	}
+
+	.textarea{
+		position: absolute;
+		margin-left: 70px;
+	}
+	.textarea_kompetitif{
+		position: absolute;
+		margin-left: 45px;
+	}
+
+	.dok_lain{
+		width:100%;
+		position:absolute;
+		float: left;
+	}
+
+	.linear_left_dok_lain{
+		background: url(../images/icon/toolbar/32/b4.png) no-repeat;
+		position: absolute;
+		top: 30px;
+		left: 30px;
+	}
+	.download_semua_{
+		cursor: 'pointer';
+		background-color : gray;
+		padding: 5px; 
+
+	}

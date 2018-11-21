@@ -1,0 +1,269 @@
+/*body{
+	background: url('../images/photo/bg.png') no-repeat;
+	background-size: 100% 100%;
+}
+@media (max-width: 991px) {
+  	body{
+		background-size: auto 100%;
+	}
+}
+.header{
+	padding: 10px;
+	padding-left: 30px;
+}
+.header img{
+	width: 100px;
+}
+.header span{
+	display: block;
+	padding-left: 10px;
+	font-size: 18px;
+	color: #fff;
+}
+.form{
+	margin-top: 10px;
+	padding: 0px 70px;
+}
+.form .title{
+	margin-bottom: 20px;
+}
+.form .title img{
+	width: 260px;
+}
+.form .title span{
+	color: #fff;
+	font-size: 40px;
+	padding-left: 30px;
+}
+@media (max-width: 552px) {
+	.form .title img{
+		width: 70%;
+	}
+}
+@media (min-width: 371px) {
+	.form .title img{
+		width: 50%;
+	}
+}
+@media (min-width: 552px) {
+	.form .title img{
+		width: 260px;
+	}
+}
+.form .body{
+
+}
+.btn{
+	border-radius: 0px;
+	border: none;
+	background: rgba(47,63,103, 1);
+}
+.btn:hover{
+	border-radius: 0px;
+	background: rgba(47,63,103, 0.9);
+}
+.form-control{
+	border-color: rgba(47,63,103, 0.8);
+}
+p{
+	font-size: 23px;
+}*/
+/*#form_content{
+	height: 200px;
+	background: none;
+	width: 312px;
+	margin: auto;
+}
+#segitiga{
+	width:100%;
+	text-align:center;
+	height: 360px;
+	position: relative;
+	overflow:hidden;
+	background: #E7E7E7;
+}
+.kiri_segitiga, .kanan_segitiga{
+	width: 500px;
+	height: 1000px;
+	background: #E7E7E7;
+	position: absolute;
+	top: -90px;
+	-moz-transform: rotate(-65deg);
+	-webkit-transform: rotate(-65deg);
+	-o-transform: rotate(-65deg);
+	-ms-transform: rotate(-65deg);
+	transform: rotate(-65deg);
+}
+.kanan_segitiga{
+	right:0;
+	-moz-transform: rotate(65deg);
+	-webkit-transform: rotate(65deg);
+	-o-transform: rotate(65deg);
+	-ms-transform: rotate(65deg);
+	transform: rotate(65deg);
+}
+#container{
+	width :650px;
+	margin:auto;
+	text-align:center;
+}
+#head{
+	padding:10px;
+	font-weight:bold;
+	color:#FFF;
+}*/
+.captcha {
+	width: 100%;
+	display: block;
+	vertical-align: middle;
+}
+/*.logo{
+	height:100px;
+	margin:15px;
+}
+#login{
+	height:auto;
+	text-align:left;
+}
+.inputan {
+	padding:5px;
+	padding-left: 10px;
+	border:none;
+	margin:5px 5px 5px 0px;
+	width:300px;
+	border:none;
+}
+.inputan:focus {
+	//border: 1px solid #fff;
+	//box-shadow:#D5D5D5 2px 2px 2px;
+}*/
+.input_captcha {
+	padding: 5px;
+	padding-left:  10px;
+	border: 1px solid rgba(47,63,103, 0.8);
+	width: 100%;
+}
+/*.button{
+	padding	:5px;
+	width:80px;
+	background :#262163;	//#bee7f6;
+	color:#fafafa;
+	border:none;
+	float: right;
+	//font-size: 16px;
+}
+.button:hover{
+	text-shadow:#D5D5D5 0px 0px 1px;
+	cursor:pointer;
+}
+#footer{
+	color:#EEEEEE;
+	padding:0.06%;
+	bottom:0px;
+	width:98%;
+	text-align:center;
+}
+fieldset{
+	background:#F4F4F4;
+	border: 1px solid #FFF;
+	box-shadow:#D5D5D5 3px 3px 3px;
+}
+legend{
+	font-size:16px;
+	font-weight:bold;
+	margin:0px 10px 0px 10px;
+	padding:2px;
+	background:none;
+	color:#FFF;
+}
+label{
+	padding:10px 0px 0px 0px;
+	//margin:10px 0px 10px 0px;
+	//display:block;
+}*/
+/*#lupa{
+	padding:5px 0px 0px 0px;
+	cursor:pointer;
+	margin-left:140px;
+}*/
+body{
+	background: url('../images/background.png') no-repeat;
+	background-size: 100% 100%;
+}
+#close{
+	padding:5px;
+	cursor:pointer;
+	color:#888e20;
+	border:1px solid #CCCCCC;
+	float:right;
+}
+hr{
+	background:#003333;
+	border:none;
+}
+.l_tunggu{
+	border:1px solid #D9D900;
+	padding:5px;
+	background: #FFF;
+	color:#D9D900;
+}
+.l_sukses{
+	border:1px solid #00008C;
+	padding:5px;
+	background: #00B32D;
+	color:#FFF;
+}
+.l_gagal{
+	border:1px solid #888e20;
+	padding:5px;
+	background: #FFFFBF;
+	color:red;
+}
+#lupa_sandi{
+	position: absolute;
+	display:none;
+	/*background-image:url('<?php echo config_item('img_path');?>bg_trans.png');*/
+	padding:5px;
+	width:550px;
+	float:left;
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	z-index:100;
+}
+.ct_lupa{
+	background:#FFF;
+	color:#333;
+	border:4px solid #051644;
+	padding:10px;
+}
+.email_reset{
+	border: 1px solid #000;
+	padding: 5px;
+	margin: 5px;
+	font-size:12px;
+	width: 150px;
+}
+.msg_reset{
+	font-size:11px;
+	padding: 5px;
+	margin-left: 4px;		
+}
+.bg-form{
+	/*padding-left: 100px;*/
+	/*padding-right: 100px;*/
+	padding-top: 100px;
+	background: #34495E;
+	height: 100vh;
+	color: #fff;
+}
+form{
+	padding-left: 85px;
+	padding-right: 85px;
+}
+@media screen and (max-width: 768px){
+	form{
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+}

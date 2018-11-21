@@ -1,0 +1,76 @@
+.background_aa .x-grid-cell{
+	background-color: #00B050 !important;
+	color: white !important;
+}
+.background_a .x-grid-cell{
+	background-color: #538DD5 !important;
+	color: white !important;
+}
+.background_b .x-grid-cell{
+	background-color: #E26B0A !important;
+	color: white !important;
+}
+
+.proses_solusi .x-grid-cell{
+	background-color: #FFFF00 !important;
+	color: black !important;
+	font-weight:bold;
+}
+
+
+.tersolusi .x-grid-cell{
+	background-color: #008000 !important;
+	color: black !important;
+	font-weight:bold;
+}
+
+.bermasalah .x-grid-cell{
+	background-color: #FF0000 !important;
+	color: black !important;
+	font-weight:bold;
+}
+
+
+.background_cc .x-grid-cell{
+	background-color: #974706 !important;
+	color: white !important;
+}
+.background_c .x-grid-cell{
+	background-color: #7030A0 !important;
+	color: white !important;
+}
+.background_d .x-grid-cell{
+	background-color: #C00000 !important;
+	color: white !important;
+}
+
+.tingkat_capaian {
+	padding: 10px;
+	margin: 10px;
+	font-size: 18px;
+}
+
+.bulat {
+	border-radius: 100px;
+	width: 25px;
+	height: 25px;
+}
+
+.bg_aa {
+	background-color: #00B050;
+}
+.bg_a {
+	background-color: #538DD5;
+}
+.bg_b {
+	background-color: #E26B0A;
+}
+.bg_cc {
+	background-color: #974706;
+}
+.bg_c {
+	background-color: #7030A0;
+}
+.bg_d {
+	background-color: #C00000;
+}

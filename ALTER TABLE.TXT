@@ -1,0 +1,7 @@
+
+ALTER TABLE `trx`
+ADD COLUMN `is_workin`  varchar(2) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL AFTER `trx_notes`;
+
+ALTER TABLE `trx_item`
+MODIFY COLUMN `prod_id`  varchar(255) NOT NULL AFTER `item_isflashsale`;
+

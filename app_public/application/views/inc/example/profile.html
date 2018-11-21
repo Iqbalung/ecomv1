@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from thevectorlab.net/dashlab-v1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Mar 2018 06:09:14 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Mosaddek">
+
+    <!--favicon icon-->
+    <link rel="icon" type="image/png" href="assets/img/favicon.html">
+
+    <title>Warung Pedia</title>
+
+    <!--web fonts-->
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+    <!--bootstrap styles-->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--icon font-->
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/vendor/dashlab-icon/dashlab-icon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="assets/vendor/themify-icons/css/themify-icons.css" rel="stylesheet">
+    <link href="assets/vendor/weather-icons/css/weather-icons.min.css" rel="stylesheet">
+
+    <!--custom scrollbar-->
+    <link href="assets/vendor/m-custom-scrollbar/jquery.mCustomScrollbar.css" rel="stylesheet">
+
+    <!--jquery dropdown-->
+    <link href="assets/vendor/jquery-dropdown-master/jquery.dropdown.css" rel="stylesheet">
+
+    <!--jquery ui-->
+    <link href="assets/vendor/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+
+    <!--iCheck-->
+    <link href="assets/vendor/icheck/skins/all.css" rel="stylesheet">
+
+    <!--vector maps -->
+    <link href="assets/vendor/vector-map/jquery-jvectormap-1.1.1.css" rel="stylesheet" >
+
+    <!--c3chart-->
+    <link href="assets/vendor/c3chart/c3.min.css" rel="stylesheet">
+
+    <!--custom styles-->
+    <link href="assets/css/main.min.css" rel="stylesheet">
+
+    <!--data table-->
+    <link href="assets/vendor/data-tables/dataTables.bootstrap4.min.css" rel="stylesheet">
+     <!--select2-->
+    <link href="assets/vendor/select2/css/select2.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="assets/vendor/html5shiv.js"></script>
+    <script src="assets/vendor/respond.min.js"></script>
+    <![endif]-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115474794-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-115474794-1');
+    </script>
+
+</head>
+
+<body class="fixed-nav">
+
+    <!--navigation : sidebar & header-->
+    <div w3-include-html="sidebar-n-header.html"></div>
+    <!--/navigation : sidebar & header-->
+
+    <!--main content wrapper-->
+    <div class="content-wrapper">
+		
+		
+		<!--profile banner-->
+        <div class="profile-banner" style="background-image: url('assets/img/profile-banner.jpg')">
+            <div class="row ">
+                <div class="col-md-6 ml-auto text-lg-right">
+
+                    <div class="text-right">
+                        <div class="dropdown mb-5">
+                            <a href="#" class="btn btn-transparent text-light dropdown-hover p-0" data-toggle="dropdown">
+                                <i class=" vl_ellipsis-fill-h"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right vl-dropdown">
+                                <a class="dropdown-item" href="#"> Edit</a>
+                                <a class="dropdown-item" href="#"> Delete</a>
+                                <a class="dropdown-item" href="#"> Settings</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="profile-follower-info">
+                        <div class="d-inline-block px-4 text-left text-light">
+                            <strong class="f14 d-block">29</strong>
+                            <p>Produk</p>
+                        </div>
+                        <div class="d-inline-block px-4 text-left text-light">
+                            <strong class="f14 d-block">21</strong>
+                            <p>Marchant</p>
+                        </div>
+                        <div class="d-inline-block px-4 text-left text-light">
+                            <strong class="f14 d-block">10</strong>
+                            <p>Karyawan</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="#" class="btn btn-sm btn-info btn-pill pl-5 pr-5" style='background-color:red !important;'>Ubah Profil Pribadi</a>
+                        <a href="#" class="btn btn-sm btn-info btn-pill pl-5 pr-5">Ubah Profil Bisnis</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/profile banner-->
+
+        <!--profile nav-->
+        <div class="profile-nav bg-white">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 ml-auto">
+                        <div class="profile-nav-links">
+                            <ul class="nav f12">
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="profile.html">PROFILE PRIBADI</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="profile_bisnis.html">PROFIL BISNIS</a>
+                                </li>
+                            
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/profile nav-->
+		
+		<div class="container-fluid">
+
+            <div class="row">
+                <div class="col-xl-4 col-md-6 profile-info-position">
+                    <div class="card card-shadow mb-4 ">
+                        <div class="card-body">
+                            <div class="text-center">
+                                <div class="mt-4 mb-3">
+                                    <img class="rounded-circle" src="assets/img/avatar/avatar-large3.jpg" width="85" alt=""/>
+                                </div>
+                                <h5 class="text-uppercase mb-0">Iqbal Maulana Malik</h5>
+                                <p class="text-muted mb-0">Boss Executive </p>
+                                <div class="rattings mb-4">
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star text-warning"></i>
+                                    <i class="fa fa-star-o text-warning"></i>
+                                </div>
+                             
+                            
+                            </div>
+
+                        </div>
+                    </div>
+
+                    
+                </div>
+
+           </div>
+		   
+		   <div class="row">
+				<div class='col-xl-12 col-md-12 profile-info-position' > 
+					
+					 <fieldset title="Step1" class="step" id="default-step-0" style='padding-left:20px;padding-right:10px;'>
+                                    <legend> </legend>
+
+                                    <h5 class="mb-3">Profil Pribadi</h5>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label col-form-label-sm">Nama Lengkap</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="Iqbal Maulana Malik ">
+                                        </div>
+                                    </div>
+									
+									
+									<div class="form-group row">
+                                        <label class="col-sm-4 col-form-label col-form-label-sm">NIK</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="ct. 391029101290001 ">
+                                        </div>
+                                    </div>
+									
+									<div class="form-group row">
+                                        <label class="col-sm-4 col-form-label col-form-label-sm">NPWP</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="ct. 391029101290001 ">
+                                        </div>
+                                    </div>
+									
+									<div class="form-group row">
+                                        <label class="col-sm-4 col-form-label col-form-label-sm">Jabatan</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="ct. Boss Eksekutif ">
+                                        </div>
+                                    </div>
+									
+									<div class="form-group row">
+                                        <label class="col-sm-4 col-form-label col-form-label-sm">Penempatan</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="ct. Gudang Jakarta ">
+                                        </div>
+                                    </div>
+									
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label col-form-label-sm">Telpon</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="ct. 02192811819">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label col-form-label-sm">Email</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" placeholder="ct. mopos@gmail.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label class="col-sm-4 col-form-label col-form-label-sm">Alamat Rumah</label>
+                                        <div class="col-sm-8">
+                                            <textarea type="text" class="form-control" placeholder="Alamat"></textarea>
+                                        </div>
+                                    </div>
+                                   
+
+                                </fieldset>
+                                
+
+				</div>
+		   </div>
+
+        </div>
+
+        
+        <!--footer-->
+        <footer class="sticky-footer">
+            <div class="container">
+                <div class="text-center">
+                    <small>Copyright &copy; VectorLab 2018</small>
+                </div>
+            </div>
+        </footer>
+        <!--/footer-->
+    </div>
+    <!--/main content wrapper-->
+
+    <!--basic scripts-->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/jquery-ui/jquery-ui.min.js"></script>
+    <script src="assets/vendor/popper.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="assets/vendor/jquery-dropdown-master/jquery.dropdown.js"></script>
+
+    <script src="assets/vendor/m-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!--sparkline-->
+    <script src="assets/vendor/sparkline/jquery.sparkline.js"></script>
+    <!--sparkline initialization-->
+    <script src="assets/vendor/js-init/sparkline/init-sparkline.js"></script>
+
+    <!--c3chart-->
+    <script src="assets/vendor/c3chart/d3.min.js"></script>
+    <script src="assets/vendor/c3chart/c3.min.js"></script>
+    <!--c3chart initialization-->
+    <script src="assets/vendor/js-init/c3chart/init-c3chart.js"></script>
+
+    <!--chartjs-->
+    <script src="assets/vendor/chartjs/Chart.bundle.min.js"></script>
+    <!--chartjs initialization-->
+    <script src="assets/vendor/js-init/chartjs/init-creative-state-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-area-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-line-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-doughnut-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-doughnut-chart2.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-sales-report-chart.js"></script>
+    <script src="assets/vendor/js-init/chartjs/init-bubble-chart.js"></script>
+
+    <!--flot chart-->
+    <script src="assets/vendor/flot/jquery.flot.min.js"></script>
+    <script src="assets/vendor/flot/jquery.flot.pie.min.js"></script>
+    <script src="assets/vendor/flot/jquery.flot.tooltip.min.js"></script>
+    <!--flot chart initialization-->
+    <script src="assets/vendor/js-init/flot/init-flot-widget.js"></script>
+
+    <!--vectormap-->
+    <script src="assets/vendor/vector-map/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="assets/vendor/vector-map/jquery-jvectormap-world-mill-en.js"></script>
+    <!--vectormap initialization-->
+    <script src="assets/vendor/js-init/vmap/init-vmap-world.js"></script>
+
+     <!--datatables-->
+    <script src="assets/vendor/data-tables/jquery.dataTables.min.js"></script>
+    <script src="assets/vendor/data-tables/dataTables.bootstrap4.min.js"></script>
+
+     <!--select2-->
+    <script src="assets/vendor/select2/js/select2.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/vendor/modernizr.js"></script>
+    <![endif]-->
+
+    <!--basic scripts initialization-->
+    <script src="assets/js/scripts.min.js"></script>
+    <script type="text/javascript">
+
+         $(document).ready(function() {
+            $('#data_table').DataTable();
+            $("#option_s1").select2();
+        } );
+    </script>
+
+    <script type="text/javascript">
+        function includeHTML() {
+          var z, i, elmnt, file, xhttp;
+          /*loop through a collection of all HTML elements:*/
+          z = document.getElementsByTagName("*");
+          for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            /*search for elements with a certain atrribute:*/
+            file = elmnt.getAttribute("w3-include-html");
+            if (file) {
+              /*make an HTTP request using the attribute value as the file name:*/
+              xhttp = new XMLHttpRequest();
+              xhttp.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                  if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                  if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                  /*remove the attribute, and call this function once more:*/
+                  elmnt.removeAttribute("w3-include-html");
+                  includeHTML();
+                }
+              } 
+              xhttp.open("GET", file, true);
+              xhttp.send();
+              /*exit the function:*/
+              return;
+            }
+          }
+        }
+
+        includeHTML();
+    </script>
+</body>
+
+<!-- Mirrored from thevectorlab.net/dashlab-v1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 22 Mar 2018 06:10:23 GMT -->
+</html>
+
