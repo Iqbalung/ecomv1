@@ -78,6 +78,13 @@ class M_transaction_forstok extends CI_Model{
 		}
 	}
 
+	function get_trx_total($params){
+		$query = $this->db->query("
+				SELECT *, concat(prod_name,'-',prod_barcode) prod_name FROM product $where
+		",$params['prod_name'],$params['prod_name']);
+		return $query;
+	}
+
 	function get_product($params){
 
 		$where = '';

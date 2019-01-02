@@ -16,7 +16,9 @@ $(document).ready(function() {
 			var me = this,
 				params = me.get_params();
 				var id = app.data.segment[4];
-				me.get_detail(id);			
+				me.get_detail(id);	
+
+
 		},
 		listeners: function() {
 			var me = this;
@@ -25,6 +27,13 @@ $(document).ready(function() {
 				event.preventDefault();
 				$('#modal-import-forstok').modal({backdrop:'static'});
 			});
+
+			$('#btn-').on('click', function(event) {
+				event.preventDefault();
+				$('#modal-import-forstok').modal({backdrop:'static'});
+			});
+
+
 
 			$('#modal-import-forstok').delegate('.btn-action-import', 'click', function(event) {
 				me.import();
@@ -231,7 +240,7 @@ $(document).ready(function() {
 			});
 		},
 		add_to_cart(id){
-			app.requestAjax(app.data.site_url+'/transaction/app/add_to_cart',{id:id},"POST",function(result){
+			app.requestAjax(app.data.site_url+'/transaction/app/add_to_cart',{id:id,qty:$("input[name=qty]").val(),variant:$(".variant").val()},"POST",function(result){
 				swal("Information",result.msg,"success");
 			});
 			cart.load_list(true);
@@ -352,6 +361,7 @@ $(document).ready(function() {
 				modal = $('#modal-workin');
 			me.data_variant = [];
 			me.data_cost = [];
+
 			app.requestAjax(app.data.site_url+"/master/product/get_by_id/"+id,{id:id},"POST",function(result){
 				if (result)
 				{
@@ -361,6 +371,11 @@ $(document).ready(function() {
 						app.set_form_value($('.ps-product--detail'),result.product);
 						me.data_variant = result.variant;
 						me.generated_data_variant();
+
+					$(".variant").select2({
+					  data: result.variant.data
+					});
+
 					
 
 				}

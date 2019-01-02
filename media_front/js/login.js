@@ -94,7 +94,7 @@ function do_login() {
 			pwd = "dev123";
 
 		$.ajax({
-			url : app.base_url + '//index.php/authentication/do_login',
+			url : app.base_url + '//index.php/Login/do_login',
 			method : 'POST',
 			data :  params,
 			beforeSend: function (xhr) {
@@ -103,8 +103,49 @@ function do_login() {
 			},
 			success : function (result) {
 
-				if (result.success && result.token) {												
-					initToken(result.token);															
+				window.location.href = app.base_url;															
+				
+			},
+			error : function () {
+				$('#pesan').addClass('l_gagal');
+				$('#pesan').html('Maaf, ada kesalahan dalam pengiriman data.');
+			}
+		})
+	}, 400);	
+};
+
+function do_register() {		
+	$('#pesan').removeClass()
+	$('#pesan').html("Mohon Tunggu, Loading ...");
+	$('.navbar-nav > .user-menu > .dropdown-menu > li.user-header').css('height', '295px');
+	$('#pesan').addClass('l_tunggu');
+	if ($("#ingat_saya").get()[0].checked) {
+		setCookie('username', $("#username").val(), 4);
+		setCookie('password', $("#password").val(), 4);
+		setCookie('ingat', true, 4);
+	} else {
+		setCookie('username', '', 4);
+		setCookie('password', '', 4);
+		setCookie('ingat', false, 4);
+	}
+	setTimeout(function() {
+		var params = $("#register").serializeArray(),
+			usr = "dev",
+			pwd = "dev123";
+
+		$.ajax({
+			url : app.base_url + '//index.php/Login/do_register',
+			method : 'POST',
+			data :  params,
+			beforeSend: function (xhr) {
+			    xhr.setRequestHeader("Authorization", "Basic " + btoa(usr + ":" + pwd));
+			    xhr.setRequestHeader("X-API-KEY", "f6eed6446c15978f9e4021b99b928851");
+			},
+			success : function (result) {
+
+				if (result.success) {
+					alert();								
+					window.location.href = "http://stackoverflow.com";															
 				} else {
 					$('#pesan').addClass('l_gagal');
 					$('#pesan').html(result.msg);
@@ -148,7 +189,7 @@ function initToken(token) {
 			$('#pesan').addClass('l_sukses');
 			$('#pesan').html("Login success");
 			setTimeout(function() {						
-				var link = "admin.php";
+				var link = "index.php";
 				document.location.href = app.base_url + link;						
 			}, 400);
 		} 
@@ -207,6 +248,11 @@ $(document).ready(function() {
 
 	$("#masuk").click(function() {
 		do_login();
+	});
+
+
+	$("#daftar").click(function() {
+		do_register();
 	});
 
 	$("#masuk2").click(function() {

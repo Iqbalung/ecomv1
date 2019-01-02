@@ -94,7 +94,7 @@ function do_login() {
 			pwd = "dev123";
 
 		$.ajax({
-			url : app.base_url + '//index.php/authentication/do_login',
+			url : app.base_url + '//login.php/authentication/do_login',
 			method : 'POST',
 			data :  params,
 			beforeSend: function (xhr) {
@@ -132,7 +132,7 @@ function initToken(token) {
 		usr = "dev",
 		pwd = "dev123";	
 	$.ajax({
-		url : app.base_url + '/index.php/authentication/init_token',					
+		url : app.base_url + '/login.php/authentication/init_token',					
 		type: 'GET',	
 		dataType: 'json',				
 		data: {

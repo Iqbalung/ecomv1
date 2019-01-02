@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo config_item('url_plugins') ?>jquery-ui-sortable/jquery-ui.css">
 <div class="container-fluid">
     <!--page title-->
     <div class="page-title mb-4 d-flex align-items-center">
@@ -22,7 +23,7 @@
             </div>
         </div>
     </div>
-    <form id="form-produck" class="form form-default">
+    <form id="form-product" class="form form-default" enctype="multipart/form-data">
 	    <div class="row">        
 			<div class="col-md-6">
 				<div class="card card-shadow mb-4">
@@ -163,6 +164,9 @@
 			           <li class="nav-item">
 			                <a class="nav-link" data-toggle="tab" href="#tab_varian">Varian</a>
 			            </li>
+			            <li class="nav-item">
+			                <a class="nav-link" data-toggle="tab" href="#tab_gambar">Gambar</a>
+			            </li>
 			        </ul>
 
 			        <div class="tab-content">
@@ -199,6 +203,19 @@
 			              
 			            	</div>
 			           	</div>
+			           	<div class="tab-pane" id="tab_gambar" role="tabpanel">
+			                <div id="variant"></div>
+			                <div class="container">
+							    <fieldset class="form-group">
+							        <a class="btn btn-dark" href="javascript:void(0)" onclick="$('#pro-image').click()">Upload Image</a>
+							        <input type="file" id="pro-image" name="pro_image[]" style="display: none;" class="form-control" multiple>
+							        <input type="file" id="pro-image-ubah" style="display: none;" class="form-control">
+							    </fieldset>
+							    <div class="preview-images-zone">
+							        
+							    </div>
+							</div>
+			           	</div>
 			            <div class="tab-pane" id="tab_lain" role="tabpanel">
 			            </div>		           
 			        </div>
@@ -208,4 +225,5 @@
 	</form>
 </div>
 
+<script type="text/javascript" src="<?php echo config_item('url_plugins') ?>jquery-ui-sortable/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?php echo config_item('url_app') ?>js/modules/product/form.js"></script>

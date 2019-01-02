@@ -127,6 +127,7 @@
 <!--[if IE 8]><body class="ie8 lt-ie9 lt-ie10"><![endif]-->
 <!--[if IE 9]><body class="ie9 lt-ie10"><![endif]-->
 
+
 <body class="ps-loading">
     <header class="header header--1" data-sticky="true">
         <nav class="navigation">
@@ -152,7 +153,6 @@
                         </li>
                         <li><a href="<?php echo site_url() ?>/product">Shop<?php echo $this->uri->segment(2); ?></a></li>
                         <li><a href="#">Pages</a></li>
-                        <li><a href="#">Features</a></li>
                         <li class="menu-item-has-children dropdown"><a href="#">Blog</a>
                             <ul class="sub-menu">
                                 <li class="menu-item-has-children dropdown"><a href="blog-grid.html">Blog-grid</a>
@@ -164,6 +164,8 @@
                                 <li><a href="blog-list.html">Blog List</a></li>
                             </ul>
                         </li>
+                        <li><a href="#"> Hai, <?php echo print_r($this->session->userdata('user')['user_username']) ?> !</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="right">
@@ -171,25 +173,39 @@
                     <ul class="header__actions">
                         <li><a class="ps-search-btn" href="#"><i class="exist-search"></i></a></li>
                         <li class="header__user"><a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="shopping-action"><i class="exist-user"></i></a>
+                            <?php if(count($this->session->userdata('user'))<=
+                            1){ ?>
                             <ul class="dropdown-menu" aria-labelledby="shopping-action" id="shopping-action">
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Whishlist</a></li>
+                                <li><a href="<?php echo base_url('index.php/login') ?>">Login</a></li>
+                                <li><a href="<?php echo base_url('index.php/login') ?>">Daftar</a></li>
+                               
                             </ul>
+                            <?php } ?>
+                             <?php 
+
+                             if(count($this->session->userdata('user'))>=
+                             1){ ?>
+                            <ul class="dropdown-menu" aria-labelledby="shopping-action" id="shopping-action">
+                                <li><a href="#"><?php echo print_r($this->session->userdata('user')['user_username']) ?></a></li>
+                                <li><a href="<?php echo base_url('index.php/login/logout')?>">Logout</a></li>
+                                <li><a href="#">Whishlist</a></li>
+                                <li><a href="#">Pesanan Saya</a></li>
+                            </ul>
+                            <?php } ?>
+
                         </li>
                         <li class="header__cart"><a class="ps-shopping" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="shopping-cart"><i class="exist-minicart">
                             
                         </i><span ><i class="total-item">0</i></span></a>
-                            <ul class="dropdown-menu" style="width:500px;" aria-labelledby="shopping-cart" id="shopping-list">
+                            <ul class="dropdown-menu" style="width:500px;" aria-labelledby="shopping-cart"                            
+                             id="shopping-list" >
                                <!--  <li><span class="ps-product--shopping-cart"><a class="ps-product__thumbnail" href="product-detail.html"><img src="<?php echo base_url('media_front'); ?>/images/cart/1.jpg" alt=""></a><span class="ps-product__content"><a class="ps-product__title" href="#">T-shirt blue with slogan</a><span class="ps-product__quantity">1 x <span> $5250.00</span></span>
                                     </span><a class="ps-product__remove" href="#"><i class="fa fa-trash"></i></a></span>
                                 </li>
                                 <li><span class="ps-product--shopping-cart"><a class="ps-product__thumbnail" href="product-detail.html"><img src="<?php echo base_url('media_front'); ?>/images/cart/2.jpg" alt=""></a><span class="ps-product__content"><a class="ps-product__title" href="#">T-shirt blue with slogan</a><span class="ps-product__quantity">1 x <span> $5250.00</span></span>
                                     </span><a class="ps-product__remove" href="#"><i class="fa fa-trash"></i></a></span>
                                 </li> -->
-                                <li class="total">
-                                    <p>Total: <span type="htmle" name="count-cart"> $5250.00</span></p><a class="ps-btn" href="#">Go to cart</a>
-                                </li>
+                                
                             </ul>
                         </li>
                     </ul>

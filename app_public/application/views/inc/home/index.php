@@ -60,30 +60,39 @@
             <div class="masonry-wrapper" data-col-md="4" data-col-sm="2" data-col-xs="1" data-gap="30" data-radio="4:3">
                 <div class="ps-masonry">
                     <div class="grid-sizer"></div>
-                    <div class="grid-item large">
+                    <div class="row">
+                    <div class="col-md-4">
                         <div class="grid-item__content-wrapper">
                             <div class="ps-collection"><a class="ps-collection__morelink" href="#">Woman accessories</a><img class="ps-fullwidth" src="<?php echo base_url('media_front'); ?>/images/collection/home-1/1.jpg" alt=""></div>
                         </div>
                     </div>
-                    <div class="grid-item">
+                    <div class="col-md-4">
+                        <div class="grid-item__content-wrapper">
+                            <div class="ps-collection"><a class="ps-collection__morelink" href="#">Woman accessories</a><img class="ps-fullwidth" src="<?php echo base_url('media_front'); ?>/images/collection/home-1/1.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="grid-item__content-wrapper">
                             <div class="ps-collection"><a class="ps-collection__morelink" href="#">Demi Jeans</a><img class="ps-fullwidth" src="<?php echo base_url('media_front'); ?>/images/collection/home-1/2.jpg" alt=""></div>
                         </div>
                     </div>
-                    <div class="grid-item">
+                    </div>
+                    <div class="row">
+                    <div class="col-md-4">
                         <div class="grid-item__content-wrapper">
                             <div class="ps-collection"><a class="ps-collection__morelink" href="#">Sunglasses</a><img class="ps-fullwidth" src="<?php echo base_url('media_front'); ?>/images/collection/home-1/3.jpg" alt=""></div>
                         </div>
                     </div>
-                    <div class="grid-item">
+                    <div class="col-md-4">
                         <div class="grid-item__content-wrapper">
                             <div class="ps-collection"><a class="ps-collection__morelink" href="#">Footwear</a><img class="ps-fullwidth" src="<?php echo base_url('media_front'); ?>/images/collection/home-1/4.jpg" alt=""></div>
                         </div>
                     </div>
-                    <div class="grid-item">
+                    <div class="col-md-4">
                         <div class="grid-item__content-wrapper">
                             <div class="ps-collection"><a class="ps-collection__morelink" href="#">Man Collection</a><img class="ps-fullwidth" src="<?php echo base_url('media_front'); ?>/images/collection/home-1/5.jpg" alt=""></div>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -325,4 +334,4 @@
     <script type="text/javascript" src="<?php echo base_url('media_front'); ?>/plugins/revolution/js/extensions/revolution.extension.actions.min.js"></script>
     <script src="<?php echo base_url('media_front'); ?>/js/slider_1.js"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAckIeA7eVaNv2fKmIKl-udHqlZW2tYxME&amp;region=GB"></script>
-     <script type="text/javascript" src="<?php echo config_item('url_app') ?>js/modules/transaction/alltransaction.js"></script>
+     <script type="text/javascript" src="<?php echo config_item('url_app') ?>js/modules/home/main.js"></script>

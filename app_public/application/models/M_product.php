@@ -55,6 +55,7 @@ class M_product extends CI_Model{
 	function get_variant($args = array())
 	{
 		$this->db->where("prod_id",$args['prod_id']);
+		$this->db->select("*,varian_value as text, varian_value as id");
 		$res['data'] = $this->db->get("product_varian")->result_array(); 
 		return $res;
 	}

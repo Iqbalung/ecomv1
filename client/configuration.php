@@ -44,6 +44,7 @@ $config['client_folder_name'] = '';
 $config['path_client'] = FCPATH2."client/".$config['client_folder_name'];
 $config['path_client_tpl'] = $config['path_client']."templates/";
 $config['path_client_upload'] = $config['path_client']."uploads/";
+$config['path_client_upload_product'] = $config['path_client']."uploads/product/";
 $config['path_client_upload_forstok'] = $config['path_client_upload']."transaksi_forstok/";
 
 $config['limit'] = "20";

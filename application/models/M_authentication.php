@@ -22,7 +22,6 @@ class M_authentication extends CI_Model{
 
 	public function menu($grup)
 	{
-
 		$res = $this->db->query("
 		SELECT * from ( 
 			SELECT DISTINCT
@@ -36,9 +35,7 @@ class M_authentication extends CI_Model{
 			LEFT JOIN usermng_menu on usermng_fitur.menuid = usermng_menu.menuid  
 			WHERE usermng_hakakses.usergroupid = ? and usermng_fitur.ismenu = 1) a order by a.nourut ASC
 		", array($grup) );
-
 		return array('menu' => $res->result_array());
-		
 	}
 
 	public function fitur($grup)

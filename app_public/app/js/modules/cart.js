@@ -22,6 +22,7 @@ $(document).ready(function() {
 			});
 
 			me.load_list(true);
+			me.load_list2(true);
 			
 		},
 		listeners: function() {
@@ -290,10 +291,11 @@ $(document).ready(function() {
 							console.log(result);
 							var no = parseInt(cart.start)+1;
 							$(".total-item").text(result.count);
+							var sum = 0;
 							result.data.forEach(function(row) {
-								
+								sum = sum + row.subtotal;
 								var content = `
-								<li><span class="ps-product--shopping-cart"><a class="ps-product__thumbnail" href="product-detail.html"><img src="`+app.data.base_url+`/media_front/images/product/home-1/1.jpg" alt=""></a><span class="ps-product__content"><a class="ps-product__title" href="#">T-shirt blue with slogan</a><span class="ps-product__quantity">1 x <span> $5250.00</span></span>
+								<li><span class="ps-product--shopping-cart"><a class="ps-product__thumbnail" href="product-detail.html"><img src="`+app.data.base_url+`/client/uploads/product/`+row.doc_name+`" alt=""></a><span class="ps-product__content"><a class="ps-product__title" href="#">`+ row.name +` (Size `+ row.size +`)</a><span class="ps-product__quantity" type="html" name="qty" >`+row.qty+`</span> x <span type="html" name="price"> `+row.subtotal+`</span></span>
                                     </span><a class="ps-product__remove" href="#"><i class="fa fa-trash"></i></a></span>
                                 </li>
 								`;
@@ -302,12 +304,117 @@ $(document).ready(function() {
 								no++;
 							});
 
-							var content = `
+							var content2 = `
 								<li class="total">
-                                    <p>Total: <span type="htmle" name="count-cart"> $5250.00</span></p><a class="ps-btn" href="#">Go to cart</a>
+                                    <a class="ps-btn" href="`+app.data.site_url + '/transaction'+`">Go to cart</a>
                                 </li>
 								`;
-							$('#shopping-list').append(content);
+							$('#shopping-list').append(content2);
+							var content3 = `
+								
+                                    <p>Total: <span type="htmle" name="count-cart">Rp.`+sum+`</span></p>
+                                
+								`;
+							$('.total').append(content3);
+
+						}
+
+						if('paging' in result)
+						{
+							$('[aria-label="Page navigation"]').html(result.paging);							
+						}
+					}
+				})
+				.fail(function(result) {						
+					swal({
+						title: "Informasi!",
+						text: '('+result.status+') '+result.statusText,							
+						icon: "warning",
+					});
+				})
+				.always(function() {
+					setTimeout(function() {
+						app.body_unmask();
+					},500);
+				});		
+			}
+			else
+			{
+				setTimeout(function() {					
+					app.body_unmask();
+				},500);
+			}
+		},
+		load_list2:function(is_load) {
+			var me = this,
+				title = 'data_list',
+				params = me.get_params();
+
+			try
+			{
+				var is_load = is_load;
+			}
+			catch(e)
+			{
+				var is_load = false;
+			}
+
+			$('#shopping-list2').html("");
+			if (me.firstLoad[title] != JSON.stringify(params) || is_load) 
+			{			
+				if (typeof me.firstLoad[title] != "undefined") {
+					me.firstLoad[title] = JSON.stringify(params);
+				}
+
+			app.body_mask();
+				$.ajax({
+					url: app.data.site_url + '/transaction/app/get_cart',
+					type: 'GET',
+					dataType: 'json',
+					data: params,
+				})
+				.done(function(result) {
+
+					app.body_unmask();
+					var content = "";
+					$('#shopping-list2').append(content);
+					if ("data" in result)
+					{
+						if (result.data.length == 0)
+						{
+							$('#table-transaction tbody').html(`
+								<tr class="data-kosong">
+		                            <td colspan="11" class="col-md-12" align="center">Data tidak ditemukan</td>
+		                        </tr>
+								`);
+						} 
+						else
+						{
+							console.log(result);
+							var no = parseInt(cart.start)+1;
+							$(".total-item").text(result.count);
+							result.data.forEach(function(row) {
+								
+								var content = `
+								<div>
+									<span class="ps-product--shopping-cart"><a class="ps-product__thumbnail" href="product-detail.html">
+										<img src="`+app.data.base_url+`/media_front/images/product/home-1/1.jpg" alt=""></a><span class="ps-product__content">
+										<a class="ps-product__title" href="#">`+ row.name +` (Size `+ row.size +`)</a><span class="ps-product__quantity">1 x <span type="html" name="price"> `+ row.price +`</span></span>
+                                    </span><a class="ps-product__remove" href="#"><i class="fa fa-trash"></i></a></span>
+                                </div>
+								`;
+								$('#shopping-list2').append(content);
+								$('#shopping-list2').data(row);
+								no++;
+							});
+
+							var content2 = `
+								<li class="total">
+                                    <p>Total: <span type="htmle" name="count-cart">Rp.`+sum+`</span></p>
+                                    <a class="ps-btn" href="`+app.data.site_url + '/transaction'+`">Go to cart</a>
+                                </li>
+								`;
+							$('#shopping-list2').append(content2);
 
 						}
 

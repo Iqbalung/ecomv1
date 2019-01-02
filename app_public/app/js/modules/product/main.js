@@ -13,13 +13,17 @@ $(document).ready(function() {
 			}		
 		},
 		init: function() {
-			alert();
 			var me = this,
 				params = me.get_params();
 				
 			app.get_data_list("[name=trx_courier]",app.data.site_url+"/master/courier/get",{},{
 			  	display_value:'courier_name',
 			  	value:'courier_id'
+			});
+
+			app.get_data_list("[name=f-category]",app.data.site_url+"/master/category/get",{},{
+			  	display_value:'category_name',
+			  	value:'category_id'
 			});
 
 			me.load_list(true);
@@ -293,19 +297,21 @@ $(document).ready(function() {
 								
 								var content = `
 							<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 ">
-                        <div class="ps-product--1" data-mh="product-item" style="height: 405px;">
-                            <div class="ps-product__thumbnail">
-                                <div class="ps-badge ps-badge--hot"><span>hot</span></div>
-                                <div class="ps-badge ps-badge--sale-off ps-badge--2nd"><span>-25%</span></div><img src="`+app.data.base_url+`/media_front/images/product/home-1/1.jpg" alt=""><a class="ps-btn ps-product__shopping" href="#"><i class="exist-minicart"></i>Add to cart</a>
-                                <ul class="ps-product__actions">
-                                    <li><a href="#" data-label="Favorite"><i class="exist-heart"></i></a></li>
-                                    <li><a href="#" data-label="Compare"><i class="exist-compare"></i></a></li>
-                                    <li><a class="ps-modal-trigger" href="#quick-view" data-label="Quick View"><i class="exist-quickview"></i></a></li>
-                                </ul>
+                       <div class="ps-product-column">
+                                <div class="ps-product--1" data-mh="product-item">
+                                    <div class="ps-product__thumbnail">
+                                        <div class="ps-badge ps-badge--hot"><span>hot</span></div>
+                                        <div class="ps-badge ps-badge--sale-off ps-badge--2nd"><span>`+row.prod_discount+`</span></div><img src="`+app.data.base_url+`/client/uploads/product/`+row.doc_name+`" alt=""><a class="ps-btn ps-product__shopping" href="`+app.data.site_url+`/product/app/detail/`+row.prod_id+`"><i class="exist-minicart"></i>Add to cart</a>
+                                        <ul class="ps-product__actions">
+                                            <li><a href="#" data-label="Favorite"><i class="exist-heart"></i></a></li>
+                                            <li><a href="#" data-label="Compare"><i class="exist-compare"></i></a></li>
+                                            <li><a class="ps-modal-trigger" href="#quick-view" data-label="Quick View"><i class="exist-quickview"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="ps-product__content"><a class="ps-product__title" href="product-detail-1.html">`+row.prod_name+`</a><span class="ps-product__price">`+row.prod_price+`</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="ps-product__content"><a class="ps-product__title" href="product-detail-1.html"> T-shirt with slogan</a><span class="ps-product__price">$5250.00</span>
-                            </div>
-                        </div>
                     </div>
                     
 								`;

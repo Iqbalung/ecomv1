@@ -79,8 +79,6 @@ $(document).ready(function() {
 				me.save();
 			});
 
-
-
 			$("#table-product").delegate('.grup-btn-action .btn-update', 'click', function(event) {
 				try
 				{

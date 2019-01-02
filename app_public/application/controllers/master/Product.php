@@ -65,6 +65,7 @@ class Product extends MY_Controller {
 		);
 
 		$res['product'] = $this->M_product->get_by($params)->row_array();
+
 		$res['variant'] = $this->M_product->get_variant($params);
 		$out = $this->_respon($res,$res,"get");
 

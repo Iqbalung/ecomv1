@@ -20,7 +20,7 @@
                 <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 ">
                     <div class="ps-product__info">
                         <h1 class="ps-product__title" type="html" name="prod_name">Smocked blouse</h1>
-                        <h4 class="ps-product__price">$39.00</h4>
+                        <h4 class="ps-product__price" type="html" name="prod_price_text">$39.00</h4>
                         <div class="ps-product__rating">
                             <div class="br-wrapper br-theme-fontawesome-stars"><select class="ps-rating" style="display: none;">
                                 <option value="1">1</option>
@@ -34,29 +34,23 @@
                             <p  type="html" name="prod_desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed fermentum nibh, vel aliquet massa. Etiam in magna id risus lacinia luctus eget eu est.</p>
                         </div>
                         <div class="ps-product__variants">
-                            <h5 class="mt-30"> Size</h5>
-                            <ul class="ps-product__size">
-                               <!--  <li><a href="#"><span>xs</span></a></li>
-                                <li><a href="#"><span>S</span></a></li>
-                                <li class="current"><a href="#"><span>M</span></a></li>
-                                <li><a href="#"><span>
-                                <del>L</del></span></a></li>
-                                <li><a href="#"><span>
-                            <del>XL</del></span></a></li> -->
-                            </ul>
+                            <h5 class="mt-30">Size</h5><br>
+                            <select class="variant" style="width: 100px;">
+                               
+                            </select>
                         </div>
                         <div class="ps-product__divider"></div>
                         <div class="ps-product__shopping">
                             <div class="form-group form-group--number">
-                                <input class="form-control" type="text" value="1"><span class="down">-</span><span class="up">+</span>
+                                <input class="form-control" type="text" name="qty" value="1"><span class="down">-</span><span class="up">+</span>
                             </div>
                             <button id="add-to-cart" class="ps-btn ps-btn--black"><i class="exist-minicart mr-5"></i> Add to cart</button>
-                            <ul class="ps-product__cart-action">
+                            <!-- <ul class="ps-product__cart-action">
                                 <li><a href="#"><i class="exist-heart"></i>Add to Whishlist</a></li>
                                 <li><a href="#"><i class="exist-compare"></i>Compare</a></li>
-                            </ul>
+                            </ul> -->
                             <p><strong>SKU:</strong><p type="html" name="prod_code"></p></p>
-                            <p><strong>Category:</strong><a href="#">Woman</a>,<a href="#">Top</a></p>
+                            <p><strong>Category:</strong><p type="html" name="category_name"></p>,<a href="#">Top</a></p>
                         </div>
                         <div class="ps-product__divider"></div>
                         <p class="ps-product__sharing">Share:<a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></p>

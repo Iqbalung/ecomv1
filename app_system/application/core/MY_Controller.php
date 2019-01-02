@@ -4,9 +4,7 @@ class MY_Controller extends CI_Controller {
 	function __construct()
 	{
 		parent::__construct();
-
 		$token = $this->get_token();
-
 		$res = $this->validate_token($token);		
 		$this->user = array();
 		$this->menu = array();

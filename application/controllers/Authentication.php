@@ -74,7 +74,8 @@ class Authentication extends REST_Controller {
 				"exp" => time()+86400, // masa berlaku token 1 hari
 				"menu" => $menu['menu'],
 				"API_KEY" => "f6eed6446c15978f9e4021b99b928851"
-				);					
+				);	
+				
 			$out['token'] = JWT::encode($data,$this->config->item('jwt_key'));			
 		} 
 		else 

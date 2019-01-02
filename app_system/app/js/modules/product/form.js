@@ -28,7 +28,29 @@ $(document).ready(function() {
 			app.get_data_list("[name=prod_suplier]",app.data.site_url+"/master/suplier/get",{},{
 			  	display_value:'suplier_name',
 			  	value:'suplier_name'
-			});			
+			});
+
+
+			app.requestAjax(app.data.base_url+"index.php/master/product/get_by_id/"+id,{prod_id:id},"POST",function(result){
+				try
+				{
+					if (result.success)
+					{
+						app.set_form_value("#form-product",result.product);
+					}
+					else
+					{
+						swal("Information",result.msg,"warning");
+					}
+				}
+				catch(e)
+				{
+					swal("Information",e,"warning");
+				}	
+			});
+
+
+
 			 
 		},
 		listeners: function() {
@@ -75,20 +97,47 @@ $(document).ready(function() {
 				});
 			});
 			
+
+			//document
+			document.getElementById('pro-image').addEventListener('change', me.readImage, false);
+			document.getElementById('pro-image-ubah').addEventListener('change', me.readImageUbah, false);    		
+		    //$( ".preview-images-zone" ).sortable();
+		    $(document).on('click', '.image-cancel', function() {		    	
+		        var no = $(this).data('no'),
+		        	index_image = app.findIndexFromArrayObject(me.list_files,'no',no);		        	
+		        if (index_image != -1)
+		        {
+		        	me.list_files.splice(index_image,1);
+		        	$(".preview-image.preview-show-"+no).remove();
+
+		        }
+		    });
+
+		    $(document).delegate('.tools-edit-image a', 'click', function(event) {
+		    	var data = $(this).data();
+		    	$("#pro-image-ubah").data("index_ubah",data.no);
+		    	$("#pro-image-ubah").click();
+		    });
 		},
 	
 
 		reset_form:function() {
 			var me = this;
-			app.clear_form("#form-produck");
+			app.clear_form("#form-product");
 			$("[name=category_id]").select2("val", "");
 			$("[name=prod_suplier]").select2("val", "");
+			me.list_files = [];
+			$(".preview-images-zone").html("");
 		},
 		save: function()
 		{
 			var me = this;
-				form = $("#form-produck"),
+				form = $("#form-product"),
 				formData = new FormData(form[0]);
+
+			for(var i=0, len=me.list_files.length; i<len; i++) {
+				formData.append('files[]', me.list_files[i]);	
+			}
 
 			app.body_mask();
 			app.requestAjaxForm(app.data.site_url+"/product/form/save",formData,"POST",function(result){
@@ -126,7 +175,7 @@ $(document).ready(function() {
 					if (result.success)
 					{
 						swal("Information",result.msg,"success");
-						me.reset_form();
+						me.reset_form();						
 						form_product.load_variant();
 					}
 					else
@@ -279,10 +328,70 @@ $(document).ready(function() {
 					setTimeout(function() {
 						app.body_unmask();
 					},500);
-				});		
-			
-			
+				});				
+		},
+		readImage:function() {				
+			var num	= new Date().getTime(),
+				index_image = new Date().getTime();
+			if (window.File && window.FileList && window.FileReader) {
+		        var files = event.target.files; //FileList object
+		        var output = $(".preview-images-zone");
 
+		        for (let i = 0; i < files.length; i++) {
+		            var file = files[i];
+		            file.no = index_image;
+		            form_product.list_files.push(file);
+		            if (!file.type.match('image')) continue;
+		            
+		            var picReader = new FileReader();
+		            
+		            picReader.addEventListener('load', function (event) {
+		                var picFile = event.target;
+		                var html =  `<div class="preview-image preview-show-` + num + `">
+		                            <div class="image-cancel" data-no="` + num + `">X</div>
+		                            <div class="image-zone"><img id="pro-img-` + num + `" src="` + picFile.result + `"></div>
+		                            <div class="tools-edit-image"><a href="javascript:void(0)" data-no="` + num + `" class="btn btn-light btn-edit-image">Edit</a></div>
+		                            </div>`;
+
+		                output.append(html);
+		                num = num + 1;
+		            });
+		            index_image++;
+		            picReader.readAsDataURL(file);
+		        }
+		        //$("#pro-image").val('');
+		    } else {
+		        console.log('Browser not support');
+		    }
+		},
+		readImageUbah:function() {							
+			if (window.File && window.FileList && window.FileReader) {				
+				var data = $(this).data(),
+	        		files = event.target.files, //FileList object
+	        		output = $(".preview-images-zone");	        	
+		        for (let i = 0; i < files.length; i++) {
+		            var file = files[i];		            		           
+		            if (!file.type.match('image')) continue;
+		            
+		            var picReader = new FileReader();		            
+		            picReader.addEventListener('load', function (event) {
+		                var picFile = event.target,
+		                	index_ubah = data.index_ubah,
+		                	index_image = app.findIndexFromArrayObject(form_product.list_files,'no',index_ubah);
+		                $("#pro-img-"+index_ubah).attr("src",picFile.result);
+				        if (index_image != -1)
+				        {
+				        	file.no = index_ubah;
+				        	form_product.list_files[index_image] = file;	
+				        }
+		                		                
+		            });		            
+		            picReader.readAsDataURL(file);
+		        }
+		        //$("#pro-image").val('');
+		    } else {
+		        console.log('Browser not support');
+		    }
 		},
 		selected: {},
 		id: '',
@@ -290,6 +399,7 @@ $(document).ready(function() {
 		firstLoad:{
 			list:false,
 		},
+		list_files:[],
 		isLoad: false,
 	};
 

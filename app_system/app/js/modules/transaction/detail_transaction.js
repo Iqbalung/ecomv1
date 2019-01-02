@@ -176,6 +176,7 @@ $(document).ready(function() {
 				"date-from":$(".date-from").val(),
 				"date-to":$(".date-to").val(),
 				"f-select":$(".f-select").val(),
+				
 				m: main_forstok.start,
 				per_page: main_forstok.start
 			};

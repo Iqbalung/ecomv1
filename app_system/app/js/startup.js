@@ -390,6 +390,24 @@ app.ifvalnull = function(val,dflt) {
 }
 
 
+app.findIndexFromArrayObject = function(arr,name,k) {
+    var out = -1;
+    for (var i = 0; i < arr.length; i++) 
+    {
+        if (name in arr[i])
+        {
+            if(arr[i][name] == k)
+            {
+                out = i;
+                break;
+            }            
+        }        
+    }
+
+    return out;
+  }
+
+
 
 
 
