@@ -21,6 +21,16 @@ class M_crud extends CI_Model{
 		return $q;	
 	}
 
+
+	function get_where($params,$table_name)
+	{
+		if(isset($params['where'])){
+			$this->db->where($params['where']);
+		}
+		$q = $this->db->get($table_name);
+		return $q;	
+	}
+
 	function get_like($params,$table)
 	{
 		if(isset($params['where'])){

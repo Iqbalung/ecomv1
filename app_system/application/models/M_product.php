@@ -101,4 +101,17 @@ class M_product extends CI_Model{
 		}
 		return $res;
 	}
+
+	function del_doc($args = array())
+	{
+		$res = false;
+		if (isset($args['parent_id']) && !empty($args['parent_id']) && isset($args['notin_doc_id']) && is_array($args["notin_doc_id"]) && count($args["notin_doc_id"]) > 0)
+		{
+			$this->db->where_not_in("doc_id",$args['notin_doc_id']);
+			$this->db->where("doc_parentid",$args['parent_id']);
+			unset($args['notin_doc_id']);		
+			$res = $this->db->delete("document");
+		}
+		return $res;
+	}
 }

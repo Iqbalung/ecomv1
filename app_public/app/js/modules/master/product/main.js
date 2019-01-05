@@ -45,7 +45,7 @@ $(document).ready(function() {
 			      	"render":function(ths,type,row,setting){
 			      		var view = `
 			      		<div class="grup-btn-action">
-			      			<button class="table-btn-action btn-transparant btn-update"><i class="fa fa-pencil"></i></button>
+			      			<button class="table-btn-action btn-transparant btn-update"><i class="fa fa-pencil">asas</i></button>
 							<button class="table-btn-action btn-transparant btn-delete"><i class="fa fa-trash"></i></button>
 			      		</div>`;			      					      		
 			      		setTimeout(function(){
@@ -85,7 +85,8 @@ $(document).ready(function() {
 				try
 				{
 					var data = $(this).parents("tr").data();										
-					me.form_update(data);
+					window.location = app.data.site_url+"/product/form/index/"+data.prod_id;
+					//me.form_update(data);
 				}
 				catch(e)
 				{

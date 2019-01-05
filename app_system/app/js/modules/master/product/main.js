@@ -83,7 +83,7 @@ $(document).ready(function() {
 				try
 				{
 					var data = $(this).parents("tr").data();										
-					me.form_update(data);
+					window.location = app.data.site_url+"/product/form/index/"+data.prod_id;
 				}
 				catch(e)
 				{

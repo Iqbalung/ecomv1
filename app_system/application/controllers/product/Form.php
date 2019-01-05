@@ -20,7 +20,7 @@ class Form extends MY_Controller {
 	}
 
 	public function save()
-	{		
+	{				
 		$params = array(			    
 		    "prod_id" => ifunsetempty($_POST,"prod_id",""),
 		    "prod_code" => ifunsetempty($_POST,"prod_code",""),
@@ -46,17 +46,32 @@ class Form extends MY_Controller {
 		}
 		
 		$args_images = array(
-			"parent_id" => $params["prod_id"]
+			"parent_id" => $params["prod_id"],
+			"files_upload" => json_decode(ifunsetempty($_POST,"files_upload","[]"),true)
 		);
 		
-		$res_images = $this->simpan_iamges($args_images);
+		$res_images = $this->simpan_images($args_images);
 	
 		$out = $this->_respon(($res && $res_images),false,"create");
 		echo json_encode($out);
 
 	}
 
-	function simpan_iamges($args) {
+	function simpan_images($args) {
+
+		$doc_id = array_column($args["files_upload"], "doc_id");
+
+		if (count($doc_id) > 0) {
+			$params_del_doc = array(
+				"notin_doc_id" => $doc_id,
+				"parent_id" => $args["parent_id"],
+			);
+			$res_doc_del = $this->M_product->del_doc($params_del_doc);
+
+			if ($res_doc_del) {
+				
+			}
+		}
 
 		 // File upload configuration
 		$this->load->library('upload');
@@ -67,6 +82,9 @@ class Form extends MY_Controller {
 		if (isset($_FILES["files"])) {
 			if (isset($_FILES["files"]["name"]) && is_array($_FILES["files"]["name"]) && count($_FILES["files"]["name"]) > 0) {
 				foreach ($_FILES["files"]["name"] as $key => $value) {
+					
+					$seacrh = $this->custom_search($args["files_upload"],"name",$_FILES['files']['name'][$key]);
+														
 						
 					    $_FILES['file']['name']     = $_FILES['files']['name'][$key];
 		                $_FILES['file']['type']     = $_FILES['files']['type'][$key];
@@ -90,8 +108,22 @@ class Form extends MY_Controller {
 						);
 						$sort = $this->db->query("select IFNULL(max(sort),0)+1 as sort from document where doc_parentid = ? ",array($params['doc_parentid']))->row_array();
 						$params['sort'] = $sort['sort'];
+						$is_ubah = false;
+						if (count($seacrh) > 0) {
+							if (isset($seacrh[0]["isUbah"]) && $seacrh[0]["isUbah"]) {
+								$is_ubah = true;
+								$params["doc_id"] = $seacrh[0]["doc_id"];
+
+							}
+						}
 					
-						$res = $this->M_crud->create('document',$params);						
+						if ($is_ubah) {				
+							$params["where"] = "doc_id";
+							$params["where_value"] = $params["doc_id"];
+							$res = $this->M_crud->upd($params,array("table_name"=>'document'));						
+						} else {
+							$res = $this->M_crud->create('document',$params);						
+						}
 						if (!$res) {
 							$res = false;
 							break;
@@ -101,6 +133,18 @@ class Form extends MY_Controller {
 		}
 		return $res;
 	}
+
+	function custom_search ($arr, $index, $search)
+	{
+		$r = array();
+		foreach ($arr as $key => $val) {
+		    if ($val[$index] === $search) {
+		        $r[] = $val;
+		    }
+		}
+
+		return $r;
+	}  
 
 	public function create_wf(){
 		$params = array(
@@ -177,6 +221,22 @@ class Form extends MY_Controller {
 		$out = $this->_respon($res,false,"del");
 		echo json_encode($out);
 
+	}	
+
+	public function get_document()
+	{
+		$method = $_GET;
+		$this->load->model("M_crud");
+		$params = array();
+		$params["where"] = array(			
+			"doc_parentid" => ifunsetempty($method,"prod_id",''),
+		);
+
+		$res['document'] = $this->M_crud->get_where($params,"document")->result_array();
+		
+		$out = $this->_respon($res,$res,"get");
+
+		echo json_encode($out);
 	}
 	
 }

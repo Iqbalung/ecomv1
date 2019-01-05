@@ -9,21 +9,21 @@ class M_dokumen extends CI_Model{
 
 	function add($params)
 	{
-		$res = $this->db->insert('SAKIP_DOKUMEN', $params); 
+		$res = $this->db->insert('document', $params); 
 		return $res;
 	}
 
-	function get($params)
+	function get_where($args)
 	{
-		$this->db->where('PARENT_UID',$params);
-		$res = $this->db->get('SAKIP_DOKUMEN'); 
+		$this->db->where($args);
+		$res = $this->db->get('document'); 
 		return $res;
 	}
 
 	function del($params)
 	{
 		$this->db->where($params);
-		$res = $this->db->delete('SAKIP_DOKUMEN'); 
+		$res = $this->db->delete('document'); 
 		return $res;
 	}
 }
