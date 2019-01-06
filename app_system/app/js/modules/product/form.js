@@ -21,6 +21,7 @@ $(document).ready(function() {
 			$("input[name=prod_id]").val(id);
 			console.log(id);
 
+			form_product.load_document(id);
 
 			app.requestAjax(app.data.base_url+"index.php/master/product/get_by_id/"+id,{prod_id:id},"POST",function(result){
 				try
@@ -28,6 +29,11 @@ $(document).ready(function() {
 					if (result.success)
 					{
 						app.set_form_value("#form-product",result.product);
+						console.log(result.product.prod_suplier);
+						setTimeout(function(){
+							$("#form-product").find('[name=category_id]').val(result.product.category_id).trigger('change.select2');	
+							$("#form-product").find('[name=prod_suplier]').val(result.product.prod_suplier).trigger('change.select2');							
+						},200)
 					}
 					else
 					{
@@ -107,9 +113,10 @@ $(document).ready(function() {
 			document.getElementById('pro-image').addEventListener('change', me.readImage, false);
 			document.getElementById('pro-image-ubah').addEventListener('change', me.readImageUbah, false);    		
 		    //$( ".preview-images-zone" ).sortable();
-		    $(document).on('click', '.image-cancel', function() {		    	
+		    $(document).delegate('.image-cancel','click', function(e) {		    			    	
+		    	e.preventDefault();
 		        var no = $(this).data('no'),
-		        	index_image = app.findIndexFromArrayObject(me.list_files,'no',no);		        	
+		        	index_image = app.findIndexFromArrayObject(me.list_files,'no',no);		        			        	
 		        if (index_image != -1)
 		        {
 		        	me.list_files.splice(index_image,1);
@@ -140,8 +147,25 @@ $(document).ready(function() {
 				form = $("#form-product"),
 				formData = new FormData(form[0]);
 
+			var files_id = me.list_files.map(function(row) {									
+				return row.doc_id;
+			});
+			var files_upload = me.list_files.map(function(row) {									
+				return {
+					doc_id:row.doc_id,
+					name:row.name,
+					type:row.type,
+					isUbah:row.isUbah
+				};
+			});
+			formData.append('files_upload', JSON.stringify(files_upload));
 			for(var i=0, len=me.list_files.length; i<len; i++) {
-				formData.append('files[]', me.list_files[i]);	
+
+				
+				var file = me.list_files[i];
+				if (app.ifvalnull(file.doc_id,"") == "" || app.ifvalnull(file.isUbah,false) || files_id.indexOf(file.doc_id) == -1) {
+					formData.append('files[]', me.list_files[i]);	
+				}
 			}
 
 			app.body_mask();
@@ -352,6 +376,7 @@ $(document).ready(function() {
 		            
 		            picReader.addEventListener('load', function (event) {
 		                var picFile = event.target;
+		                console.log(picFile);
 		                var html =  `<div class="preview-image preview-show-` + num + `">
 		                            <div class="image-cancel" data-no="` + num + `">X</div>
 		                            <div class="image-zone"><img id="pro-img-` + num + `" src="` + picFile.result + `"></div>
@@ -387,6 +412,8 @@ $(document).ready(function() {
 				        if (index_image != -1)
 				        {
 				        	file.no = index_ubah;
+				        	file.isUbah = true;
+				        	file.doc_id = app.ifvalnull(form_product.list_files[index_image].doc_id,null);
 				        	form_product.list_files[index_image] = file;	
 				        }
 		                		                
@@ -397,6 +424,73 @@ $(document).ready(function() {
 		    } else {
 		        console.log('Browser not support');
 		    }
+		},
+		load_document:function()
+		{			
+			var me = this,
+				id = form_product.selected.id;
+				title = 'data_list';
+			
+			app.body_mask();									
+			$.ajax({
+				url: app.data.site_url + '/product/form/get_document',
+				type: 'GET',
+				dataType: 'json',
+				data: {prod_id:id},
+			})
+			.done(function(result) {				
+				var num	= new Date().getTime(),
+					index_image = new Date().getTime(),
+					output = $(".preview-images-zone");
+
+				result.document.forEach(function(row) {					
+					var blob = null;
+					var xhr = new XMLHttpRequest(); 
+					xhr.open("GET", app.data.url_client_uploads+"product/"+row.doc_name); 
+					xhr.responseType = "blob";//force the HTTP response, response-type header to be blob
+					xhr.onload = function() 
+					{
+					    blob = xhr.response;//xhr.response is now a blob object
+					    var myReader = new FileReader();
+						myReader.readAsDataURL(blob);
+						var file = new File([blob], row.doc_name);
+						file.no = index_image;
+						file.doc_id = row.doc_id;
+						me.list_files.push(file);
+						myReader.addEventListener("loadend", function(e)
+						{
+						        var buffer = e.srcElement.result;//arraybuffer object
+						        var picFile = e.target;
+						        console.log(picFile);
+				                var html =  `<div class="preview-image preview-show-` + num + `">
+				                            <div class="image-cancel" data-no="` + num + `">X</div>
+				                            <div class="image-zone"><img id="pro-img-` + num + `" src="` + picFile.result + `"></div>
+				                            <div class="tools-edit-image"><a href="javascript:void(0)" data-no="` + num + `" class="btn btn-light btn-edit-image">Edit</a></div>
+				                            </div>`;
+
+				                output.append(html);
+				                num = num + 1;				            
+						});
+			            index_image++;
+			            //picReader.readAsDataURL(file);
+					}
+					xhr.send();
+				})
+
+				
+			})
+			.fail(function(result) {						
+				swal({
+					title: "Informasi!",
+					text: '('+result.status+') '+result.statusText,							
+					icon: "warning",
+				});
+			})
+			.always(function() {
+				setTimeout(function() {
+					app.body_unmask();
+				},500);
+			});				
 		},
 		selected: {},
 		id: '',
