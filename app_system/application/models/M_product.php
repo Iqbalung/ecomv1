@@ -56,10 +56,10 @@ class M_product extends CI_Model{
 	function get_variant($args = array())
 	{
 		$res['data'] = $this->db->query("select prod_id,varian_label, varian_value, (varian_stock - (select count(*) varian_stock from trx_item
-			left join trx on trx.trx_id = trx_item.trxid
-			where prod_id = product_varian.prod_id and variant = product_varian.varian_value
-			and (trx.trx_state_id = 'pending')
-			)) as varian_stock from product_varian where prod_id = ?",$args['prod_id'])->result_array(); 
+	left join trx on trx.trx_id = trx_item.trxid
+	where prod_id = product_varian.prod_id and variant = product_varian.varian_value
+and trx.trx_state_id = 'pending' 
+)) as varian_stock from product_varian where prod_id = ?",$args['prod_id'])->result_array(); 
 		return $res;
 	}
 
