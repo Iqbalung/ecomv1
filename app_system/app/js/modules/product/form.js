@@ -13,22 +13,13 @@ $(document).ready(function() {
 			}		
 		},
 		init: function() {
-			var me = this;				
-
+			var me = this;	
+			
 			var id = app.data.segment[4];
 			form_product.selected.id = id;
 			form_product.load_variant(id);
 			$("input[name=prod_id]").val(id);
 			console.log(id);
-			app.get_data_list("[name=category_id]",app.data.site_url+"/master/category/get",{},{
-			  	display_value:'category_name',
-			  	value:'category_id'
-			});
-
-			app.get_data_list("[name=prod_suplier]",app.data.site_url+"/master/suplier/get",{},{
-			  	display_value:'suplier_name',
-			  	value:'suplier_name'
-			});
 
 
 			app.requestAjax(app.data.base_url+"index.php/master/product/get_by_id/"+id,{prod_id:id},"POST",function(result){
@@ -48,6 +39,20 @@ $(document).ready(function() {
 					swal("Information",e,"warning");
 				}	
 			});
+
+			app.get_data_list("[name=category_id]",app.data.site_url+"/master/category/get",{},{
+			  	display_value:'category_name',
+			  	value:'category_id'
+			});
+
+			app.get_data_list("[name=prod_suplier]",app.data.site_url+"/master/suplier/get",{},{
+			  	display_value:'suplier_name',
+			  	value:'suplier_name'
+			});
+
+
+
+
 
 
 
