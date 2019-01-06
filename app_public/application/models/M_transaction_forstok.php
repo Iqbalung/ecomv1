@@ -78,6 +78,79 @@ class M_transaction_forstok extends CI_Model{
 		}
 	}
 
+
+	function get_trx_customer($args = array(), $is_pagging = false)
+	{		
+		$start = ifunsetempty($args,'start',0);
+		$limit = ifunsetempty($args,'limit',$this->config->item("pagesize"));
+
+		$this->db->select("
+			trx.*,
+			'' item,
+			m_mos.mos_name,
+			m_cr.courier_name,
+			m_st.trx_state_flag,
+			m_us.user_username
+			");
+		$this->db->join("m_mediasale m_mos","trx.trx_mos = m_mos.mos_id","LEFT");		
+		$this->db->join("m_courier m_cr","trx.trx_courier = m_cr.courier_id","LEFT");
+		$this->db->join("m_state_trx m_st","trx.trx_state_id = m_st.trx_state_id","LEFT");
+		$this->db->join("trx_log t_lg","trx.trx_id = t_lg.trx_id AND trx.trx_state_id = t_lg.trx_log_caption","LEFT");
+		$this->db->join("m_user_pelanggan m_us","t_lg.user_userid = m_us.user_userid","LEFT");
+
+		if (isset($args["f_search"]) && !empty($args["f_search"]))
+		{			
+			$this->db->group_start();
+			$this->db->or_like("m_mos.mos_name",$args["f_search"]);
+			$this->db->or_like("trx.trx_id",$args["f_search"]);			
+			$this->db->group_end();
+		}
+		$this->db->where("trx.user_userid",$this->session->userdata('user')['user_userid']);	
+
+		if (isset($args["f_state"]) && !empty($args["f_state"]))
+		{			
+			$this->db->where("trx.trx_state_id",$args["f_state"]);			
+		}
+
+		if (isset($args["mos_id"]) && !empty($args["mos_id"]))
+		{			
+			$this->db->where("trx.trx_mos",$args["mos_id"]);			
+		}
+
+		if (isset($args["f_date_from"]) && !empty($args["f_date_from"]) && isset($args["f_date_to"]) && !empty($args["f_date_to"]))
+		{			
+			$this->db->group_start();
+			$this->db->where("trx_date >= ",$args["f_date_from"]);
+			$this->db->where("trx_date <= ",$args["f_date_to"]);
+			$this->db->group_end();
+		}
+
+		if ($is_pagging)
+		{
+			$db2 = clone $this->db;
+			$this->db->order_by('trx.trx_date', 'ASC');
+			$data = $this->db->get("trx",$limit,$start)->result_array();
+			$arr = array();
+			foreach ($data as $key => $value) {
+				$value['item'] =  $this->get_items($value)->result_array();
+				$arr[] = $value;
+			}		
+			$count = $db2->get("trx")->num_rows();						
+
+			return array('data' => $arr, 'count' => $count);			
+		}
+		else
+		{
+			$res = $this->db->get("trx");
+			foreach ($res as $key => $value) {
+				$value['item'] =  $this->get_items($value);
+				$arr[] = $value;
+			}	
+
+			return $arr;
+		}
+	}
+
 	function get_trx_total($params){
 		$query = $this->db->query("
 				SELECT *, concat(prod_name,'-',prod_barcode) prod_name FROM product $where

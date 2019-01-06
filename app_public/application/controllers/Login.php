@@ -18,7 +18,6 @@ class Login extends MY_Controller {
 	}
 
 	function do_register(){
-		
 		$params = array(
 			'user_username' => $this->input->post('email'),
 			'user_password' => $this->input->post('rpassword'),
@@ -28,10 +27,15 @@ class Login extends MY_Controller {
 			'alamat' => $this->input->post('alamat')
 		);
 		$res = $this->M_authentication->do_register($params);
-		if ($res) {			
+		if($res){			
 			echo json_encode(array(
 				"success"	=> true,
 				"message"	=> "berhasil masuk ke aplikasi",
+			));
+		}else{
+			echo json_encode(array(
+				"success"	=> false,
+				"message"	=> "Email telah digunakan",
 			));
 		}
 	}

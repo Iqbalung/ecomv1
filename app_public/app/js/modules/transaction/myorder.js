@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var main_forstok = {
+	myorder = {
 		load: {
 			css: [
 
@@ -8,18 +8,134 @@ $(document).ready(function() {
 
 			],
 			success: function() {
-				main_forstok.init();
-				main_forstok.listeners();
+				myorder.init();
+				myorder.listeners();
 			}		
 		},
 		init: function() {
 			var me = this,
 				params = me.get_params();
-				var id = app.data.segment[4];
-				me.get_detail(id);	
+				me.load_list(true);
+				
+			app.get_data_list("[name=trx_courier]",app.data.site_url+"/master/courier/get",{},{
+			  	display_value:'courier_name',
+			  	value:'courier_id'
+			});
+
+			app.get_data_list("[name=province]",app.data.site_url+"/master/Simplelist/call_province",{},{
+				  	display_value:'province',
+				  	value:'province_id'
+				});
+
+			$( "#city" ).change(function(){
+				id = $(this).val();
+				app.get_data_list("[name=distric]",app.data.site_url+"/master/Simplelist/call_distric",{city_id:id},{
+				  	display_value:'subdistrict_name',
+				  	value:'subdistrict_id'
+				});
+			});
+
+			$( "#payment" ).change(function(){
+				id = $(this).val();
+				if(id=="credit_card" || id=="debit" ){
+					$(".debtcard").show();
+				}else{
+					$(".debtcard").hide();
+				}
+			});
+
+			$( "#courier" ).on( "click", ".src-courier", function() {
+			$(".courier-row").remove();
+			$(".src-courier").removeClass("chosen");
+
+			 $( this ).addClass( "chosen" );
+			myorder.selected.shipping = JSON.parse($(".src-courier.chosen").val());
+			console.log(myorder.selected.shipping);
+			  	var content2 = `
+					<tr class="data-kosong courier-row">
+                        <td class="col-md-12" align="left">Pengiriman (`+myorder.selected.shipping.description+`)</td>
+                        <td class="col-md-12" align="center"></td>
+                        <td class="col-md-12" align="center"></td>
+                        <td class="col-md-12" align="right">`+myorder.selected.shipping.cost[0].value+`</td>
+                    </tr>
+								
+					`;
+					$('#shopping-table').append(content2);
+			});
 
 
+
+			$( "#province" ).change(function(){
+				id = $(this).val();
+				app.get_data_list("[name=city]",app.data.site_url+"/master/Simplelist/call_city",{province_id:id},{
+				  	display_value:'city_name',
+				  	value:'city_id'
+				});
+			});
+
+
+			$( "#btn-calculate" ).click(function(){
+				var me = this;
+				params = {
+					city:$("[name=city]").val(),					
+					province:$("[name=province]").val(),					
+					distric:$("[name=distric]").val(),					
+				};
+
+			app.requestAjax(app.data.site_url+'/master/simplelist/getcost',params,"POST",function(result){
+				
+				$('#courier').append(content);
+					if ("rajaongkir" in result)
+					{
+						if (result.rajaongkir.results.length == 0)
+						{
+							$('#table-transaction tbody').html(`
+								<tr class="data-kosong">
+		                            <td colspan="11" class="col-md-12" align="center">Data tidak ditemukan</td>
+		                        </tr>
+								`);
+						} 
+						else
+						{
+							var no = parseInt(myorder.start)+1;
+							$(".total-item").text(result.count);
+							console.log(result.rajaongkir.results[0]);
+							$('#courier').html("");
+							result.rajaongkir.results[0].costs.forEach(function(row) {
+
+								
+								
+								var content = `
+								<tr>
+							        <td><input type="radio" name="courier" class="src-courier" value='`+ JSON.stringify(row) +`'></td> <td>`+row.service+`</td>
+							        <td>`+row.description+`</td>
+							        <td>`+row.cost[0].value+`</td>
+							        
+							      </tr>
+								`;
+								$('#courier').append(content);
+								$('#courier').data(row);
+								console.log(row);
+								no++;
+							});
+
+							var content = `
+								
+								`;
+							$('#courier').append(content);
+
+						}
+
+						if('paging' in result)
+						{
+							$('[aria-label="Page navigation"]').html(result.paging);							
+						}
+					}
+				
+			});
+		});
 		},
+
 		listeners: function() {
 			var me = this;
 
@@ -28,29 +144,19 @@ $(document).ready(function() {
 				$('#modal-import-forstok').modal({backdrop:'static'});
 			});
 
-			$('#btn-').on('click', function(event) {
-				event.preventDefault();
-				$('#modal-import-forstok').modal({backdrop:'static'});
-			});
 
-
-
-			$('#modal-import-forstok').delegate('.btn-action-import', 'click', function(event) {
-				me.import();
+			$('.btn-confirm').on('click', function(event) {
+				me.chekcout();
 			});
 
 			$('.f-search').on('keyup', function(event) {
 				me.load_list();
 			});
 
-
 			$('.f-select').on('change', function(event) {
-				me.load_list();
-			});
 
-			$('#add-to-cart').on('click', function(event) {
-				var id = app.data.segment[4];
-				me.add_to_cart(id);
+			   
+				me.load_list();
 			});
 
 			$('.date-from').on('change', function(event) {
@@ -61,11 +167,17 @@ $(document).ready(function() {
 				me.load_list();
 			});
 
+			$('#modal-import-forstok').delegate('.btn-action-import', 'click', function(event) {
+				me.import();
+			});
+
 			$('[aria-label="Page navigation"]').delegate('.pagination a', 'click', function(event) {
 				event.preventDefault();
-				main_forstok.start = $(this).attr('data-ci-pagination-page');
+				myorder.start = $(this).attr('data-ci-pagination-page');
 				me.load_list();
 			});	
+
+
 
 			$('#table-transaction').delegate('.btn-action-workin', 'click', function(event) {
 				event.preventDefault();
@@ -80,7 +192,7 @@ $(document).ready(function() {
 						}
 						else
 						{
-							me.get_detail(data.trx_id);
+							me.get_detail_transaction(data.trx_id);
 							$('#modal-workin').modal({backdrop:'static'});
 							$('#modal-workin').data("trx_id",data.trx_id);
 							me.workin_state(data.trx_id,1,function() {
@@ -94,28 +206,6 @@ $(document).ready(function() {
 				}
 
 			});			
-
-			$('body').bind('beforeunload',function(){
-			   alert("AAA");
-			});
-
-			$(window).on('load',function(){
-				localStorage.removeItem("trx_id");
-				// if (localStorage.getItem("trx_id"))
-				// {
-				// 	me.workin_state(localStorage.getItem("trx_id"),0,function(){
-				// 	});
-				// }			     
-			});
-
-			$('#modal-workin').on('hidden.bs.modal', function () {
-			    var id = $('#modal-workin').data("trx_id");
-			    me.workin_state(id,0,function(){
-			    	$('#modal-workin').data("trx_id","");
-			    	localStorage.removeItem("trx_id");
-			    	me.load_list(true);
-			    });
-			});
 
 			$('#table-transaction').delegate('.btn-action-workin-close', 'click', function(event) {
 				event.preventDefault();
@@ -141,24 +231,52 @@ $(document).ready(function() {
 				me.del_cost($(this).parents("tr"));
 			});
 
-			$('#modal-workin').delegate('.table-cost-type .field-cost', 'change', function(event) {
-				me.change_value_cost($(this));
-			});
-
-
-			$('#modal-workin').delegate('.field-state', 'change', function(event) {
-				me.change_state($(this));
-			});
-			
 			$('#modal-workin').delegate('.table-items-transaction .field-item', 'change', function(event) {				
 				me.change_value_items($(this));								
 			});
 
+			$('#modal-workin').delegate('.table-cost-type .field-cost', 'change', function(event) {
+				me.change_value_cost($(this));
+			});
+
+			$('#modal-workin').delegate('.field-state', 'change', function(event) {
+				swal({
+				  	title: "Are you sure change state ?",					  
+				  	icon: "warning",
+				  	buttons: true,
+				  	buttons: ["Cancel", "Change"],				  	
+				})
+				.then((isChange) => {
+				  if (isChange) {								
+						me.change_state($(this));
+				   }
+				   else
+				   {
+				   		var checked = $(this).prop("checked");
+				   		if(checked)
+				   		{
+				   			$(this).prop("checked",false);
+				   		}
+				   		else
+				   		{
+				   			$(this).prop("checked",true);
+				   		}
+				   }
+				});		
+			});
 
 			$('#modal-workin').delegate('.btn-action-process', 'click', function(event) {
 				me.process_trx();
 			});
 
+			$('#modal-workin').on('hidden.bs.modal', function () {
+			    var id = $('#modal-workin').data("trx_id");
+			    me.workin_state(id,0,function(){
+			    	$('#modal-workin').data("trx_id","");
+			    	localStorage.removeItem("trx_id");
+			    	me.load_list(true);
+			    });
+			});
 
 			$('#modal-workin-close').delegate('.btn-action-close', 'click', function(event) {
 				swal({
@@ -179,19 +297,16 @@ $(document).ready(function() {
 		get_params: function()
 		{
 			var params = {
-				"f_search":$(".f-search").val(),
-				"f_state":$(".f-select").val(),
+				"f_search":$(".f-search").val(),				
 				"f_date_from":$(".date-from").val(),
-				"f_date_to":$(".date-to").val(),
-				"date-from":$(".date-from").val(),
-				"date-to":$(".date-to").val(),
-				"f-select":$(".f-select").val(),
-				m: main_forstok.start,
-				per_page: main_forstok.start
+				"f_date_to":$(".date-to").val(),				
+				"f_type":$(".f-select").val(),
+				m: myorder.start,
+				per_page: myorder.start
 			};
 
 			return params;
-		},	
+		},		
 		import:function()
 		{
 			var me = this;
@@ -209,23 +324,34 @@ $(document).ready(function() {
 				}
 			});
 		},
-		check_workin_state: function(trx_id,callback)
+		chekcout: function(trx_id,callback)
 		{
 			var me = this;
-				params = {
-					id:trx_id					
+				city_text = $("#city option:selected").text();
+
+				province_text = $("#province option:selected").text();
+				distric_text = $("#distric option:selected").text();
+				var params = {
+					id:trx_id,
+					shipping:JSON.stringify(myorder.selected.shipping),
+					city_text:city_text,
+					trx_total:myorder.selected.sum,
+					province_text:province_text,
+					distric_text : distric_text,
+					province: $("#province").val(),
+					city: $("#city").val(),
+					distric: $("#distric").val(),
 				};
 
-			app.requestAjax(app.data.site_url+'/transaction/forstok/app/cek_status_workin',params,"POST",function(result){
-				if (callback)
-				{
-					callback(result);
-				}
+			app.requestAjax(app.data.site_url+'/transaction/app/confirm_order',params,"POST",function(result){
+				
+				window.location = app.data.site_url+'/transaction/app/information_payment/'+result.trx_id;
+				
 			});
 		},
 		workin_state: function(trx_id,state,callback)
 		{
-			$(".btn-action-process").attr("enabled");		
+			$(".btn-action-process").removeAttr('disabled');
 			var me = this;
 				params = {
 					id:trx_id,
@@ -239,12 +365,7 @@ $(document).ready(function() {
 				}
 			});
 		},
-		add_to_cart(id){
-			app.requestAjax(app.data.site_url+'/transaction/app/add_to_cart',{id:id,qty:$("input[name=qty]").val(),variant:$(".variant").val()},"POST",function(result){
-				swal("Information",result.msg,"success");
-			});
-			cart.load_list(true);
-		},
+
 		load_list:function(is_load) {
 			var me = this,
 				title = 'data_list',
@@ -259,20 +380,23 @@ $(document).ready(function() {
 				var is_load = false;
 			}
 
-			app.body_mask();
+		
 			if (me.firstLoad[title] != JSON.stringify(params) || is_load) 
 			{			
 				if (typeof me.firstLoad[title] != "undefined") {
 					me.firstLoad[title] = JSON.stringify(params);
 				}
 
+			app.body_mask();
 				$.ajax({
-					url: app.data.site_url + '/transaction/forstok/app/get',
+					url: app.data.site_url + '/transaction/app/get',
 					type: 'GET',
 					dataType: 'json',
 					data: params,
 				})
 				.done(function(result) {
+
+					app.body_unmask();
 					var content = "";
 					$('#table-transaction tbody').html('');
 					if ("data" in result)
@@ -287,39 +411,55 @@ $(document).ready(function() {
 						} 
 						else
 						{
-							var no = parseInt(main_forstok.start)+1;
+							var no = parseInt(myorder.start)+1;
 							result.data.forEach(function(row) {
-								var state = `<a class="btn btn-sm btn-info btn-pill pl-2 pr-2 btn-action-workin">Work In</a>
-	                                        <a href="#" data-toggle="modal"  class="btn btn-sm btn-danger btn-pill pl-2 pr-2 btn-action-workin-close">Close Transaction</a>`;
+								var trx_type = {
+									auto: 'Forstock',
+									direct: 'Direct',
+									n:'-'
+									},
+									state = `								
+								<a class="btn btn-sm btn-info btn-pill pl-2 pr-2 btn-action-workin">Konfirmasi</a>
+								<a class="btn btn-sm btn-info btn-pill pl-2 pr-2 btn-action-workin">Detail</a>
+								<div class="btn-group">
+				                  <button type="button" class="btn btn-sm btn-pill btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				                      Print
+				                  </button>
+				                  <div class="dropdown-menu  grup-btn-action-close">
+				                      <a class="dropdown-item btn-action-close" flag="out_of_stock" href="`+app.data.site_url +`/cetak/invoice/`+ row.trx_id + `">Invoice</a>
+				                   </div>
+				              </div>
+								`;
 								if (app.ifvalnull(row.trx_state_flag,"") == "close")
 								{
 									state = `<a href="#" class="btn btn-sm btn-sucess btn-pill pl-2 pr-2">Transaksi Closed (by `+ app.ifvalnull(row.user_username,"system") +`)</a>`;
 								}
 								else if (app.ifvalnull(row.trx_state_id,"") == "completed")
 								{
-									state = `<a href="#" class="btn btn-sm btn-sucess btn-pill pl-2 pr-2"><span class="text-color-dark">Transaksi completed</span></a>`;
+									state = `<a class="btn btn-sm btn-info btn-pill pl-2 pr-2 btn-action-workin">Detail</a>`;
 								}
 								else
 								{
 									if (app.ifvalnull(row.is_workin,"") == 1)
 									{
-										state = `<span class="text-color-dark">Transaksi dalam proses workin</span>`;
+										state = `<span class="text-color-dark">Transaksi sedang diproses</span>`;
 									}
 								}
-
 								var content = `
 									<tr>
-	                                    <td>` + no + `</td>
-	                                    <td width="400">
-	                                        ` + row.mos_name + `
-	                                    </td>
-	                                    <td>
-	                                        ` + row.trx_id + `
-	                                    </td>
-	                                    <td>
+	                                     <td>
 	                                        ` + row.trx_date + `
 	                                    </td>
 	                                    <td>
+	                                      ` + row.trx_id + ` / ` + row.trx_invoice + `
+	                                    </td>
+	                                    
+	                                   
+	                                   
+	                                    <td>
+	                                        ` + row.trx_state_id + `
+	                                    </td>
+	                                     <td>
 	                                        ` + state + `
 	                                    </td>
 	                                </tr>
@@ -356,27 +496,30 @@ $(document).ready(function() {
 				},500);
 			}
 		},
-		get_detail: function(id) {
+		
+		get_detail_transaction: function(id) {
 			var me = this,
 				modal = $('#modal-workin');
-			me.data_variant = [];
-			me.data_cost = [];
 
-			app.requestAjax(app.data.site_url+"/master/product/get_by_id/"+id,{id:id},"POST",function(result){
+			me.data_items = [];
+			me.data_cost = [];
+		
+			app.requestAjax(app.data.site_url+"/transaction/forstok/app/get_detail_transaction",{id:id},"POST",function(result){
 				if (result)
 				{
-					var form = modal.find('.ps-product__thumbnail');
-						app.clear_form('#modal-workin .ps-product__thumbnail');
-						$(".slick-slide").append(`<img src="`+app.data.base_url+`/client/uploads/product/`+result.product.doc_name+`" alt="">`);
-						app.set_form_value($('.ps-product--detail'),result.product);
-						me.data_variant = result.variant;
-						me.generated_data_variant();
-
-					$(".variant").select2({
-					  data: result.variant.data
-					});
-
-					
+					var form = modal.find('.form-detail-transaction');
+						app.clear_form('#modal-workin .form-detail-transaction');
+					if ('data' in result)
+					{						
+						app.set_form_value($('.form-detail-transaction'),result.data);
+						$("[name=trx_courier]").val(result.data.trx_courier).trigger('change.select2');
+						me.data_items = result.data_items;
+						me.data_cost = app.ifvalnull(result.data_cost,[]);
+						me.data_state = app.ifvalnull(result.data_state,[]);
+						me.generated_data_items();
+						me.generated_cost();
+						me.mapping_state();
+					}
 
 				}
 				else
@@ -389,26 +532,68 @@ $(document).ready(function() {
 				},500);
 			});
 		},
-		generated_data_variant: function()
+		generated_data_items: function()
 		{
 			var me = this,
-				table = $(".ps-product__size");				
-				table.find(".ps-product__size").html("");
+				modal = $('#modal-workin'),
+				table = modal.find(".table-items-transaction");				
+				table.find("tbody").html("");
 			var no = 1;
-			console.log(me.data_variant);
-			me.data_variant.data.forEach(function(row,idx){
+			me.data_items.forEach(function(row,idx){
 				row.id_gen = "id_gen_item-" + (new Date()).getTime();
 				var item_isflashsale = "";
-				/*if (row.item_isflashsale == 1)
+				if (row.item_isflashsale == 1)
 				{
 					item_isflashsale = "checked";
 				}
-				*/console.log(row);
 				var content = `
-					<li><a href="#"><span>`+row.varian_value+`</span></a></li>
+					<tr>
+                      	<td align="center" class="no" style="width: 50px;">` + no + `</td>
+                      	<td class="mb-4">                          
+                          <select flag="prod_name" ref-filed='[{"name":"prod_name","from":"prod_name"}]' class="form-control mb-12 input-sm field-item prod-id-`+no+`" old_name="prod_id" name="prod_id_new"  value="`+ row.prod_id +`" style="width:100%;">
+                            </select>
+                      	</td>
+                      	<td align="center" class="mb-2">
+                           ` + row.item_qty + `
+                      	</td>
+                      	<td align="right" class="mb-3">
+                           ` + row.prod_price + `
+                          </td>
+                      	<td align="right" class="mb-3">
+                          ` + row.sub_total + `
+                      	</td>
+                      	<td align="center" style="width: 90px;">                      		
+                      		<input type="checkbox" name="item_isflashsale" ` + item_isflashsale + ` class="check-green check-flashsale field-item">                                                       		
+                      	</td>
+                  	</tr>
 				`;
-				$('.ps-product__size').append(content);				
-				//table.find('.ps-product__size:last').data(row);							
+				me.data_items[idx].no = no;
+				table.find('tbody').append(content);				
+				table.find('tbody tr:last').data(row);								
+				$('.prod-id-'+no).select2({			
+					placeholder:'',
+					dropdownParent: "#modal-workin",
+					ajax: {
+					    url: app.data.site_url + '/inventory/purchase/search_product',
+					    dataType: 'json',
+					    type:'GET',
+					    data: function (params) {
+					      var query = {
+					        f_search: params.term,		
+					        pid:row.prod_id
+					      }				      
+					      return query;
+					    },
+					    processResults: function (data) {				      
+					      return {
+					        results: data.data
+					      };
+					    }
+					  }
+				});						
+				var $newOption = $("<option></option>").val(row.prod_id).text(row.prod_name);
+				$('.prod-id-'+no).append($newOption).trigger('change');
+				$('.prod-id-'+no).select2('data', {id: row.prod_id, text: row.prod_name});
 				no++;
 			});
 
@@ -473,8 +658,8 @@ $(document).ready(function() {
 								{							
 									swal("Information","Stok barang "+ me.data_items[index_upd]["prod_name"] +" kosong","info");
 									me.data_items[index_upd]["stock_empty"] = true;								
-									if (row.length > 0){
-										$(".btn-action-process").addClass("disabled");										
+									if (row.length > 0){					
+										$(".btn-action-process").attr("disabled","disabled");
 										row.addClass('bg-warning-light');
 										row.data("toggle","tooltip");
 										row.attr("title","Stok kosong!");										
@@ -485,7 +670,8 @@ $(document).ready(function() {
 								else
 								{									
 									me.data_items[index_upd]["stock_empty"] = false;	
-									if (row.length > 0){																				
+									if (row.length > 0){			
+										$(".btn-action-process").removeAttr('disabled');																	
 										row.removeClass('bg-warning-light');
 										row.data("toggle","");
 										row.attr("title","");										
@@ -509,7 +695,6 @@ $(document).ready(function() {
 						me.data_items[index_upd][name_field] = value;					
 					}
 				}
-
 			}
 			catch(e)	
 			{
@@ -532,43 +717,36 @@ $(document).ready(function() {
 		generated_cost:function(is_load)
 		{
 			var me = this,
-				table = $(".table-cost-type");				
+				modal = $('#modal-workin'),
+				table = modal.find(".table-cost-type");				
 				tbody = table.find("tbody"),
 				no = 1;
 				ship = ['','shipping','packing'];
 			tbody.html("");
-			try
-			{
-				me.data_cost.forEach(function(row){
-					var content = `
-						<tr>
-							<td>` + no + `</td>
-			                <td>		                      
-		                      <select class="form-control field-cost js-example-basic-single trx_cost_type" name="trx_cost_type" style="width: 350px;" value="`+ app.ifvalnull(row.trx_cost_type,"") +`">
-	                      </select>
-			                </td>
-			                <td>
-			                    <input type="text" class="form-control field-cost item-cost text-right" name='trx_cost_price' value="` + app.ifvalnull(row.trx_cost_price,"") + `">
-			                </td>
-			                <td>
-			                  	<button type="button" class="btn btn-outline-danger btn-delete-cost-type"><i class="fa fa-trash"></i></button>
-			                </td>
-		                </tr>
-					`;
-					no++;
-					tbody.append(content);
-					table.find("tbody tr:last").data(row);
+			me.data_cost.forEach(function(row){
+				var content = `
+					<tr>
+						<td>` + no + `</td>
+		                <td>
+	                      <input type="text" class="form-control field-cost js-example-basic-single trx_cost_type" name="trx_cost_type" readonly style="width: 350px;" value="`+ app.ifvalnull(row.trx_cost_type,"") +`">
+		                </td>
+		                <td>
+		                    <input type="text" class="form-control field-cost item-cost text-right" name='trx_cost_price' value="` + app.ifvalnull(row.trx_cost_price,"") + `">
+		                </td>
+		                <td>
+		                  	<button type="button" class="btn btn-outline-danger btn-delete-cost-type"><i class="fa fa-trash"></i></button>
+		                </td>
+	                </tr>
+				`;
+				no++;
+				tbody.append(content);
+				table.find("tbody tr:last").data(row);
 
-				});			
-				app.get_data_list(".trx_cost_type",app.data.site_url+"/master/simplelist/cost_type",{},{
-				  	display_value:'text',
-				  	value:'id'
-				});
-			}
-			catch(e)
-			{
-				
-			}
+			});			
+			// app.get_data_list(".trx_cost_type",app.data.site_url+"/master/simplelist/cost_type",{},{
+			//   	display_value:'text',
+			//   	value:'id'
+			// });
 		},
 		change_value_cost:function(cmp)
 		{
@@ -639,7 +817,8 @@ $(document).ready(function() {
 		mapping_state: function()
 		{
 			var me = this,
-				field_cost = $(".list-state-trx"),
+				modal = $('#modal-workin'),
+				field_cost = modal.find(".list-state-trx"),
 				list_field_state  = field_cost.find(".field-state"),
 				index_state = -1;
 
@@ -693,15 +872,10 @@ $(document).ready(function() {
 				{					
 					data.push({
 						name:cmp.prop("name"),
-						order:cmp.attr("order"),
 						value:1
 					});
 				}
 			}
-
-			data.sort(function(a,b){
-				return parseInt(a.order) > parseInt(b.order);
-			});
 
 			return data;
 		},
@@ -709,14 +883,12 @@ $(document).ready(function() {
 		{
 			var me = this,
 				modal = $('#modal-workin'),
-				form = modal.find('.ps-product__thumbnail');
+				form = modal.find('.form-detail-transaction');
 				formData = new FormData(form[0]);
-
 
 			app.body_mask();
 			if (form.valid())
 			{
-
 				var has_stokc_empty = me.data_items.findIndex(function(row) {
 					return app.ifvalnull(row.stock_empty,false) == true;
 				});
@@ -743,7 +915,6 @@ $(document).ready(function() {
 							app.body_unmask();
 						});
 					},500);
-
 				}
 				else
 				{
@@ -818,8 +989,6 @@ $(document).ready(function() {
 			{
 
 			}
-
-
 		},
 		selected: {},
 		id: '',
@@ -834,5 +1003,5 @@ $(document).ready(function() {
 		isLoad: false,
 	};
 
-	app.loader(main_forstok);
+	app.loader(myorder);
 });

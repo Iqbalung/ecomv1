@@ -23,7 +23,14 @@ class M_authentication extends CI_Model{
 	{
 		
 		$params['user_password'] = md5($params['user_password']);
-		$res = $this->db->insert("m_user_pelanggan",$params);
+
+		$this->db->where("email",$params['email']);
+		$cek = $this->db->get('m_user_pelanggan');
+		if($cek->num_rows()<1){
+			$res = $this->db->insert("m_user_pelanggan",$params);
+		}else{
+			$res = false;
+		}
 		return $res;
 	}
 

@@ -30,6 +30,32 @@ class App extends MY_Controller {
 		$this->template->display('inc/transaction/myorder', $data);
 	}
 
+	public function get()
+	{
+		$params =  array(
+			"f_search" => ifunsetempty($_GET,"f_search",''),
+			"f_type" => ifunsetempty($_GET,"f_type",''),
+			"f_date_from" => convert_format_date(ifunsetempty($_GET,"f_date_from","01/".date('m/Y')),array("is_time"=>false)),
+			"f_date_to" => convert_format_date(ifunsetempty($_GET,"f_date_to",date("d/m/Y")),array("is_time"=>false)),
+			"start" => ifunsetempty($_GET,"m",0),
+			"limit" => ifunsetempty($_GET,"limit",$this->config->item("pagesize"))
+		);
+
+		$config_pagging = array(
+			"per_page" => $this->config->item("pagesize")
+		);
+
+		$data = $this->M_transaction_forstok->get_trx_customer($params,true);
+
+		
+		
+		$data['paging'] = $this->set_pagination($data, site_url('/transaction/app/get'),$config_pagging);
+
+		$out = $this->_respon($data,$data,"get");
+
+		echo json_encode($out);			
+	}
+
 	public function add_to_cart(){
 		$params = array(
 			"prod_id" => $this->input->post('id'),
@@ -64,8 +90,13 @@ class App extends MY_Controller {
 		$data = $this->cart->contents();
 		
 		$arr = array();
-		foreach ($data as $key => $value) {
-			$arr['data'][] = $value;
+
+		if(count($data)>0){
+			foreach ($data as $key => $value) {
+				$arr['data'][] = $value;
+			}
+		}else{
+			$arr['data'] = array();
 		}
 		$arr['count'] = count($arr['data']);
 		$out = $this->_respon($arr,$arr,"get");
