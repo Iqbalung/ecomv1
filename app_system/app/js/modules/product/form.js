@@ -168,9 +168,15 @@ $(document).ready(function() {
 				try
 				{
 					if (result.success)
-					{
-						swal("Information",result.msg,"success");
+					{						
 						me.reset_form();
+						swal({
+				            title: "Information",
+				            text: result.msg,
+				            type: "success"
+				        }).then(function() {
+				            window.location.reload();
+				        });						
 					}
 					else
 					{
