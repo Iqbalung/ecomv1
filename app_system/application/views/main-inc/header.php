@@ -390,6 +390,10 @@
                 <i class=" icon-handbag"></i>
                 <span class="nav-link-text"> Region</span>
             </a>
+            <a class="nav-link " href="<?php echo site_url() ?>/master/costumer" >
+                <i class=" icon-handbag"></i>
+                <span class="nav-link-text"> Costumer</span>
+            </a>
             <a class="nav-link " href="<?php echo site_url() ?>/master/user" >
                 <i class=" icon-handbag"></i>
                 <span class="nav-link-text"> User</span>
