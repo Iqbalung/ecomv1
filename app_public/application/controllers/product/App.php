@@ -19,6 +19,11 @@ class App extends MY_Controller {
 		$this->template->display('inc/product/main', $data);
 	}
 
+	public function push_state(){
+		$params = $this->input->post();
+		print_r($params);		
+	}
+
 	public function detail()
 	{
 		$data = array(
