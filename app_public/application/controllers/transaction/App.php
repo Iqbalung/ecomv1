@@ -133,6 +133,11 @@ class App extends MY_Controller {
 		$this->template->display('inc/transaction/payment_information', $data);
 	}
 
+	public function push_state(){
+		$params = $this->input->post();
+		print_r($params);		
+	}
+
 	public function get_trx_total(){
 		$id = $this->input->get();
 		$idx = $id['id']; 
