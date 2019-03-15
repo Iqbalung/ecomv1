@@ -333,6 +333,10 @@ $(document).ready(function() {
 				distric_text = $("#distric option:selected").text();
 				var params = {
 					id:trx_id,
+					nama:$("input[name=nama]").val(),
+					telp:$("input[name=no_telp]").val(),
+					alamat:$("input[name=alamat]").val(),
+					email:$("input[name=email]").val(),
 					shipping:JSON.stringify(cart.selected.shipping),
 					city_text:city_text,
 					trx_total:cart.selected.sum,
@@ -342,7 +346,7 @@ $(document).ready(function() {
 					city: $("#city").val(),
 					distric: $("#distric").val(),
 				};
-
+			
 			app.requestAjax(app.data.site_url+'/transaction/app/confirm_order',params,"POST",function(result){
 				
 				window.location = app.data.site_url+'/transaction/app/information_payment/'+result.trx_id;

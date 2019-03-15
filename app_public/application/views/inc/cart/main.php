@@ -13,8 +13,15 @@
 	<div class="total row">
 	    <div class="col-md-6">
 	    <a class="ps-btn" href="<?php echo base_url('index.php/transaction/app/checkout_proses') ?>">Checkout Proses</a>
+	   <?php  if($this->session->userdata('user')==""){ ?>
+		
+	    <a class="ps-btn btn-info" href="<?php echo base_url('index.php/transaction/app/checkout_proses_nonuser') ?>">Checkout Without Login</a>
+	    
+	<?php } ?>
 	    </div>
 	</div>
+	
+	
 
 								
 

@@ -245,7 +245,7 @@
         <a class="navbar-brand" href="#" data-jq-dropdown="#jq-dropdown-1">
             <img class="pr-3 float-left" src="assets/img/logo-icon.png" srcset="assets/img/logo-icon@2x.png 2x"  alt=""/>
             <div class="float-left">
-                <div><span style="font-size: 10px;">PT. Anya Living International<span> <i class="fa fa-caret-down pl-2"></i></div>
+                <div><span style="font-size: 10px;"><span> <i class="fa fa-caret-down pl-2"></i></div>
                 <span class="page-direction f12 weight300">
                     <span><?php if($data_app['user']->user_usergroup==1){echo "Administrator / CEO";} ?>
                         <?php if($data_app['user']->user_usergroup==2){echo "Admin";} ?>
@@ -324,7 +324,7 @@
                 <li> <a href="<?php echo base_url() ?>admin.php/inventory/stockin">Stok In</a></li>
                 <li> <a href="transfer_stok.html">Transfer Stok</a></li>
                 <li> <a href="<?php echo base_url() ?>admin.php/inventory/app/stockopname">Stock Opname</a></li>
-                <li> <a href="<?php echo base_url() ?>admin.php/inventory/app">Purchase</a></li>
+                <li> <a href="<?php echo base_url() ?>admin.php/inventory/app">Purchase Material</a></li>
             </ul>
         </li>
         <li style="font-size:14px;padding-left:17px;font-weight:bold;padding-top:10px;padding-bottom:5px;" > Bisnis </li>
@@ -389,6 +389,10 @@
             <a class="nav-link " href="<?php echo site_url() ?>/master/region" >
                 <i class=" icon-handbag"></i>
                 <span class="nav-link-text"> Region</span>
+            </a>
+            <a class="nav-link " href="<?php echo site_url() ?>/master/material" >
+                <i class=" icon-handbag"></i>
+                <span class="nav-link-text"> Material</span>
             </a>
             <a class="nav-link " href="<?php echo site_url() ?>/master/costumer" >
                 <i class=" icon-handbag"></i>

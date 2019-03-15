@@ -117,6 +117,14 @@ class App extends MY_Controller {
 		$this->template->display('inc/transaction/checkout', $data);
 	}
 
+	public function checkout_proses_nonuser(){
+		$data = array(
+			'data_app' => $this->get_data_app()
+		);
+		
+		$this->template->display('inc/transaction/checkout_nonuser', $data);
+	}
+
 	public function information_payment(){
 		$data = array(
 			'data_app' => $this->get_data_app()
@@ -162,19 +170,16 @@ class App extends MY_Controller {
 
         $this->email->send();
 
-        
-
-       
-
 	}
 
 	public function confirm_order(){
 		$params = $this->input->post();
-		
+			
 		$data = $this->cart->contents();
 		$trx['trx_id'] = $this->get_uuid();
 		$arr = array();
 		$trx['trx_total'] = 0;
+
 		foreach ($data as $key => $value) {
 			$arr[] = $value;
 
@@ -191,12 +196,15 @@ class App extends MY_Controller {
 			$trx['trx_total'] = $trx['trx_total']+$value['subtotal'];
 			$this->db->insert('trx_item',$params_product);
 		}
+
+
 		$params['shipping'] = json_decode($params['shipping'],true);
 		$params_cost['trx_cost_id'] = $this->get_uuid();
 		$params_cost['trx_id'] =  $trx['trx_id'];
 		$params_cost['trx_cost_estimation_price'] =  $params['shipping']['cost'][0]['value'];
 		$params_cost['trx_cost_type'] =  "shipping";
 		$this->db->insert('trx_cost',$params_cost);
+
 
 
 		$trx['trx_service_courier'] = $params['shipping']['description'];
@@ -211,15 +219,26 @@ class App extends MY_Controller {
 		$trx['trx_payment_method'] = 'transfer';
 		$trx['trx_state_id'] = 'pending';
 		$trx['trx_mos'] = "mos-Any-625c33b0-9b0f-11e8-adfd-0a0027000011";
-		$trx['trx_customer'] = $this->session->userdata('user')['user_username'];
-		$trx['trx_customer_email'] = 'iqbalung@gmail.com';
-		$trx['trx_shipping_address_2'] = $this->session->userdata('user')['alamat'];
-		$trx['trx_shipping_phone'] = '0857474818393';
-		$trx['user_userid'] = $this->session->userdata('user')['user_userid'];
+		$trx['trx_customer'] = ifunsetempty($_POST,"nama",$this->session->userdata('user')['nama']);
+		$trx['trx_customer_email'] = ifunsetempty($_POST,"email",$this->session->userdata('user')['email']);
+		$trx['trx_shipping_address_2'] = ifunsetempty($_POST,"alamat",$this->session->userdata('user')['alamat']);
+		$trx['trx_shipping_phone'] = ifunsetempty($_POST,"no_telp",$this->session->userdata('user')['no_telp']);
+		$trx['user_userid'] = ifunsetempty($_POST,"no_telp",$this->session->userdata('user')['user_userid']);
+		
 		unset($params['shipping']);
+		
 		$res = $this->db->insert('trx',$trx);
+
 		$out = $this->_respon($res,false,"update");
 		$out['trx_id'] = $trx['trx_id'];
+		$curlHandle = curl_init();
+		$url="http://45.32.118.255/sms/smsmasking.php?username=iqbalung&key=567d6acb73f283a8089820fabbbf61f7&number=".$trx['trx_shipping_phone']."&message=transaksi%20anda%20berhasil%20silahkan%20segera%20melakukan%20pembayaran%20";
+		curl_setopt($curlHandle, CURLOPT_URL,$url);
+		curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($curlHandle, CURLOPT_TIMEOUT,120);
+		$hasil = curl_exec($curlHandle);
+		curl_close($curlHandle);	
 		echo json_encode($out);
 	}
 

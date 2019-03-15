@@ -128,7 +128,7 @@ function do_register() {
 		setCookie('password', '', 4);
 		setCookie('ingat', false, 4);
 	}
-	setTimeout(function() {
+	
 		var params = $("#register").serializeArray(),
 			usr = "dev",
 			pwd = "dev123";
@@ -142,22 +142,21 @@ function do_register() {
 			    xhr.setRequestHeader("X-API-KEY", "f6eed6446c15978f9e4021b99b928851");
 			},
 			success : function (result) {
-
-				if (result.success) {
-					alert();								
-					window.location.href = "http://stackoverflow.com";															
-				} else {
-					$('#pesan').addClass('l_gagal');
-					$('#pesan').html(result.msg);
-					$('.navbar-nav > .user-menu > .dropdown-menu > li.user-header').css('height', '295px');
-					
-					if (result.captcha) {
-						$(".captcha").show();
-						$(".img_captcha").html(result.img);
-					} else {
-						$(".captcha").hide();
-						$(".img_captcha").html('');
-					}
+				result  = JSON.parse(result);
+				console.log(result);
+				if (result.success) {								
+					$("#register")[0].reset();
+					swal({
+						title: "Informasi!",
+						text: "Berhasil Mendaftar silahkan login",							
+						icon: "success",
+					});														
+				}else{
+					swal({
+						title: "Informasi!",
+						text: "Gagal Mendaftar",							
+						icon: "warning",
+					});	
 				}
 				
 			},
@@ -166,7 +165,7 @@ function do_register() {
 				$('#pesan').html('Maaf, ada kesalahan dalam pengiriman data.');
 			}
 		})
-	}, 400);	
+		
 };
 function initToken(token) {
 	var me = this,

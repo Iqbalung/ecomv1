@@ -223,7 +223,7 @@ class Simplelist extends MY_Controller {
 		  CURLOPT_TIMEOUT => 30,
 		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
 		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => "origin=501&originType=city&destination=".$params['distric']."&destinationType=subdistrict&weight=1700&courier=jet",
+		  CURLOPT_POSTFIELDS => "origin=457&originType=city&destination=".$params['distric']."&destinationType=subdistrict&weight=1000&courier=sicepat",
 		  CURLOPT_HTTPHEADER => array(
 		    "content-type: application/x-www-form-urlencoded",
 		    "key: $api_key"
