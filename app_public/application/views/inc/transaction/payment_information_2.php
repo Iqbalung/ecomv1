@@ -34,7 +34,7 @@
 <p><span style="font-size:small;font-family:verdana,geneva">Kepada Yth. <strong>Sdr/i. IQBAL CAHYO GUMILAR</strong>,</span></p>
 <p style="color:#000000;font-family:Verdana,Arial,Helvetica,sans-serif;font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:normal;text-align:start;text-indent:0px;text-transform:none;white-space:normal;word-spacing:0px"><span style="font-size:small;font-family:verdana,geneva"><br>Terima kasih atas kepercayaan Anda .</span></p>
 
-<span style="font-size:small;font-family:verdana,geneva"><br>Kami informasikan bahwa untuk invoice yang dibuat pada 18/02/2018 akan jatuh tempo pada 02/03/2018.</span><br><br><span style="font-size:small;font-family:verdana,geneva"><span style="text-decoration:underline"><strong>DETAIL ORDER</strong></span><br></span>
+<span style="font-size:small;font-family:verdana,geneva"><br>Kami informasikan bahwa Transaksi anda sudah dibayar</span><br><br><span style="font-size:small;font-family:verdana,geneva"><span style="text-decoration:underline"><strong>DETAIL ORDER</strong></span><br></span>
 <p style="margin-left:30px">
 
   <span style="font-size:small;font-family:verdana,geneva">Metode pembayaran Anda : Bank Transfer<br>Invoice:</span>
@@ -72,9 +72,4 @@ CARA PEMBAYARAN BANK DAN REKENING TUJUAN</span><br></strong></span><br><span cla
 
 
 </div>
-<script type="text/javascript">
-  setTimeout(function(){
-    location = ''
-  },60000)
-</script>
 <script type="text/javascript" src="<?php echo config_item('url_app') ?>js/modules/transaction/payment_information.js"></script>
