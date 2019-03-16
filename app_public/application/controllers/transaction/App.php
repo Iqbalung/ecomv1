@@ -146,16 +146,20 @@ class App extends MY_Controller {
 			left join trx_cost on trx.trx_id = trx_cost.trx_id
 			where trx.trx_id = ?",$id['id'])->row_array();
 		$res['total_dibayar'] = $res['total']+$res['kode_unik'];
-		echo json_encode($res);
 		$unik = $res['kode_unik'];
-		$upd = $this->db->query("UPDATE trx set trx_code = '$unik' where trx_id = ?",$id['id']);
+		try {
+			$upd = $this->db->query("UPDATE trx set trx_code = '$unik' where trx_id = ?",$id['id']);
+		} catch (Exception $e) {
+			
+		}
+		echo json_encode($res);
 		$this->load->library('email');
 		$config['protocol']    = 'smtp';
-        $config['smtp_host']    = 'ssl://smtp.gmail.com';
+        $config['smtp_host']    = 'premium66.web-hosting.com';
         $config['smtp_port']    = '465';
         $config['smtp_timeout'] = '7';
-        $config['smtp_user']    = 'iqbalung@gmail.com';
-        $config['smtp_pass']    = 'anispangesti031295';
+        $config['smtp_user']    = '	_mainaccount@biyoz.com';
+        $config['smtp_pass']    = 't3Zy407rH7AS';
         $config['charset']    = 'utf-8';
         $config['newline']    = "\r\n";
         $config['mailtype'] = 'html'; // or html
@@ -165,12 +169,19 @@ class App extends MY_Controller {
 
         $this->email->initialize($config);
 
-        $this->email->from('iqbalung@gmail.com', 'myname');
+        $this->email->from('_mainaccount@biyoz.com', 'myname');
         $this->email->to('iqbalung@gmail.com'); 
 
         $this->email->subject('Email Test');
         $data['data'] = $res;
-        $msg =  $this->load->view('inc/transaction/payment_information2',$data,true);
+        $state = $this->db->query("
+			SELECT trx_state_id FROM trx
+			where trx_id = ?",$id['id'])->row_array();
+        if($state['trx_state_id']!="pending"){
+        	$msg =  $this->load->view('inc/transaction/payment_information',$data,true);
+        }else{
+        	$msg =  $this->load->view('inc/transaction/payment_information2',$data,true);
+        }
         $this->email->message($msg);  
 
         $this->email->send();

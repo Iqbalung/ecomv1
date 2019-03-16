@@ -20,8 +20,36 @@ class App extends MY_Controller {
 	}
 
 	public function push_state(){
-		$params = $this->input->post();
-		print_r($params);		
+		$notifications = json_decode(file_get_contents('php://input'), true);
+		if(!is_array($notifications)) {
+		    $notifications = json_decode( $notifications );
+		}
+
+
+		if( count($notifications) > 0 ) {
+		    foreach( $notifications as $value) {
+		    	
+		    	if(is_array($value)){
+		    		print_r($value);
+		    	}else{
+		    		$value = (array) $value;
+		    	}
+		     	$res = $this->db->query("UPDATE trx set trx_state_id = 'completed' where trx_code = '".$value['balance']."' and trx_state_id = 'pending'");
+		     	$trx = $this->db->query("Select * from trx where trx_code = '".$value['balance']."' and trx_state_id = 'completed' limit 1")->row_array();
+		     	
+		     	$curlHandle = curl_init();
+				 $url="https://sms255.xyz/sms/smsreguler.php?username=iqbalung&key=567d6acb73f283a8089820fabbbf61f7&number=".$trx['trx_shipping_phone']."&message=transaksi%20anda%20berhasil%20TRX%20'".$trx['trx_id']."'";
+				 curl_setopt($curlHandle, CURLOPT_URL,$url);
+				 curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+				 curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+				 curl_setopt($curlHandle, CURLOPT_TIMEOUT,120);
+				 $hasil = curl_exec($curlHandle);
+				 curl_close($curlHandle);	
+		    }
+		}
+
+		echo json_encode($res);
+
 	}
 
 	public function detail()
