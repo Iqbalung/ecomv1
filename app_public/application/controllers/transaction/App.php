@@ -175,8 +175,8 @@ class App extends MY_Controller {
                   'Name' => 'Customer',
                 ),
               ),
-              'Subject' => 'Verification registration Mile',
-              'TextPart' => 'Dear passenger 1, welcome to Mailjet! May the delivery force be with you!',
+              'Subject' => 'Confirmation Order',
+              'TextPart' => 'Confirmation Order',
               'HTMLPart' => '
               
                     <table border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #f6f6f6;">
@@ -208,7 +208,7 @@ class App extends MY_Controller {
                     padding: 12px 25px;
                     text-transform: capitalize;
                     border-color: #f9f9f9;width: 100%;">
-                <br>Welcome Milers</a>
+                <br>Silahkan Lakukan Pembayaran</a>
                             <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-radius: 3px;">
 
                               <!-- START MAIN CONTENT AREA -->
@@ -220,8 +220,8 @@ class App extends MY_Controller {
 
                 <img src="https://mile.app/f8f8bd322511bd24ace7e8707c6263e8.png" class="hero-image" style="width:300px;text-align:center;margin-left:20%">
                                         
-                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 1px;text-align:center;margin-top:20px;">Thanks for joining <b>Mile</b>.</p><br>
-                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 25px;text-align:center;">To Activate your account please click on the button below</p>
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 1px;text-align:center;margin-top:20px;">Terima kasih atas belanja adna<b>Mile</b>.</p><br>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 25px;text-align:center;">To Total yang harus anda bayar adalah sebesar <b>'.$unik.'</b></p>
                                         <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
                                           <tbody>
                                             <tr>
@@ -259,7 +259,7 @@ class App extends MY_Controller {
                                 </tr>
                                 <tr>
                                   <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
-                                   <a href="http://paket.id" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">PT. Paket Informasi Digital</a>.
+                                  
                                   </td>
                                 </tr>
                               </table>
