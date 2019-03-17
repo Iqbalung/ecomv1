@@ -16,6 +16,7 @@ class M_product extends CI_Model{
 			$this->db->like("prod_name",$args["f_search"]);
 		}
 		$db2 = clone $this->db;
+		//$this->db->select("a.*, replace(lower(a.prod_name),'','-') as slug")
 		$data = $this->db->get('product a', $limit, $start)->result_array();
 		$count = $db2->get('product a')->num_rows();
 

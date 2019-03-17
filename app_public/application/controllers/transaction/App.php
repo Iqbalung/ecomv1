@@ -58,9 +58,9 @@ class App extends MY_Controller {
 
 	public function add_to_cart(){
 		$params = array(
-			"prod_id" => $this->input->post('id'),
+			"prod_name" => $this->input->post('id'),
 		);
-		$res = $this->M_product->get_by($params)->row_array();
+		$res = $this->M_product->get_by_slug($params)->row_array();
 
 		$data = array( 
 			array(

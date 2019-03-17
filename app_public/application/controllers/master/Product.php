@@ -72,6 +72,19 @@ class Product extends MY_Controller {
 		echo json_encode($out);
 	}
 
+	public function get_by_slug($id)
+	{
+		$params = array(
+			"prod_name" => $id,
+		);
+		$res['product'] = $this->M_product->get_by_slug($params)->row_array();
+		$params['prod_id'] = $res['product']['prod_id'];
+		$res['variant'] = $this->M_product->get_variant($params);
+		$out = $this->_respon($res,$res,"get");
+
+		echo json_encode($out);
+	}
+
 	public function save()
 	{
 		$res = false;
