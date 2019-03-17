@@ -15,7 +15,7 @@ class M_product extends CI_Model{
 			$this->db->like("prod_name",$args["f_search"]);
 		}
 		$db2 = clone $this->db;
-		$data = $this->db->query('select * from product inner join (select * from document ORDER BY sort asc limit 1 ) as d on product.prod_id = d.doc_parentid', $limit, $start)->result_array();
+		$data = $this->db->query("select *, replace(lower(product.prod_name),' ','-') as slug from product inner join (select * from document ORDER BY sort asc limit 1 ) as d on product.prod_id = d.doc_parentid", $limit, $start)->result_array();
 		$count = $db2->get('product a')->num_rows();
 
 		return array('data' => $data, 'count' => $count);		
@@ -36,6 +36,27 @@ class M_product extends CI_Model{
 		if (is_array($args) && count($args) > 0)
 		{
 			$this->db->where($args);
+		}	
+		else
+		{
+			$this->db->where("1 = 2");
+		}	
+
+		$this->db->select("*,FORMAT(prod_price, 0) AS prod_price_text");
+		$this->db->join('m_category', 'product.category_id = m_category.category_id', 'left');
+		$this->db->join('(select * from document ORDER BY sort asc limit 1 ) as d', 'product.prod_id = d.doc_parentid', 'left');
+		$res = $this->db->get('product');
+
+		return $res;		
+	}
+
+	function get_by_slug($args =  array())
+	{	
+
+		
+		if (is_array($args) && count($args) > 0)
+		{
+			$this->db->where("replace(lower(product.prod_name),' ','-') = '".$args['prod_name']."'");
 		}	
 		else
 		{

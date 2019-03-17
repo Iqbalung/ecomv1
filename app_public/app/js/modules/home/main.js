@@ -295,7 +295,7 @@ $(document).ready(function() {
                                 <div class="ps-product--1" data-mh="product-item">
                                     <div class="ps-product__thumbnail">
                                         <div class="ps-badge ps-badge--hot"><span>hot</span></div>
-                                        <div class="ps-badge ps-badge--sale-off ps-badge--2nd"><span>`+row.prod_discount+`</span></div><img src="`+app.data.base_url+`/client/uploads/product/`+row.doc_name+`" alt=""><a class="ps-btn ps-product__shopping" href="`+app.data.site_url+`/product/app/detail/`+row.prod_id+`"><i class="exist-minicart"></i>Add to cart</a>
+                                        <div class="ps-badge ps-badge--sale-off ps-badge--2nd"><span>`+row.prod_discount+`</span></div><img src="`+app.data.base_url+`/client/uploads/product/`+row.doc_name+`" alt=""><a class="ps-btn ps-product__shopping" href="`+app.data.site_url+`/product/app/detail/`+row.slug+`"><i class="exist-minicart"></i>Add to cart</a>
                                         <ul class="ps-product__actions">
                                             <li><a href="#" data-label="Favorite"><i class="exist-heart"></i></a></li>
                                             <li><a href="#" data-label="Compare"><i class="exist-compare"></i></a></li>

@@ -151,19 +151,7 @@
                                 <li><a href="homepage-12.html">Homepage #12</a></li>
                             </ul> -->
                         </li>
-                        <li><a href="<?php echo site_url() ?>/product">Shop<?php echo $this->uri->segment(2); ?></a></li>
-                        <li><a href="#">Pages</a></li>
-                        <li class="menu-item-has-children dropdown"><a href="#">Blog</a>
-                            <ul class="sub-menu">
-                                <li class="menu-item-has-children dropdown"><a href="blog-grid.html">Blog-grid</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="blog-grid.html">Blog Grid 1</a></li>
-                                        <li><a href="blog-grid-2.html">Blog Grid 2</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="blog-list.html">Blog List</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="<?php echo site_url() ?>/product">Catalog<?php echo $this->uri->segment(2); ?></a></li>
                         <li><a href="#"> Hai, <?php echo print_r($this->session->userdata('user')['user_username']) ?> !</a>
                         </li>
                     </ul>

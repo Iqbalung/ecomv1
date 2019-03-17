@@ -10,6 +10,12 @@ $(document).ready(function() {
 			success: function() {
 				main_forstok.init();
 				main_forstok.listeners();
+				$(document).ready(function() {
+					var id = app.data.segment[4];
+						str = id;
+						res = str.replace("-"," ");
+					document.title = "Beli produk "+res;
+				});
 			}		
 		},
 		init: function() {
@@ -362,7 +368,7 @@ $(document).ready(function() {
 			me.data_variant = [];
 			me.data_cost = [];
 
-			app.requestAjax(app.data.site_url+"/master/product/get_by_id/"+id,{id:id},"POST",function(result){
+			app.requestAjax(app.data.site_url+"/master/product/get_by_slug/"+id,{id:id},"POST",function(result){
 				if (result)
 				{
 					var form = modal.find('.ps-product__thumbnail');
@@ -370,6 +376,8 @@ $(document).ready(function() {
 						$(".slick-slide").append(`<img src="`+app.data.base_url+`/client/uploads/product/`+result.product.doc_name+`" alt="">`);
 						app.set_form_value($('.ps-product--detail'),result.product);
 						me.data_variant = result.variant;
+						
+
 						me.generated_data_variant();
 
 					$(".variant").select2({
