@@ -387,7 +387,7 @@ class App extends MY_Controller {
 		$out = $this->_respon($res,false,"update");
 		$out['trx_id'] = $trx['trx_id'];
 		$curlHandle = curl_init();
-		$url="http://45.32.118.255/sms/smsmasking.php?username=iqbalung&key=567d6acb73f283a8089820fabbbf61f7&number=".$trx['trx_shipping_phone']."&message=transaksi%20anda%20berhasil%20silahkan%20segera%20melakukan%20pembayaran%20";
+		$url="http://smsreguler.php?username=iqbalung&key=567d6acb73f283a8089820fabbbf61f7&&number=".$trx['trx_shipping_phone']."&message=transaksi%20anda%20berhasil%20silahkan%20segera%20melakukan%20pembayaran%20";
 		curl_setopt($curlHandle, CURLOPT_URL,$url);
 		curl_setopt($curlHandle, CURLOPT_HEADER, 0);
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
