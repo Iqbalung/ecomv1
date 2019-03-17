@@ -153,39 +153,178 @@ class App extends MY_Controller {
 			
 		}
 		echo json_encode($res);
-		$this->load->library('email');
-		$config['protocol']    = 'smtp';
-        $config['smtp_host']    = 'premium66.web-hosting.com';
-        $config['smtp_port']    = '465';
-        $config['smtp_timeout'] = '7';
-        $config['smtp_user']    = '	_mainaccount@biyoz.com';
-        $config['smtp_pass']    = 't3Zy407rH7AS';
-        $config['charset']    = 'utf-8';
-        $config['newline']    = "\r\n";
-        $config['mailtype'] = 'html'; // or html
-        $config['wordwrap'] =TRUE;
-        $config['charset'] = 'utf-8';
-        $config['validation'] = TRUE; // bool whether to validate email or not      
-
-        $this->email->initialize($config);
-
-        $this->email->from('_mainaccount@biyoz.com', 'myname');
-        $this->email->to('iqbalung@gmail.com'); 
-
-        $this->email->subject('Email Test');
         $data['data'] = $res;
         $state = $this->db->query("
-			SELECT trx_state_id FROM trx
+			SELECT trx_state_id,trx_customer_email FROM trx
 			where trx_id = ?",$id['id'])->row_array();
+       	$text_email = array (
+          'Messages' => 
+          array (
+            0 => 
+            array (
+              'From' => 
+              array (
+                'Email' => 'iqbalung@gmail.com',
+                'Name' => 'noreply',
+              ),
+              'To' => 
+              array (
+                0 => 
+                array (
+                  'Email' => $state['trx_customer_email'],
+                  'Name' => 'Customer',
+                ),
+              ),
+              'Subject' => 'Verification registration Mile',
+              'TextPart' => 'Dear passenger 1, welcome to Mailjet! May the delivery force be with you!',
+              'HTMLPart' => '
+              
+                    <table border="0" cellpadding="0" cellspacing="0" class="body" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background-color: #f6f6f6;">
+
+                          <tr>
+                            <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td>
+                            <td class="container" style="font-family: sans-serif; font-size: 14px; vertical-align: top; display: block; Margin: 0 auto; max-width: 580px; padding: 10px; width: 580px;">
+                              <div class="content" style="box-sizing: border-box; display: block; Margin: 0 auto; max-width: 580px; padding: 10px;">
+                    <img data-v-89fdde4e="" src="https://mile.app/ecf6b935bfc378921fd99dcd4780099a.png" style="width:100px;margin-left:40%;margin-bottom:25px;" class="logo">
+                                <!-- START CENTERED WHITE CONTAINER -->
+                                <span class="preheader" style="color: transparent; display: none; height: 0; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; mso-hide: all; visibility: hidden; width: 0;">This is preheader text. Some clients will show this text as a preview.</span>
+                     <a href="http://htmlemail.io" target="_blank" style="display: inline-block;
+                        color: #ffffff;
+                        z-index:-100;
+                        height:100px;
+                    text-align:center;
+
+                    margin-bottom:-5px;
+
+                    background-color:#02a8f3;
+                    border: solid 1px #fbfdff;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                    box-sizing: border-box;
+                    cursor: pointer;
+                    text-decoration: none;
+                    font-size: 24px;
+                    font-weight: bold;
+                    padding: 12px 25px;
+                    text-transform: capitalize;
+                    border-color: #f9f9f9;width: 100%;">
+                <br>Welcome Milers</a>
+                            <table class="main" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; background: #ffffff; border-radius: 3px;">
+
+                              <!-- START MAIN CONTENT AREA -->
+                              <tr>
+                                <td class="wrapper" style="font-family: sans-serif; font-size: 14px; vertical-align: top; box-sizing: border-box; padding: 20px;">
+                                  <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                                    <tr>
+                                      <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">
+
+                <img src="https://mile.app/f8f8bd322511bd24ace7e8707c6263e8.png" class="hero-image" style="width:300px;text-align:center;margin-left:20%">
+                                        
+                                        <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 1px;text-align:center;margin-top:20px;">Thanks for joining <b>Mile</b>.</p><br>
+                <p style="font-family: sans-serif; font-size: 14px; font-weight: normal; margin: 0; Margin-bottom: 25px;text-align:center;">To Activate your account please click on the button below</p>
+                                        <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%; box-sizing: border-box;">
+                                          <tbody>
+                                            <tr>
+                                              <td align="left" style="font-family: sans-serif; font-size: 14px; vertical-align: top; padding-bottom: 15px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: auto;">
+                                                  <tbody>
+                                                    <tr>
+                                                      <td style="font-family: sans-serif; font-size: 14px; vertical-align: top; background-color: none; border-radius: 5px; text-align: center;Margin-left: 25px;width:400px"> </td>
+                                                    </tr>
+                                                  </tbody>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                        <p style="font-family: sans-serif; font-size: 12px; font-weight: normal; margin: 0; Margin-bottom: 15px;margin-left:20%;">For more help, please send email to : support@mile.app</p>
+                                        
+                                      </td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+
+                            <!-- END MAIN CONTENT AREA -->
+                            </table>
+
+                            <!-- START FOOTER -->
+                            <div class="footer" style="clear: both; Margin-top: 10px; text-align: center; width: 100%;">
+                              <table border="0" cellpadding="0" cellspacing="0" style="border-collapse: separate; mso-table-lspace: 0pt; mso-table-rspace: 0pt; width: 100%;">
+                                <tr>
+                                  <td class="content-block" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
+                                    <span class="apple-link" style="color: #999999; font-size: 12px; text-align: center;">copyright &copy; 2019 mile.app all right reserved.</span>
+                                   
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td class="content-block powered-by" style="font-family: sans-serif; vertical-align: top; padding-bottom: 10px; padding-top: 10px; font-size: 12px; color: #999999; text-align: center;">
+                                   <a href="http://paket.id" style="color: #999999; font-size: 12px; text-align: center; text-decoration: none;">PT. Paket Informasi Digital</a>.
+                                  </td>
+                                </tr>
+                              </table>
+                            </div>
+                            <!-- END FOOTER -->
+
+                          <!-- END CENTERED WHITE CONTAINER -->
+                          </div>
+                        </td>
+                        <td style="font-family: sans-serif; font-size: 14px; vertical-align: top;">&nbsp;</td>
+                      </tr>
+                    </table>
+
+
+
+
+
+
+
+
+             ',
+
+            ),
+          ),
+        );
+
+        $text_email = json_encode($text_email);
+        try{
+            $curl = curl_init();
+            curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.mailjet.com/v3.1/send',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_POSTFIELDS => $text_email,
+            CURLOPT_USERPWD => 'dea7c195cb5d0b5317d7c6f884661a48:f2d950931d744025ccea3cf877fa429b',
+            CURLOPT_HTTPHEADER => array(
+                "Content-Type: application/json",
+                "cache-control: no-cache"
+            ),
+            ));
+
+            $response2 = curl_exec($curl);
+
+            $err = curl_error($curl);
+
+            curl_close($curl);
+            print_r($response2);
+            $out = array('success'=>false);
+           
+            
+           
+         }catch(Exception $e){
+            dd($e);
+         }
         if($state['trx_state_id']!="pending"){
         	$msg =  $this->load->view('inc/transaction/payment_information',$data,true);
         }else{
         	$msg =  $this->load->view('inc/transaction/payment_information2',$data,true);
         }
-        $this->email->message($msg);  
-
-        $this->email->send();
-
+    
 	}
 
 	public function confirm_order(){
