@@ -139,9 +139,9 @@ $(document).ready(function() {
 		save: function()
 		{
 			var me = this;
-				form = $("#form-category"),
-				formData = form.serializeArray();
-				
+				form = $("#form-category")[0],
+				var formData = new FormData(form);
+			console.log(formData);
 			app.body_mask();
 			app.requestAjax(app.data.site_url+"/master/category/save",formData,"POST",function(result){
 				try

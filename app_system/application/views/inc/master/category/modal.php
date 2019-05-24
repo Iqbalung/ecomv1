@@ -8,7 +8,7 @@
         <h4 class="modal-title">Add Category</h4>
       </div>
       <div class="modal-body">
-        <form id="form-category" class="form form-horizontal">
+        <form id="form-category" class="form form-horizontal" enctype="multipart/form-data">
             <input type="hidden" name="category_id" class="hidden">            
 
             <div class="row">                    
@@ -19,7 +19,13 @@
                       <div class="form-group">
                           <input type="text" class="form-control" name="category_name" required="">
                       </div>
-                  </div>                
+                  </div>
+                   <div class="col-sm-4">
+                      <label>Image<span class="text-danger">*</span></label>
+                  </div>
+                  <div class="col-sm-7">
+                     <input type="file" name="category_image" class="form-control" >
+                  </div>        
             </div>
           </form>
       </div>

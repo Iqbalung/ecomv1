@@ -456,6 +456,8 @@ class App extends MY_Controller {
 		curl_setopt($curlHandle, CURLOPT_TIMEOUT,120);
 		$hasil = curl_exec($curlHandle);
 		curl_close($curlHandle);	
+		print_r($hasil);
+		exit();
 		echo json_encode($out);
 	}
 
