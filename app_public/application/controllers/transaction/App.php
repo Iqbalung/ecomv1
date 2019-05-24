@@ -12,6 +12,45 @@ class App extends MY_Controller {
 		$this->load->library('cart');
 	}
 
+	public function cron(){
+		$data = $this->db->query("select * from trx where trx_state_id = 'pending'")->result_array();
+		foreach ($data as $key => $value) {
+			$curl = curl_init();
+			if(strlen($value['trx_code'])>1){
+
+				$url =  "https://app.moota.co/api/v1/bank/eArz6PX6WKx/mutation/search/".$value['trx_code'];
+				curl_setopt($curl, CURLOPT_URL,$url);
+				curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+				curl_setopt($curl, CURLOPT_HTTPHEADER, [
+				    'Accept: application/json',
+				    'Authorization: Bearer 5IZc116Ie1DOx50P8Bx733pZViLSdkGi2Fv3GBMVCqJawK0Elx'
+				]);
+				$response = curl_exec($curl);
+				$res =  json_decode($response);
+				$res = (array) $res;
+				if(count($res['mutation'])>0){
+					$x = (array) $res['mutation'][0];
+					if($value['trx_code']==$x['amount']){
+						$upd = $this->db->query("update trx set trx_state_id = 'ready_to_ship', trx_mutation_id = ? where trx_id = ? and trx_code = ?
+						and trx_state_id = 'pending' ",array($x['mutation_id'],$value['trx_id'],$value['trx_code']));
+						if($upd){
+							$curlHandle = curl_init();
+							 $url="https://sms255.xyz/sms/smsreguler.php?username=iqbalung&key=567d6acb73f283a8089820fabbbf61f7&number=".$value['trx_shipping_phone']."&message=transaksi%20anda%20berhasil%20TRX%20'".$value['trx_id']."' Barang Akan Segera Kami Kirim";
+							 curl_setopt($curlHandle, CURLOPT_URL,$url);
+							 curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+							 curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+							 curl_setopt($curlHandle, CURLOPT_TIMEOUT,120);
+							 $hasil = curl_exec($curlHandle);
+							 curl_close($curlHandle);
+						}
+					}
+				}
+				
+			}
+		}
+
+	}
+
 	public function index()
 	{
 		$data = array(
@@ -141,23 +180,27 @@ class App extends MY_Controller {
 	public function get_trx_total(){
 		$id = $this->input->get();
 		$idx = $id['id']; 
-		$res = $this->db->query("
-			SELECT (trx_total+trx_cost_estimation_price) as total, floor(0+ RAND() * 1000) as kode_unik,trx_date, '$idx' as invoice_id FROM trx
-			left join trx_cost on trx.trx_id = trx_cost.trx_id
-			where trx.trx_id = ?",$id['id'])->row_array();
-		$res['total_dibayar'] = $res['total']+$res['kode_unik'];
-		$unik = $res['kode_unik'];
-		try {
-			$upd = $this->db->query("UPDATE trx set trx_code = '$unik' where trx_id = ?",$id['id']);
-		} catch (Exception $e) {
-			
-		}
-		echo json_encode($res);
-        $data['data'] = $res;
-        $state = $this->db->query("
-			SELECT trx_state_id,trx_customer_email FROM trx
+		$state = $this->db->query("
+			SELECT trx_state_id,trx_customer_email,trx_code,trx_shipping_phone FROM trx
 			where trx_id = ?",$id['id'])->row_array();
-       	$text_email = array (
+	      
+		 
+		if($state['trx_code']==""){
+			$res = $this->db->query("
+				SELECT (trx_total+trx_cost_estimation_price) as total, floor(0+ RAND() * 1000) as kode_unik,trx_date, '$idx' as invoice_id FROM trx
+				left join trx_cost on trx.trx_id = trx_cost.trx_id
+				where trx.trx_id = ?",$id['id'])->row_array();
+	        $data['data'] = $res;
+
+			$res['total_dibayar'] = $res['total']+$res['kode_unik'];
+			$unik = $res['total_dibayar'];
+			try {
+				$upd = $this->db->query("UPDATE trx set trx_code = '$unik' where trx_id = ?",$id['id']);
+			} catch (Exception $e) {
+				
+			}
+			echo json_encode($res);
+	        	$text_email = array (
           'Messages' => 
           array (
             0 => 
@@ -280,45 +323,64 @@ class App extends MY_Controller {
 
 
 
-             ',
+	             ',
 
-            ),
-          ),
-        );
+	            ),
+	          ),
+	        );
 
-        $text_email = json_encode($text_email);
-        try{
-            $curl = curl_init();
-            curl_setopt_array($curl, array(
-            CURLOPT_URL => 'https://api.mailjet.com/v3.1/send',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
+	        $text_email = json_encode($text_email);
+	        try{
+	            $curl = curl_init();
+	            curl_setopt_array($curl, array(
+	            CURLOPT_URL => 'https://api.mailjet.com/v3.1/send',
+	            CURLOPT_RETURNTRANSFER => true,
+	            CURLOPT_ENCODING => "",
+	            CURLOPT_MAXREDIRS => 10,
+	            CURLOPT_TIMEOUT => 30,
 
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => $text_email,
-            CURLOPT_USERPWD => 'dea7c195cb5d0b5317d7c6f884661a48:f2d950931d744025ccea3cf877fa429b',
-            CURLOPT_HTTPHEADER => array(
-                "Content-Type: application/json",
-                "cache-control: no-cache"
-            ),
-            ));
+	            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+	            CURLOPT_CUSTOMREQUEST => "POST",
+	            CURLOPT_POSTFIELDS => $text_email,
+	            CURLOPT_USERPWD => 'dea7c195cb5d0b5317d7c6f884661a48:f2d950931d744025ccea3cf877fa429b',
+	            CURLOPT_HTTPHEADER => array(
+	                "Content-Type: application/json",
+	                "cache-control: no-cache"
+	            ),
+	            ));
 
-            $response2 = curl_exec($curl);
+	            $response2 = curl_exec($curl);
 
-            $err = curl_error($curl);
+	            $err = curl_error($curl);
 
-            curl_close($curl);
-            print_r($response2);
-            $out = array('success'=>false);
-           
-            
-           
-         }catch(Exception $e){
-            dd($e);
-         }
+	            curl_close($curl);
+	          
+	            $out = array('success'=>false);
+	           
+	            
+	           
+	         }catch(Exception $e){
+	            dd($e);
+	         }
+	        $curlHandle = curl_init();
+			$url="https://sms255.xyz/sms/smsreguler.php?username=iqbalung&key=567d6acb73f283a8089820fabbbf61f7&&number=".$state['trx_shipping_phone']."&message=transaksi%20anda%20berhasil%20silahkan%20segera%20melakukan%20pembayaran%20sebesar%20Rp.".$unik."ke Rekening Kami";
+			curl_setopt($curlHandle, CURLOPT_URL,$url);
+			curl_setopt($curlHandle, CURLOPT_HEADER, 0);
+			curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($curlHandle, CURLOPT_TIMEOUT,120);
+			$hasil = curl_exec($curlHandle);
+			curl_close($curlHandle);
+		}else{
+			 $res = $this->db->query("
+				SELECT (trx_cost_estimation_price+trx_total) as total, (trx_code-trx_cost_estimation_price-trx_total) kode_unik,
+				trx_code as total_dibayar,trx_date, '$idx' as invoice_id FROM trx
+				left join trx_cost on trx.trx_id = trx_cost.trx_id
+				where trx.trx_id = ?",$id['id'])->row_array();
+	        $data['data'] = $res;
+	        echo json_encode($res);
+		}
+        
+       
         if($state['trx_state_id']!="pending"){
         	$msg =  $this->load->view('inc/transaction/payment_information',$data,true);
         }else{
@@ -377,7 +439,7 @@ class App extends MY_Controller {
 		$trx['trx_customer'] = ifunsetempty($_POST,"nama",$this->session->userdata('user')['nama']);
 		$trx['trx_customer_email'] = ifunsetempty($_POST,"email",$this->session->userdata('user')['email']);
 		$trx['trx_shipping_address_2'] = ifunsetempty($_POST,"alamat",$this->session->userdata('user')['alamat']);
-		$trx['trx_shipping_phone'] = ifunsetempty($_POST,"no_telp",$this->session->userdata('user')['no_telp']);
+		$trx['trx_shipping_phone'] = ifunsetempty($_POST,"telp",$this->session->userdata('user')['no_telp']);
 		$trx['user_userid'] = ifunsetempty($_POST,"no_telp",$this->session->userdata('user')['user_userid']);
 		
 		unset($params['shipping']);
@@ -387,7 +449,7 @@ class App extends MY_Controller {
 		$out = $this->_respon($res,false,"update");
 		$out['trx_id'] = $trx['trx_id'];
 		$curlHandle = curl_init();
-		$url="http://smsreguler.php?username=iqbalung&key=567d6acb73f283a8089820fabbbf61f7&&number=".$trx['trx_shipping_phone']."&message=transaksi%20anda%20berhasil%20silahkan%20segera%20melakukan%20pembayaran%20";
+		$url="https://sms255.xyz/sms/smsreguler.php?username=iqbalung&key=567d6acb73f283a8089820fabbbf61f7&&number=".$trx['trx_shipping_phone']."&message=transaksi%20anda%20berhasil%20silahkan%20segera%20melakukan%20pembayaran%20";
 		curl_setopt($curlHandle, CURLOPT_URL,$url);
 		curl_setopt($curlHandle, CURLOPT_HEADER, 0);
 		curl_setopt($curlHandle, CURLOPT_RETURNTRANSFER, true);

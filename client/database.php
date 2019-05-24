@@ -1,10 +1,10 @@
 <?php 
 defined('BASEPATH') OR exit('No direct script access allowed');
 $database = array(
-    'hostname' => '202.182.55.114',
-    'username' => 'sa',
-    'password' => 'traspacOWNER2017',
-    'database' => 'test2',
+    'hostname' => 'localhost',
+    'username' => 'biyofixq_testing',
+    'password' => 'sekolah kita',
+    'database' => 'biyofixq_testing2',
     'dbdriver' => 'mysqli',
     'dbprefix' => '',
     'pconnect' => FALSE,
