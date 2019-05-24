@@ -149,7 +149,7 @@
     <header class="header header--1" data-sticky="true">
         <nav class="navigation">
             <div class="ps-container-fluid">
-                <div class="left"><a class="ps-logo" href="index-2.html"><img src="<?php echo base_url('media_front'); ?>/images/logo.png" alt=""></a></div>
+                <div class="left"><a class="ps-logo" href="index-2.html"><img src="https://webicdn.com/sdirmember/29/28545/logotoko/83yq4.png" alt=""></a></div>
                 <div class="center">
                     <ul class="menu">
                         <li class="current-menu-item menu-item-has-children dropdown"><a href="<?php echo site_url() ?>">Home</a>
@@ -169,6 +169,9 @@
                             </ul> -->
                         </li>
                         <li><a href="<?php echo site_url() ?>/product">Catalog<?php echo $this->uri->segment(2); ?></a></li>
+                        <li><a href="<?php echo site_url() ?>/product">Contact Us<?php echo $this->uri->segment(2); ?></a></li>
+                        <li><a href="<?php echo site_url() ?>/product">About Us<?php echo $this->uri->segment(2); ?></a></li>
+                        <li><a href="<?php echo site_url() ?>/product">FAQ Us<?php echo $this->uri->segment(2); ?></a></li>
                         <li><a href="#"> Hai, <?php echo print_r($this->session->userdata('user')['user_username']) ?> !</a>
                         </li>
                     </ul>

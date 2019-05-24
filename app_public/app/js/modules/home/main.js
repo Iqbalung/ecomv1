@@ -22,6 +22,7 @@ $(document).ready(function() {
 			});
 
 			me.load_list(true);
+			me.load_category(true);
 			
 		},
 		listeners: function() {
@@ -309,6 +310,95 @@ $(document).ready(function() {
 								`;
 								$('.ps-product-grid').append(content);
 								$('.ps-product-grid').data(row);
+								no++;
+							});
+						}
+
+						if('paging' in result)
+						{
+							$('[aria-label="Page navigation"]').html(result.paging);							
+						}
+					}
+				})
+				.fail(function(result) {						
+					swal({
+						title: "Informasi!",
+						text: '('+result.status+') '+result.statusText,							
+						icon: "warning",
+					});
+				})
+				.always(function() {
+					setTimeout(function() {
+						app.body_unmask();
+					},500);
+				});		
+			}
+			else
+			{
+				setTimeout(function() {					
+					app.body_unmask();
+				},500);
+			}
+		},
+		load_category:function(is_load) {
+			var me = this,
+				title = 'data_list',
+				params = me.get_params();
+
+			try
+			{
+				var is_load = is_load;
+			}
+			catch(e)
+			{
+				var is_load = false;
+			}
+
+		
+			if (me.firstLoad[title] != JSON.stringify(params) || is_load) 
+			{			
+				if (typeof me.firstLoad[title] != "undefined") {
+					me.firstLoad[title] = JSON.stringify(params);
+				}
+
+			app.body_mask();
+				$.ajax({
+					url: app.data.site_url + '/master/category/get',
+					type: 'GET',
+					dataType: 'json',
+					data: params,
+				})
+				.done(function(result) {
+
+					app.body_unmask();
+					var content = "";
+					$('.category-thumb').append(content);
+					if ("data" in result)
+					{
+						if (result.data.length == 0)
+						{
+							$('.category-thumb').html(`
+								<tr class="data-kosong">
+		                            <td colspan="11" class="col-md-12" align="center">Data tidak ditemukan</td>
+		                        </tr>
+								`);
+						} 
+						else
+						{
+							var no = parseInt(main_forstok.start)+1;
+							result.data.forEach(function(row) {
+								
+								var content = `
+							<div class="col-md-4">
+		                        <div class="grid-item__content-wrapper">
+		                            <div class="ps-collection"><a class="ps-collection__morelink" href="#">`+row.category_name+`</a><img class="ps-fullwidth" src="`+app.data.base_url+`/client/uploads/category/`+row.category_image+`" alt=""></div>
+		                        </div>
+		                    </div>
+								`;
+								if(no<7){
+									$('.category-thumb').append(content);
+									$('.category-thumb').data(row);
+								}
 								no++;
 							});
 						}

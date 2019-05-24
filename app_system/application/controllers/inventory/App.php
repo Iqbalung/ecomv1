@@ -14,7 +14,7 @@ class App extends MY_Controller {
 			'data_app' => $this->get_data_app()
 		);
 		
-		$this->template->display('inc/inventory/purchase', $data);
+		$this->template->display('inc/inventory/purchasematerial', $data);
 	}
 
 	public function stockopname()

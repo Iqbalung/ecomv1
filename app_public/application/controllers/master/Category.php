@@ -71,6 +71,7 @@ class Category extends MY_Controller {
 			"category_dateupdated" => ifunsetempty($method,"category_dateupdated",date("Y-m-d"))
 		);
 
+
 		if (empty($params["category_id"]))
 		{
 			$params["category_id"] = $this->get_uuid();

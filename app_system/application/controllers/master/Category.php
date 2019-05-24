@@ -71,6 +71,23 @@ class Category extends MY_Controller {
 			"category_dateupdated" => ifunsetempty($method,"category_dateupdated",date("Y-m-d"))
 		);
 
+
+		$config['upload_path']          = FCPATH2."client/uploads/category"  ;
+		$config['allowed_types']        = 'gif|jpg|png';
+		$config['max_size']             = 100;
+		$config['max_width']            = 1024;
+		$config['max_height']           = 768;
+ 
+		$this->load->library('upload', $config);
+ 
+		if ( ! $this->upload->do_upload('category_image')){
+			$error = array('error' => $this->upload->display_errors());
+		}else{
+			$data = array('upload_data' => $this->upload->data());
+		}
+		print_r($this->upload->data());
+		exit();
+
 		if (empty($params["category_id"]))
 		{
 			$params["category_id"] = $this->get_uuid();
