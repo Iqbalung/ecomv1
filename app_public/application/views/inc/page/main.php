@@ -1,0 +1,1 @@
+<br><br><br><br><br><?php print_r($article[0]->page_content); ?>

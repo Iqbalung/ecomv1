@@ -35,7 +35,7 @@
     <meta name="author" content="Nghia Minh Luong">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <title>Exist - Homepage 1</title>
+    <title>Oxfoord.id</title>
     <!-- Fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700%7CDroid+Serif:400,700" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,900" rel="stylesheet">
@@ -168,10 +168,18 @@
                                 <li><a href="homepage-12.html">Homepage #12</a></li>
                             </ul> -->
                         </li>
-                        <li><a href="<?php echo site_url() ?>/product">Catalog<?php echo $this->uri->segment(2); ?></a></li>
-                        <li><a href="<?php echo site_url() ?>/product">Contact Us<?php echo $this->uri->segment(2); ?></a></li>
-                        <li><a href="<?php echo site_url() ?>/product">About Us<?php echo $this->uri->segment(2); ?></a></li>
-                        <li><a href="<?php echo site_url() ?>/product">FAQ Us<?php echo $this->uri->segment(2); ?></a></li>
+                        <li class ="
+                        <?php if($this->uri->segment(1)=="product"){ echo "current-menu-item menu-item-has-children dropdown";} ?>
+                        "><a href="<?php echo site_url() ?>/product">Catalog </a></li>
+                        <li class ="
+                        <?php if($this->uri->segment(4)=="contact-us"){ echo "current-menu-item menu-item-has-children dropdown";} ?>
+                        "><a href="<?php echo site_url() ?>/page/app/index/contact-us">Contact Us</a></li>
+                        <li class ="
+                        <?php if($this->uri->segment(4)=="about-us"){ echo "current-menu-item menu-item-has-children dropdown";} ?>
+                        "><a href="<?php echo site_url() ?>/page/app/index/about-us">About Us</a></li>
+                        <li class ="
+                        <?php if($this->uri->segment(4)=="faq"){ echo "current-menu-item menu-item-has-children dropdown";} ?>
+                        "><a href="<?php echo site_url() ?>/page/page/app/index/faq">FAQ Us</a></li>
                         <li><a href="#"> Hai, <?php echo print_r($this->session->userdata('user')['user_username']) ?> !</a>
                         </li>
                     </ul>

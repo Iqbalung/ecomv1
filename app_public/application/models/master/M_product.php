@@ -11,11 +11,27 @@ class M_product extends CI_Model{
 	{	
 		$start = ifunsetempty($args,'start',0);
 		$limit = ifunsetempty($args,'limit',10);
-		if (isset($args["f_search"])) {
-			$this->db->like("prod_name",$args["f_search"]);
+		$where = "";
+		$sort = "";
+		if (isset($args["f_search"]) && $args["f_search"]!="") {
+			$where = "$where and prod_name like '%".$args["f_search"]."%'";
 		}
+		if (isset($args["f_type"]) && $args["f_type"]!="") {
+			$where = " $where  and prod_kind = '".$args["f_type"]."'";
+		}
+
+		if (isset($args["f_category"]) && $args["f_category"]!="") {
+			$where = " $where  and product.category_id = '".$args["f_category"]."'";
+		}
+
+		if(isset($args['f_sort']) && $args['f_sort']!=""){
+			$sort = "ORDER BY ".$args['f_sort']." ".$args['f_sort_type'];
+		}
+
+
+
 		$db2 = clone $this->db;
-		$data = $this->db->query("select *, replace(lower(product.prod_name),' ','-') as slug from product inner join (select * from document ORDER BY sort asc limit 1 ) as d on product.prod_id = d.doc_parentid", $limit, $start)->result_array();
+		$data = $this->db->query("select *, replace(lower(product.prod_name),' ','-') as slug from product left join (select * from document ORDER BY sort asc ) as d on product.prod_id = d.doc_parentid where 1=1 $where group by product.prod_id $sort", $limit, $start)->result_array();
 		$count = $db2->get('product a')->num_rows();
 
 		return array('data' => $data, 'count' => $count);		

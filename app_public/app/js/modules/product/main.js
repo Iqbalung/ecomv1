@@ -47,8 +47,6 @@ $(document).ready(function() {
 			});
 
 			$('.f-select').on('change', function(event) {
-
-			   
 				me.load_list();
 			});
 
@@ -193,7 +191,10 @@ $(document).ready(function() {
 				"f_search":$(".f-search").val(),				
 				"f_date_from":$(".date-from").val(),
 				"f_date_to":$(".date-to").val(),				
-				"f_type":$(".f-select").val(),
+				"f_type":$(".gender").val(),
+				"f_category":$(".f-category").val(),
+				"f_sort":$(".sort").val(),
+				"f_sort_type":$(".sort_type").val(),
 				m: main_forstok.start,
 				per_page: main_forstok.start
 			};
@@ -279,6 +280,7 @@ $(document).ready(function() {
 
 					app.body_unmask();
 					var content = "";
+					$('.ps-product-grid').html("");
 					$('.ps-product-grid').append(content);
 					if ("data" in result)
 					{
