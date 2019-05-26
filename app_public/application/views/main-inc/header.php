@@ -106,8 +106,7 @@
 
     <script src="<?php echo $this->config->item('url_plugins').'jquery/jquery-3.1.0.min.js' ?>"></script>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo $this->config->item('url_plugins') ?>datatables/dataTables.min.css">
-
+    
     <script src="<?php echo $this->config->item('url_plugins') ?>datatables/datatables.js"></script>
     <script src="<?php echo $this->config->item('url_plugins') ?>popper.min.js"></script>
     <script src="<?php echo $this->config->item('url_plugins') ?>bootstrap/js/bootstrap.min.js"></script>
