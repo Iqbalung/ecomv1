@@ -82,6 +82,8 @@ class App extends MY_Controller {
 		$params =  array(
 			"f_search" => ifunsetempty($_GET,"f_search",''),
 			"f_type" => ifunsetempty($_GET,"f_type",''),
+			"f_kind" => ifunsetempty($_GET,"f_kind",''),
+			"f_category" => ifunsetempty($_GET,"f_category",''),
 			"f_date_from" => convert_format_date(ifunsetempty($_GET,"f_date_from","01/".date('m/Y')),array("is_time"=>false)),
 			"f_date_to" => convert_format_date(ifunsetempty($_GET,"f_date_to",date("d/m/Y")),array("is_time"=>false)),
 			"start" => ifunsetempty($_GET,"m",0),

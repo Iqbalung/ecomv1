@@ -27,6 +27,9 @@ class Product extends MY_Controller {
 		$no = 1;
 
 		$params = array(
+			"f_type" => ifunsetempty($method,"f_type",""),
+			"f_sort" => ifunsetempty($method,"f_sort",""),
+			"f_sort_type" => ifunsetempty($method,"f_sort_type",""),
 			"f_search" => ifunsetempty($method,"f_search",""),
 			"limit" => ifunsetempty($method,"limit",10),
 			"start" => ifunsetempty($method,"start",0)
