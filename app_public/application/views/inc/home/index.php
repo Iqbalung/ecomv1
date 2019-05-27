@@ -78,28 +78,10 @@
             <div class="ps-section__content">
                 <div class="ps-tabs">
                     <div class="ps-filter">
-                        <div class="ps-filter__left">
+                        <div class="">
                             <ul class="ps-filter__categories ps-tab-filter">
                                 <li class="current"><a href="#tab-1">All</a></li>
-                                <li><a href="#tab-2">Clothing</a></li>
-                                <li><a href="#tab-3">Footwear</a></li>
-                                <li><a href="#tab-4">Bags</a></li>
-                                <li><a href="#tab-5">Accessories</a></li>
                             </ul>
-                        </div>
-                        <div class="ps-filter__right">
-                            <select class="ps-select" title="5 Columns">
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                            </select>
-                            <select class="ps-select" title="Filter">
-                                <option value="1">Option 1</option>
-                                <option value="2">Option 2</option>
-                                <option value="3">Option 3</option>
-                                <option value="4">Option 4</option>
-                                <option value="5">Option 5</option>
-                            </select>
                         </div>
                     </div>
                     <div class="ps-tab active" id="tab-1">

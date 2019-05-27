@@ -399,6 +399,9 @@ $(document).ready(function() {
 									$('.category-thumb').append(content);
 									$('.category-thumb').data(row);
 								}
+
+								var content2 = `<li><a href="#tab-2">`+row.category_name+`</a></li>`;
+								$('.ps-filter__categories').append(content2);
 								no++;
 							});
 						}

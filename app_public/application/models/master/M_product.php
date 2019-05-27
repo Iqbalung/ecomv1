@@ -81,7 +81,7 @@ class M_product extends CI_Model{
 
 		$this->db->select("*,FORMAT(prod_price, 0) AS prod_price_text");
 		$this->db->join('m_category', 'product.category_id = m_category.category_id', 'left');
-		$this->db->join('(select * from document ORDER BY sort asc limit 1 ) as d', 'product.prod_id = d.doc_parentid', 'left');
+		$this->db->join('(select * from document) as d', 'product.prod_id = d.doc_parentid', 'left');
 		$res = $this->db->get('product');
 
 		return $res;		
